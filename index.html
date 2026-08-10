@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danh sách bệnh viện cấp cứu đột quỵ — Việt Nam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B1F3A;
+    --ink-2:#12294F;
+    --field:#FAFAF7;
+    --green:#2FA84F;
+    --green-dim:#E7F5EB;
+    --red:#D93025;
+    --slate:#5B6472;
+    --line:#E4E7EC;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Be Vietnam Pro', sans-serif;
+    background:var(--field);
+    color:var(--ink);
+    padding-bottom:96px;
+  }
+  .topbar{
+    background:linear-gradient(160deg, var(--ink) 0%, var(--ink-2) 100%);
+    color:#fff;
+    padding:20px 20px 22px;
+  }
+  .topbar .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#8FA6D6;
+    margin:0 0 6px;
+  }
+  .topbar h1{
+    font-weight:800;
+    font-size:20px;
+    line-height:1.3;
+    margin:0 0 8px;
+    letter-spacing:-0.01em;
+  }
+  .topbar .meta{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:#B7C4E0;
+  }
+  .topbar .meta b{color:#fff;font-weight:600;}
+  .topbar .src{
+    margin-top:10px;
+    font-size:11.5px;
+    color:#9FB2D9;
+    line-height:1.5;
+  }
+
+  .controls{
+    position:sticky;
+    top:0;
+    z-index:5;
+    background:var(--field);
+    padding:14px 20px 12px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    gap:8px;
+  }
+  .controls select, .controls input{
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-size:14px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:10px 12px;
+    background:#fff;
+    color:var(--ink);
+  }
+  .controls select{flex:0 0 140px;}
+  .controls input{flex:1;}
+  .controls select:focus, .controls input:focus{
+    outline:2px solid var(--ink-2);
+    outline-offset:1px;
+  }
+
+  .count-row{
+    padding:14px 20px 4px;
+    font-size:13px;
+    color:var(--slate);
+  }
+  .count-row b{color:var(--ink);}
+
+  .list{
+    padding:8px 16px 8px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px 16px;
+  }
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+    margin-bottom:4px;
+  }
+  .card h2{
+    font-size:15px;
+    font-weight:600;
+    margin:0;
+    line-height:1.35;
+  }
+  .tag-prov{
+    flex:none;
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-weight:600;
+    font-size:11.5px;
+    letter-spacing:.01em;
+    color:var(--ink-2);
+    background:#EEF2FA;
+    border-radius:6px;
+    padding:3px 8px;
+    white-space:nowrap;
+  }
+  .type-label{
+    font-size:11.5px;
+    color:var(--slate);
+    margin:0 0 6px;
+  }
+  .addr{
+    font-size:13px;
+    color:var(--slate);
+    margin:0 0 8px;
+    line-height:1.4;
+  }
+  .badges{
+    display:flex;
+    gap:6px;
+    margin-bottom:10px;
+    flex-wrap:wrap;
+  }
+  .badge{
+    font-size:11px;
+    font-weight:600;
+    border-radius:20px;
+    padding:3px 9px;
+  }
+  .badge.yes{color:var(--green);background:var(--green-dim);}
+  .badge.no{color:var(--slate);background:#F0F1F3;}
+  .card-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:10px;
+  }
+  .call-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:600;
+    font-size:12.5px;
+    color:var(--ink);
+    text-decoration:none;
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:6px 12px;
+  }
+  .call-link:active{background:#F0F2F5;}
+
+  .note{
+    margin:18px 20px 0;
+    font-size:12px;
+    color:var(--slate);
+    line-height:1.6;
+    border-top:1px dashed var(--line);
+    padding-top:14px;
+  }
+  .empty-state{
+    padding:40px 20px;
+    text-align:center;
+    color:var(--slate);
+    font-size:13px;
+  }
+
+  .sos{
+    position:fixed;
+    left:0;right:0;bottom:0;
+    z-index:10;
+    background:var(--red);
+    color:#fff;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:16px 20px calc(16px + env(safe-area-inset-bottom));
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-weight:800;
+    font-size:16px;
+    letter-spacing:.01em;
+  }
+  .sos .ring{
+    width:22px;height:22px;
+    border-radius:50%;
+    background:rgba(255,255,255,.22);
+    display:flex;align-items:center;justify-content:center;
+    flex:none;
+    animation:pulse 1.8s ease-out infinite;
+  }
+  .sos svg{width:12px;height:12px;fill:#fff;}
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(255,255,255,.45);}
+    70%{box-shadow:0 0 0 10px rgba(255,255,255,0);}
+    100%{box-shadow:0 0 0 0 rgba(255,255,255,0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .sos .ring{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <p class="eyebrow">World Stroke Day · #ActFast</p>
+    <h1>Danh sách bệnh viện &amp; trung tâm cấp cứu đột quỵ</h1>
+    <div class="meta">
+      <span id="metaCount"><b>—</b> đơn vị</span>
+      <span id="metaProv"><b>—</b> tỉnh/thành</span>
+      <span>Cập nhật <b>09/2025</b></span>
+    </div>
+    <p class="src">Nguồn: Hội Đột Quỵ Việt Nam (VNSA). Danh sách mang tính chất tham khảo — vui lòng gọi hotline xác nhận trước khi đến.</p>
+  </div>
+
+  <div class="controls">
+    <select id="filterProv" aria-label="Lọc theo tỉnh thành">
+      <option value="">Tất cả tỉnh</option>
+    </select>
+    <input id="searchBox" type="text" placeholder="Tìm theo tên bệnh viện..." aria-label="Tìm kiếm bệnh viện">
+  </div>
+
+  <div class="count-row">Đang hiển thị <b id="countNum">0</b> cơ sở</div>
+
+  <div class="list" id="list">
+    <div class="empty-state" id="loadingState">Đang tải dữ liệu...</div>
+  </div>
+
+  <p class="note">* Bệnh nhân và người nhà cần liên hệ với bệnh viện qua số hotline trước khi đến. Dữ liệu được Hội Đột Quỵ Việt Nam cập nhật định kỳ.</p>
+
+  <a class="sos" href="tel:115">
+    <span class="ring"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
+    Gọi 115 ngay
+  </a>
+
+<script>
+  let ALL = [];
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function telHref(hotline) {
+    const first = hotline.split('/')[0].trim();
+    const digits = first.replace(/[^\d]/g, '');
+    return digits ? `tel:${digits}` : '#';
+  }
+
+  function badge(label, value) {
+    const isYes = value === 'Có';
+    return `<span class="badge ${isYes ? 'yes' : 'no'}">${label}: ${value}</span>`;
+  }
+
+  function renderList(items) {
+    const list = document.getElementById('list');
+    document.getElementById('countNum').textContent = items.length;
+
+    if (items.length === 0) {
+      list.innerHTML = '<div class="empty-state">Không tìm thấy cơ sở phù hợp.</div>';
+      return;
+    }
+
+    list.innerHTML = items.map(h => `
+      <div class="card">
+        <div class="card-top">
+          <h2>${escapeHtml(h.name)}</h2>
+          <span class="tag-prov">${escapeHtml(h.province)}</span>
+        </div>
+        <p class="type-label">${escapeHtml(h.type || '')}</p>
+        <p class="addr">${escapeHtml(h.address)}</p>
+        <div class="badges">
+          ${badge('Tiêu sợi huyết', h.thrombolysis)}
+          ${badge('Can thiệp', h.intervention)}
+        </div>
+        <div class="card-bottom">
+          <a class="call-link" href="${telHref(h.hotline)}">📞 ${escapeHtml(h.hotline)}</a>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function applyFilter() {
+    const prov = document.getElementById('filterProv').value;
+    const q = document.getElementById('searchBox').value.trim().toLowerCase();
+    const filtered = ALL.filter(h => {
+      const matchesProv = !prov || h.province === prov;
+      const matchesQ = !q || h.name.toLowerCase().includes(q);
+      return matchesProv && matchesQ;
+    });
+    renderList(filtered);
+  }
+
+  function populateProvinces(items) {
+    const provinces = [...new Set(items.map(h => h.province))].sort((a, b) => a.localeCompare(b, 'vi'));
+    const sel = document.getElementById('filterProv');
+    provinces.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p;
+      opt.textContent = p;
+      sel.appendChild(opt);
+    });
+  }
+
+  fetch('./data/hospitals.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Không tải được dữ liệu');
+      return res.json();
+    })
+    .then(data => {
+      ALL = data.filter(h => h.status === 'active');
+      document.getElementById('metaCount').innerHTML = `<b>${ALL.length}</b> đơn vị`;
+      document.getElementById('metaProv').innerHTML = `<b>${new Set(ALL.map(h=>h.province)).size}</b> tỉnh/thành`;
+      populateProvinces(ALL);
+      renderList(ALL);
+    })
+    .catch(err => {
+      document.getElementById('list').innerHTML =
+        `<div class="empty-state">Lỗi tải dữ liệu: ${err.message}</div>`;
+    });
+
+  document.getElementById('filterProv').addEventListener('change', applyFilter);
+  document.getElementById('searchBox').addEventListener('input', applyFilter);
+</script>
+
+</body>
+</html>
