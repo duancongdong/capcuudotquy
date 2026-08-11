@@ -6,6 +6,9 @@
 <title>Danh sách bệnh viện cấp cứu đột quỵ — Việt Nam</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css"/>
 <style>
   :root{
     --ink:#0B1F3A;
@@ -161,7 +164,8 @@
     display:flex;
     align-items:center;
     justify-content:flex-end;
-    gap:10px;
+    gap:8px;
+    flex-wrap:wrap;
   }
   .call-link{
     display:inline-flex;
@@ -174,9 +178,37 @@
     text-decoration:none;
     border:1px solid var(--line);
     border-radius:20px;
-    padding:6px 12px;
+    padding:7px 12px;
+    white-space:nowrap;
   }
   .call-link:active{background:#F0F2F5;}
+  .map-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    color:#fff;
+    text-decoration:none;
+    background:var(--ink-2);
+    border-radius:20px;
+    padding:7px 12px;
+    white-space:nowrap;
+  }
+  .map-link:active{background:var(--ink);}
+  .card-actions-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .phone-group{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
 
   .note{
     margin:18px 20px 0;
@@ -226,6 +258,149 @@
   }
   @media (prefers-reduced-motion: reduce){
     .sos .ring{animation:none;}
+  }  .view-toggle{
+    display:flex;
+    gap:6px;
+    padding:12px 20px 0;
+  }
+  .view-btn{
+    flex:1;
+    text-align:center;
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-weight:600;
+    font-size:13.5px;
+    padding:10px 12px;
+    border-radius:10px 10px 0 0;
+    border:1px solid var(--line);
+    border-bottom:none;
+    background:#EFF1F5;
+    color:var(--slate);
+    cursor:pointer;
+  }
+  .view-btn.active{
+    background:var(--field);
+    color:var(--ink);
+    border-bottom:1px solid var(--field);
+    margin-bottom:-1px;
+  }
+  #mapView{
+    display:none;
+    height:calc(100dvh - 320px);
+    min-height:420px;
+  }
+  #mapEl{
+    width:100%;
+    height:100%;
+  }
+  .map-popup{
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-size:13px;
+    line-height:1.5;
+    min-width:190px;
+  }
+  .map-popup h3{
+    font-size:14px;
+    margin:0 0 4px;
+    color:var(--ink);
+  }
+  .map-popup .popup-addr{
+    color:var(--slate);
+    margin:0 0 8px;
+    font-size:12px;
+  }
+  .map-popup .popup-actions{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .map-popup a{
+    font-size:11.5px;
+    font-weight:600;
+    text-decoration:none;
+    border-radius:16px;
+    padding:5px 10px;
+    display:inline-block;
+  }
+  .map-popup .pop-call{
+    border:1px solid var(--line);
+    color:var(--ink);
+  }
+  .map-popup .pop-dir{
+    background:var(--ink-2);
+    color:#fff;
+  }
+  .map-note{
+    margin:10px 20px 0;
+    font-size:11.5px;
+    color:var(--slate);
+    line-height:1.5;
+  }
+
+  .nearest-bar{
+    margin:14px 20px 0;
+    padding:14px;
+    background:#EEF2FA;
+    border:1px solid #D9E2F5;
+    border-radius:14px;
+  }
+  .nearest-row{
+    display:flex;
+    gap:8px;
+  }
+  .btn-nearest{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:'Be Vietnam Pro', sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color:#fff;
+    background:var(--ink-2);
+    border:none;
+    border-radius:10px;
+    padding:12px 14px;
+    cursor:pointer;
+  }
+  .btn-nearest:active{background:var(--ink);}
+  .btn-mic{
+    flex:none;
+    width:46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    cursor:pointer;
+  }
+  .btn-mic.listening{
+    background:var(--red);
+    border-color:var(--red);
+    animation:micPulse 1.2s ease-in-out infinite;
+  }
+  @keyframes micPulse{
+    0%,100%{box-shadow:0 0 0 0 rgba(217,48,37,.4);}
+    50%{box-shadow:0 0 0 8px rgba(217,48,37,0);}
+  }
+  .nearest-status{
+    margin-top:8px;
+    font-size:12px;
+    color:var(--slate);
+    min-height:16px;
+  }
+  .nearest-status.err{color:var(--red);}
+  .distance-badge{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    font-weight:600;
+    color:#fff;
+    background:var(--green);
+    border-radius:6px;
+    padding:2px 7px;
+    white-space:nowrap;
   }
 </style>
 </head>
@@ -242,6 +417,19 @@
     <p class="src">Nguồn: Hội Đột Quỵ Việt Nam (VNSA). Danh sách mang tính chất tham khảo — vui lòng gọi hotline xác nhận trước khi đến.</p>
   </div>
 
+  <div class="view-toggle">
+    <button class="view-btn active" id="btnListView" type="button">📋 Danh sách</button>
+    <button class="view-btn" id="btnMapView" type="button">🗺️ Bản đồ</button>
+  </div>
+
+  <div class="nearest-bar">
+    <div class="nearest-row">
+      <button class="btn-nearest" id="btnNearest" type="button">📍 Tìm bệnh viện gần tôi nhất</button>
+      <button class="btn-mic" id="btnMic" type="button" title="Ra lệnh bằng giọng nói" aria-label="Tìm bằng giọng nói">🎙️</button>
+    </div>
+    <p class="nearest-status" id="nearestStatus"></p>
+  </div>
+
   <div class="controls">
     <select id="filterProv" aria-label="Lọc theo tỉnh thành">
       <option value="">Tất cả tỉnh</option>
@@ -249,10 +437,15 @@
     <input id="searchBox" type="text" placeholder="Tìm theo tên bệnh viện..." aria-label="Tìm kiếm bệnh viện">
   </div>
 
-  <div class="count-row">Đang hiển thị <b id="countNum">0</b> cơ sở</div>
+  <div class="count-row" id="listCountRow">Đang hiển thị <b id="countNum">0</b> cơ sở</div>
 
   <div class="list" id="list">
     <div class="empty-state" id="loadingState">Đang tải dữ liệu...</div>
+  </div>
+
+  <div id="mapView">
+    <div id="mapEl"></div>
+    <p class="map-note">Chỉ hiển thị các cơ sở đã có toạ độ xác định. Xem đầy đủ 170 cơ sở ở chế độ Danh sách.</p>
   </div>
 
   <p class="note">* Bệnh nhân và người nhà cần liên hệ với bệnh viện qua số hotline trước khi đến. Dữ liệu được Hội Đột Quỵ Việt Nam cập nhật định kỳ.</p>
@@ -262,6 +455,8 @@
     Gọi 115 ngay
   </a>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 <script>
   let ALL = [];
 
@@ -271,15 +466,126 @@
     return div.innerHTML;
   }
 
-  function telHref(hotline) {
-    const first = hotline.split('/')[0].trim();
-    const digits = first.replace(/[^\d]/g, '');
+  function parsePhoneNumbers(hotline) {
+    // Tách chuỗi hotline gộp nhiều số (phân cách bằng "/", "hoặc") thành từng số riêng.
+    // Giữ lại phần ghi chú dạng "(Ext 123)" gắn liền với số đứng trước nó.
+    return hotline
+      .split(/\s*\/\s*|\s+hoặc\s+/i)
+      .map(s => s.trim())
+      .filter(Boolean);
+  }
+
+  function telHrefFromLabel(label) {
+    const digits = label.replace(/[^\d]/g, '');
     return digits ? `tel:${digits}` : '#';
+  }
+
+  function mapsDirectionUrl(address, name) {
+    const query = encodeURIComponent(`${name}, ${address}`);
+    return `https://www.google.com/maps/dir/?api=1&destination=${query}&travelmode=driving`;
   }
 
   function badge(label, value) {
     const isYes = value === 'Có';
     return `<span class="badge ${isYes ? 'yes' : 'no'}">${label}: ${value}</span>`;
+  }
+
+  // ====== TÌM GẦN TÔI NHẤT (định vị + sắp xếp theo khoảng cách) ======
+  let userLocation = null; // { lat, lng }
+
+  function haversineKm(lat1, lng1, lat2, lng2) {
+    const R = 6371;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) ** 2 +
+      Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) *
+      Math.sin(dLng/2) ** 2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  }
+
+  function setNearestStatus(msg, isError) {
+    const el = document.getElementById('nearestStatus');
+    el.textContent = msg;
+    el.classList.toggle('err', !!isError);
+  }
+
+  function findNearest() {
+    if (!('geolocation' in navigator)) {
+      setNearestStatus('Trình duyệt không hỗ trợ định vị. Vui lòng tìm thủ công theo tỉnh.', true);
+      return;
+    }
+    setNearestStatus('Đang xác định vị trí của bạn…');
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        setNearestStatus('Đã xác định vị trí — đang sắp xếp theo khoảng cách gần nhất.');
+        document.getElementById('filterProv').value = '';
+        document.getElementById('searchBox').value = '';
+        applyFilter();
+      },
+      err => {
+        const msgs = {
+          1: 'Bạn đã từ chối quyền truy cập vị trí. Hãy cấp quyền định vị trong trình duyệt rồi thử lại.',
+          2: 'Không xác định được vị trí hiện tại. Vui lòng thử lại hoặc tìm thủ công.',
+          3: 'Định vị quá thời gian chờ. Vui lòng thử lại.',
+        };
+        setNearestStatus(msgs[err.code] || 'Có lỗi khi định vị.', true);
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  }
+
+  // ====== RA LỆNH BẰNG GIỌNG NÓI ======
+  function setupVoiceSearch() {
+    const btnMic = document.getElementById('btnMic');
+    const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognitionCtor) {
+      btnMic.disabled = true;
+      btnMic.title = 'Trình duyệt này không hỗ trợ tìm bằng giọng nói (hãy dùng Chrome/Edge)';
+      btnMic.style.opacity = '0.4';
+      return;
+    }
+
+    const recognition = new SpeechRecognitionCtor();
+    recognition.lang = 'vi-VN';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    btnMic.addEventListener('click', () => {
+      btnMic.classList.add('listening');
+      setNearestStatus('Đang nghe… hãy nói ví dụ: "tìm bệnh viện gần nhất"');
+      try { recognition.start(); } catch (e) { /* đã start rồi thì bỏ qua */ }
+    });
+
+    recognition.addEventListener('result', (e) => {
+      const transcript = e.results[0][0].transcript.trim();
+      setNearestStatus(`Đã nghe: "${transcript}"`);
+
+      const lower = transcript.toLowerCase();
+      const wantsNearest = /(gần nhất|gần tôi|gần đây|gần|nearest)/.test(lower) &&
+                            /(bệnh viện|y tế|cấp cứu|đột quỵ)/.test(lower);
+
+      if (wantsNearest) {
+        findNearest();
+      } else {
+        // Không khớp lệnh "gần nhất" -> dùng câu nói làm từ khoá tìm kiếm tên bệnh viện
+        document.getElementById('searchBox').value = transcript;
+        applyFilter();
+      }
+    });
+
+    recognition.addEventListener('error', (e) => {
+      const msgs = {
+        'not-allowed': 'Bạn đã từ chối quyền micro. Hãy cấp quyền rồi thử lại.',
+        'no-speech': 'Không nghe thấy giọng nói, vui lòng thử lại.',
+      };
+      setNearestStatus(msgs[e.error] || 'Không nhận dạng được giọng nói, vui lòng thử lại hoặc bấm nút.', true);
+    });
+
+    recognition.addEventListener('end', () => {
+      btnMic.classList.remove('listening');
+    });
   }
 
   function renderList(items) {
@@ -291,11 +597,40 @@
       return;
     }
 
-    list.innerHTML = items.map(h => `
+    // Nếu đã có vị trí người dùng: tính khoảng cách, sắp xếp gần -> xa
+    // Cơ sở chưa có toạ độ (chưa geocode) xếp cuối, giữ nguyên thứ tự.
+    let sorted = items;
+    if (userLocation) {
+      sorted = items.map(h => ({
+        ...h,
+        _distanceKm: (h.lat && h.lng)
+          ? haversineKm(userLocation.lat, userLocation.lng, h.lat, h.lng)
+          : null,
+      })).sort((a, b) => {
+        if (a._distanceKm === null && b._distanceKm === null) return 0;
+        if (a._distanceKm === null) return 1;
+        if (b._distanceKm === null) return -1;
+        return a._distanceKm - b._distanceKm;
+      });
+    }
+
+    list.innerHTML = sorted.map(h => {
+      const phones = parsePhoneNumbers(h.hotline);
+      const phoneButtons = phones.map(p =>
+        `<a class="call-link" href="${telHrefFromLabel(p)}">📞 ${escapeHtml(p)}</a>`
+      ).join('');
+      const distanceHtml = (h._distanceKm != null)
+        ? `<span class="distance-badge">${h._distanceKm < 1 ? Math.round(h._distanceKm*1000)+' m' : h._distanceKm.toFixed(1)+' km'}</span>`
+        : '';
+
+      return `
       <div class="card">
         <div class="card-top">
           <h2>${escapeHtml(h.name)}</h2>
-          <span class="tag-prov">${escapeHtml(h.province)}</span>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+            <span class="tag-prov">${escapeHtml(h.province)}</span>
+            ${distanceHtml}
+          </div>
         </div>
         <p class="type-label">${escapeHtml(h.type || '')}</p>
         <p class="addr">${escapeHtml(h.address)}</p>
@@ -303,22 +638,96 @@
           ${badge('Tiêu sợi huyết', h.thrombolysis)}
           ${badge('Can thiệp', h.intervention)}
         </div>
-        <div class="card-bottom">
-          <a class="call-link" href="${telHref(h.hotline)}">📞 ${escapeHtml(h.hotline)}</a>
+        <div class="card-actions-row">
+          <div class="phone-group">${phoneButtons}</div>
+          <a class="map-link" href="${mapsDirectionUrl(h.address, h.name)}" target="_blank" rel="noopener">🧭 Chỉ đường</a>
         </div>
       </div>
-    `).join('');
+    `;
+    }).join('');
   }
 
-  function applyFilter() {
+  let map, markerCluster;
+
+  function initMapIfNeeded() {
+    if (map) return;
+    map = L.map('mapEl').setView([16.0, 106.0], 5.4); // trung tâm Việt Nam
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors',
+    }).addTo(map);
+    markerCluster = L.markerClusterGroup();
+    map.addLayer(markerCluster);
+  }
+
+  function telHrefFromLabel_(label) {
+    const digits = label.replace(/[^\d]/g, '');
+    return digits ? `tel:${digits}` : '#';
+  }
+
+  function renderMap(items) {
+    initMapIfNeeded();
+    markerCluster.clearLayers();
+
+    const withCoords = items.filter(h => h.lat && h.lng);
+    withCoords.forEach(h => {
+      const firstPhone = parsePhoneNumbers(h.hotline)[0] || '';
+      const marker = L.marker([h.lat, h.lng]);
+      const popupHtml = `
+        <div class="map-popup">
+          <h3>${escapeHtml(h.name)}</h3>
+          <p class="popup-addr">${escapeHtml(h.address)}</p>
+          <div class="popup-actions">
+            <a class="pop-call" href="${telHrefFromLabel_(firstPhone)}">📞 Gọi</a>
+            <a class="pop-dir" href="${mapsDirectionUrl(h.address, h.name)}" target="_blank" rel="noopener">🧭 Chỉ đường</a>
+          </div>
+        </div>`;
+      marker.bindPopup(popupHtml);
+      markerCluster.addLayer(marker);
+    });
+
+    setTimeout(() => map.invalidateSize(), 50);
+  }
+
+  function switchView(view) {
+    const listEl = document.getElementById('list');
+    const mapEl = document.getElementById('mapView');
+    const countRow = document.getElementById('listCountRow');
+    const btnList = document.getElementById('btnListView');
+    const btnMap = document.getElementById('btnMapView');
+
+    if (view === 'map') {
+      listEl.style.display = 'none';
+      countRow.style.display = 'none';
+      mapEl.style.display = 'block';
+      btnList.classList.remove('active');
+      btnMap.classList.add('active');
+      renderMap(getCurrentFiltered());
+    } else {
+      listEl.style.display = 'flex';
+      countRow.style.display = 'block';
+      mapEl.style.display = 'none';
+      btnList.classList.add('active');
+      btnMap.classList.remove('active');
+    }
+  }
+
+  let currentView = 'list';
+
+  function getCurrentFiltered() {
     const prov = document.getElementById('filterProv').value;
     const q = document.getElementById('searchBox').value.trim().toLowerCase();
-    const filtered = ALL.filter(h => {
+    return ALL.filter(h => {
       const matchesProv = !prov || h.province === prov;
       const matchesQ = !q || h.name.toLowerCase().includes(q);
       return matchesProv && matchesQ;
     });
+  }
+
+  function applyFilter() {
+    const filtered = getCurrentFiltered();
     renderList(filtered);
+    if (currentView === 'map') renderMap(filtered);
   }
 
   function populateProvinces(items) {
@@ -351,6 +760,10 @@
 
   document.getElementById('filterProv').addEventListener('change', applyFilter);
   document.getElementById('searchBox').addEventListener('input', applyFilter);
+  document.getElementById('btnListView').addEventListener('click', () => { currentView = 'list'; switchView('list'); });
+  document.getElementById('btnMapView').addEventListener('click', () => { currentView = 'map'; switchView('map'); });
+  document.getElementById('btnNearest').addEventListener('click', findNearest);
+  setupVoiceSearch();
 </script>
 
 </body>

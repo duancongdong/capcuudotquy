@@ -10,7 +10,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.3872588,
+    "lng": 105.440206
   },
   {
     "id": "benh-vien-a-khoa-chau-oc-an-giang",
@@ -23,7 +25,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.6894605,
+    "lng": 105.1483943
   },
   {
     "id": "benh-vien-a-khoa-an-giang-an-giang",
@@ -36,7 +40,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.3695885,
+    "lng": 105.4359663
   },
   {
     "id": "benh-vien-a-khoa-kien-giang-an-giang",
@@ -49,7 +55,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 9.9714591,
+    "lng": 105.0987529
   },
   {
     "id": "trung-tam-y-te-giong-rieng-an-giang",
@@ -62,7 +70,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 9.9077225,
+    "lng": 105.3106578,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Trung tâm Y tế Giồng Riềng, Trần Minh Thường, Nội Ô, Xã Giồng Riềng, Tỉnh An Giang, Việt Nam",
+      "query": "Trung Tâm Y Tế Giồng Riềng, An Giang, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-quoc-te-vinmec-phu-quoc-an-giang",
@@ -75,7 +92,18 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.3344,
+    "lng": 103.8542,
+    "geocode": {
+      "provider": "geoapify",
+      "score": "0.5467",
+      "matchedAddress": "Khu bãi Dài, Gành Dầu, Phú Quốc, Kiên Giang (Đã sửa từ An Giang)",
+      "query": "Bệnh viện Đa khoa Quốc tế Vinmec Phú Quốc, An Giang, Việt Nam",
+      "reviewed": true,
+      "reviewedAt": "2026-08-11T16:56:37+00:00",
+      "reviewMethod": "geocode_review.csv"
+    }
   },
   {
     "id": "benh-vien-a-khoa-tan-chau-an-giang",
@@ -88,7 +116,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7809139,
+    "lng": 105.2201391
   },
   {
     "id": "benh-vien-quan-y-110-bac-ninh",
@@ -101,7 +131,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.1949012,
+    "lng": 106.0995394
   },
   {
     "id": "benh-vien-a-khoa-bac-ninh-so-2-bac-ninh",
@@ -114,7 +146,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.1645004,
+    "lng": 106.0635736
   },
   {
     "id": "benh-vien-a-khoa-bac-ninh-so-1-bac-ninh",
@@ -127,7 +161,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.2784394,
+    "lng": 106.2122528
   },
   {
     "id": "benh-vien-a-khoa-bac-lieu-ca-mau",
@@ -140,7 +176,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 9.2834585,
+    "lng": 105.7195963
   },
   {
     "id": "benh-vien-a-khoa-thanh-vu-medic-bac-lieu-ca-mau",
@@ -153,7 +191,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 9.3118925,
+    "lng": 105.715022,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.975,
+      "matchedAddress": "Bệnh viện Đa khoa Thanh Vũ Medic Bạc Liêu, Quốc lộ 1, Bạc Liêu, Phường Bạc Liêu, Tỉnh Cà Mau, 97000, Việt Nam",
+      "query": "Bệnh viện Đa khoa Thanh Vũ Medic Bạc Liêu, Cà Mau, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-ca-mau-ca-mau",
@@ -166,7 +213,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 9.1711282,
+    "lng": 105.1607754,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Đa khoa Cà Mau, 16, Hải Thượng Lãn Ông, Phường Hòa Thành, Tỉnh Cà Mau, 98100, Việt Nam",
+      "query": "16 Hải Thượng Lãn Ông, Phường Hòa Thành, Tỉnh Cà Mau, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-trung-uong-can-tho-can-tho",
@@ -179,7 +235,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.0299,
+    "lng": 105.7686
   },
   {
     "id": "benh-vien-ot-quy-tim-mach-can-tho-benh-vien-a-khoa-quoc-te-sis-can-tho-can-tho",
@@ -192,7 +250,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.018,
+    "lng": 105.779
   },
   {
     "id": "benh-vien-a-khoa-hau-giang-can-tho",
@@ -205,7 +265,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 9.7705534,
+    "lng": 105.4508957,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.96,
+      "matchedAddress": "Bệnh viện Đa khoa Hậu Giang, 647, Quốc lộ 61, Phường Vị Thanh, Thành phố Cần Thơ, Việt Nam",
+      "query": "Bệnh viện Đa khoa Hậu Giang, Cần Thơ, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-hoan-my-cuu-long-can-tho",
@@ -218,7 +287,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.005787,
+    "lng": 105.799482,
+    "geocode": {
+      "provider": "geoapify",
+      "score": 0.86,
+      "matchedAddress": "Bệnh viện Đa khoa Hoàn Mỹ Cửu Long, Phường Hưng Phú, Thành phố Cần Thơ, CN 94200, Việt Nam",
+      "query": "Bệnh viện Hoàn Mỹ Cửu Long, Lô 20 Võ Nguyên Giáp, P. Hưng Phú, TP. Cần Thơ, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-quan-y-121-can-tho",
@@ -231,7 +309,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.0291456,
+    "lng": 105.7827793,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Quân y 121, Đường 30 Tháng 4, Phường Ninh Kiều, Thành phố Cần Thơ, 94111, Việt Nam",
+      "query": "Bệnh viện Quân y 121, Cần Thơ, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-tinh-soc-trang-can-tho",
@@ -244,7 +331,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 9.5793264,
+    "lng": 105.9761623,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.94,
+      "matchedAddress": "Bệnh viện Tâm thần - Da liễu - Mắt Sóc Trăng, Văn Ngọc Chính, Phường Phú Lợi, Thành phố Cần Thơ, 96113, Việt Nam",
+      "query": "Bệnh viện Đa khoa Tỉnh Sóc Trăng, Cần Thơ, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-nang-a-nang",
@@ -257,7 +353,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 16.0730163,
+    "lng": 108.2154346
   },
   {
     "id": "benh-vien-a-khoa-quoc-te-vinmec-a-nang-a-nang",
@@ -270,7 +368,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 16.0403136,
+    "lng": 108.2166492
   },
   {
     "id": "benh-vien-a-khoa-tinh-quang-nam-a-nang",
@@ -283,7 +383,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 15.5733073,
+    "lng": 108.4799255
   },
   {
     "id": "benh-vien-a-khoa-trung-uong-quang-nam-a-nang",
@@ -296,7 +398,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 15.445821558439686,
+    "lng": 108.62588745323012,
+    "geocode": {
+      "provider": "geoapify",
+      "score": 0.72,
+      "matchedAddress": "Bệnh viện Đa khoa Trung ương Thái Nguyên, 479, Đường Lương Ngọc Quyến, Đồng Quang, Phường Phan Đình Phùng, TY, Việt Nam",
+      "query": "Bệnh viện Đa khoa Trung ương Quảng Nam, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-mien-nui-phia-bac-quang-nam-a-nang",
@@ -309,7 +420,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 15.8853946,
+    "lng": 108.118131,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Đa khoa khu vực miền núi phía Bắc Quảng Nam, Đường tỉnh 609B, Xã Đại Lộc, Thành phố Đà Nẵng, Việt Nam",
+      "query": "Bệnh viện Đa khoa Khu vực miền núi phía Bắc Quảng Nam, Đà Nẵng, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "bv-a-khoa-khu-vuc-quang-nam-a-nang",
@@ -322,7 +442,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 15.8910537,
+    "lng": 108.2461796
   },
   {
     "id": "benh-vien-a-khoa-gia-inh-a-nang",
@@ -335,7 +457,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 16.0539277,
+    "lng": 108.2092014
   },
   {
     "id": "benh-vien-199-a-nang",
@@ -348,7 +472,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 16.0665653,
+    "lng": 108.2360974
   },
   {
     "id": "benh-vien-hoan-my-a-nang-a-nang",
@@ -361,7 +487,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 16.059401,
+    "lng": 108.2098753
   },
   {
     "id": "benh-vien-a-khoa-vung-tay-nguyen-ak-lak",
@@ -374,7 +502,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 12.666112,
+    "lng": 108.0548968
   },
   {
     "id": "benh-vien-ai-hoc-y-duoc-buon-ma-thuot-ak-lak",
@@ -387,7 +517,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 12.7144798,
+    "lng": 108.0725375
   },
   {
     "id": "benh-vien-a-khoa-phu-yen-ak-lak",
@@ -400,7 +532,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 13.1154709,
+    "lng": 109.3060267
   },
   {
     "id": "benh-vien-a-khoa-thien-hanh-ak-lak",
@@ -413,7 +547,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 12.7081885,
+    "lng": 108.0816492
   },
   {
     "id": "benh-vien-a-khoa-tinh-ien-bien-ien-bien",
@@ -426,7 +562,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.3662597,
+    "lng": 103.0342256
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-long-khanh-ong-nai",
@@ -439,7 +577,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.9405805,
+    "lng": 107.2152418,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.94,
+      "matchedAddress": "Bệnh viện Đa khoa khu vực Long Khánh, Đường 21 Tháng 4, Cấp Rang, Phường Long Khánh, Long Khánh, Thành phố Đồng Nai, Việt Nam",
+      "query": "Bệnh viện Đa khoa khu vực Long Khánh, 911 đường 21/4, Phường Bình Lộc, Đồng Nai, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-thong-nhat-ong-nai-ong-nai",
@@ -452,7 +599,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.95,
+    "lng": 106.8167
   },
   {
     "id": "benh-vien-a-khoa-ong-nai-ong-nai",
@@ -465,7 +614,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.9522085,
+    "lng": 106.8675942,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Đa khoa Đồng Nai, 1, Đường Đồng Khởi, Khu phố 5, Phường Tam Hiệp, Đồng Nai, Thành phố Đồng Nai, 76109, Việt Nam",
+      "query": "Bệnh viện Đa khoa Đồng Nai, Đồng Nai, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-inh-quan-ong-nai",
@@ -478,7 +636,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 11.1987121,
+    "lng": 107.3630548,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Đa khoa khu vực Định Quán, Trịnh Hoài Đức, Ấp 114, Ấp Hiệp Quyết, Xã Định Quán, Thành phố Đồng Nai, Việt Nam",
+      "query": "Bệnh viện Đa khoa khu vực Định Quán, Đồng Nai, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-binh-phuoc-ong-nai",
@@ -491,7 +658,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 11.5065505,
+    "lng": 106.8746355
   },
   {
     "id": "benh-vien-a-khoa-tien-giang-ong-thap",
@@ -504,7 +673,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.3929796,
+    "lng": 106.3144521,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.905,
+      "matchedAddress": "Bệnh viện Đa khoa Tiền Giang, Quốc lộ 1, Phường Trung An, Tỉnh Đồng Tháp, 83000, Việt Nam",
+      "query": "Bệnh viện Đa khoa Tiền Giang, Đồng Tháp, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-ong-thap-ong-thap",
@@ -517,7 +695,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.4704504,
+    "lng": 105.6293436
   },
   {
     "id": "benh-vien-quan-y-120-ong-thap",
@@ -530,7 +710,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.3554744,
+    "lng": 106.3379996,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Quân y 120, Nguyễn Thị Thập, Mỹ Tho, Phường Thới Sơn, Tỉnh Đồng Tháp, 86000, Việt Nam",
+      "query": "Bệnh viện Quân Y 120, Đồng Tháp, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-tam-tri-ong-thap-ong-thap",
@@ -543,7 +732,18 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.475559289629027,
+    "lng": 105.61283318239794,
+    "geocode": {
+      "provider": "geoapify",
+      "score": "0.56",
+      "matchedAddress": "Tổng kho xăng dầu Trần Quốc Toản, Tỉnh Đồng Tháp, Việt Nam",
+      "query": "Bệnh viện Đa khoa Tâm Trí Đồng Tháp, Số 700, Quốc Lộ 30, P. Mỹ Ngãi, Tỉnh Đồng Tháp, Việt Nam",
+      "reviewed": true,
+      "reviewedAt": "2026-08-11T16:56:37+00:00",
+      "reviewMethod": "geocode_review.csv"
+    }
   },
   {
     "id": "benh-vien-a-khoa-sa-ec-ong-thap",
@@ -556,7 +756,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.2847159,
+    "lng": 105.7437412,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.965,
+      "matchedAddress": "Nguyễn Sinh Sắc, Xã Tân Dương, Phường Sa Đéc, Tỉnh Đồng Tháp, 81800, Việt Nam",
+      "query": "153 Đ Nguyễn Sinh Sắc, Phường Sa Đéc, Tỉnh Đồng Tháp, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-tam-tri-cao-lanh-ong-thap",
@@ -569,7 +778,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.4653546,
+    "lng": 105.6289709,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.9867,
+      "matchedAddress": "Bệnh viện Đa khoa Tâm Trí Cao Lãnh, Nguyễn Thị Minh Khai, Khu phố Hưng Long, Phường Cao Lãnh, Cao Lãnh, Tỉnh Đồng Tháp, Việt Nam",
+      "query": "Bệnh viện Đa khoa Tâm Trí Cao Lãnh, Đồng Tháp, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-gia-lai-gia-lai",
@@ -582,7 +800,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 13.9838683,
+    "lng": 108.0277841
   },
   {
     "id": "benh-vien-hoang-anh-gia-lai-gia-lai",
@@ -595,7 +815,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 13.9702814,
+    "lng": 108.0379685
   },
   {
     "id": "benh-vien-a-khoa-trung-tam-tinh-gia-lai-gia-lai",
@@ -608,7 +830,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 13.7671012,
+    "lng": 109.2268142
   },
   {
     "id": "benh-vien-binh-inh-gia-lai",
@@ -621,7 +845,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 13.7673084,
+    "lng": 109.2240371
   },
   {
     "id": "benh-vien-bach-mai-ha-noi",
@@ -634,7 +860,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0021,
+    "lng": 105.8411
   },
   {
     "id": "benh-vien-a-khoa-xanh-pon-ha-noi",
@@ -647,7 +875,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0310711,
+    "lng": 105.8346229
   },
   {
     "id": "benh-vien-a-khoa-uc-giang-ha-noi",
@@ -660,7 +890,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0576823,
+    "lng": 105.8946284
   },
   {
     "id": "benh-vien-ai-hoc-y-ha-noi-ha-noi",
@@ -673,7 +905,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0022278,
+    "lng": 105.8313173
   },
   {
     "id": "benh-vien-e-ha-noi",
@@ -686,7 +920,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0447,
+    "lng": 105.7972
   },
   {
     "id": "benh-vien-huu-nghi-viet-xo-ha-noi",
@@ -699,7 +935,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0154973,
+    "lng": 105.8617295
   },
   {
     "id": "benh-vien-thanh-nhan-ha-noi",
@@ -712,7 +950,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.997,
+    "lng": 105.8494
   },
   {
     "id": "benh-vien-trung-uong-quan-oi-108-ha-noi",
@@ -725,7 +965,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.021,
+    "lng": 105.8583
   },
   {
     "id": "benh-vien-quan-y-103-ha-noi",
@@ -738,7 +980,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.9697541,
+    "lng": 105.7847823
   },
   {
     "id": "benh-vien-huu-nghi-viet-uc-ha-noi",
@@ -751,7 +995,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0274803,
+    "lng": 105.8468315
   },
   {
     "id": "benh-vien-quan-y-105-ha-noi",
@@ -764,7 +1010,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.121845,
+    "lng": 105.4998854
   },
   {
     "id": "benh-vien-19-8-ha-noi",
@@ -777,7 +1025,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0332764,
+    "lng": 105.7778006
   },
   {
     "id": "benh-vien-tim-ha-noi-co-so-1-ha-noi",
@@ -790,7 +1040,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0238225,
+    "lng": 105.8439135
   },
   {
     "id": "benh-vien-lao-khoa-trung-uong-ha-noi",
@@ -803,7 +1055,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0036303,
+    "lng": 105.8395909,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Lão khoa Trung ương, 1A, Phố Phương Mai, Phường Kim Liên, Hà Nội, 11520, Việt Nam",
+      "query": "Bệnh viện Lão Khoa Trung Ương, Hà Nội, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-buu-ien-cs1-ha-noi",
@@ -816,7 +1077,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.990459,
+    "lng": 105.8313653
   },
   {
     "id": "benh-vien-a-khoa-tam-anh-ha-noi-ha-noi",
@@ -829,7 +1092,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0405721,
+    "lng": 105.8769229,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Đa khoa Tâm Anh, 108, Phố Hoàng Như Tiếp, Lâm Du, Phường Bồ Đề, Hà Nội, 11810, Việt Nam",
+      "query": "Bệnh viện Đa Khoa Tâm Anh Hà Nội, Hà Nội, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-van-inh-ha-noi",
@@ -842,7 +1114,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.7255813,
+    "lng": 105.7740191,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.9867,
+      "matchedAddress": "Bệnh viện Đa khoa Vân Đình, Quốc lộ 21B, Vân Đình, Hà Nội, Việt Nam",
+      "query": "Bệnh viện Đa Khoa Vân Đình, Hà Nội, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-nong-nghiep-ha-noi",
@@ -855,7 +1136,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.9211553,
+    "lng": 105.8533397,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.94,
+      "matchedAddress": "Bệnh viện Đa khoa Nông nghiệp, Đường Phương Dung, Cơ khí và Xây lắp số 7, Xã Ngọc Hồi, Hà Nội, 11707, Việt Nam",
+      "query": "Bệnh viện Đa Khoa Nông Nghiệp, Hà Nội, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-tinh-ha-tinh-ha-tinh",
@@ -868,7 +1158,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 18.3447708,
+    "lng": 105.8953085
   },
   {
     "id": "trung-tam-y-te-thanh-sen-ha-tinh",
@@ -881,7 +1173,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 18.3452708,
+    "lng": 105.9029004
   },
   {
     "id": "benh-vien-a-khoa-thi-xa-ky-anh-ha-tinh",
@@ -894,7 +1188,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 18.06243,
+    "lng": 106.29832,
+    "geocode": {
+      "provider": "opencage",
+      "score": 0.755,
+      "matchedAddress": "Kỳ Anh, Tỉnh Hà Tĩnh, Việt Nam",
+      "query": "Bệnh viện Đa Khoa Thị Xã Kỳ Anh, Hà Tĩnh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-huu-nghi-viet-tiep-hai-phong",
@@ -907,7 +1210,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.8527307,
+    "lng": 106.6714564,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.9867,
+      "matchedAddress": "Bệnh viện Hữu nghị Việt Tiệp, Phố Trần Nguyên Hãn, Trần Nguyên Hãn, Phường Lê Chân, Thành phố Hải Phòng, 18000, Việt Nam",
+      "query": "Bệnh viện Hữu Nghị Việt Tiệp, Hải Phòng, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-kien-an-hai-phong",
@@ -920,7 +1232,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.791501,
+    "lng": 106.6200332
   },
   {
     "id": "benh-vien-quan-y-7-hai-phong",
@@ -933,7 +1247,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.9422969,
+    "lng": 106.3258543,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.912,
+      "matchedAddress": "Bệnh viện Quân y 7, Phố Cựu Thành, Nguyễn Trãi, Phường Thành Đông, Thành phố Hải Phòng, 03118, Việt Nam",
+      "query": "Bệnh viện Quân Y 7, Hải Phòng, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-quoc-te-vinmec-hai-phong-hai-phong",
@@ -946,7 +1269,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.8300834,
+    "lng": 106.6800525
   },
   {
     "id": "benh-vien-a-khoa-quoc-te-hai-phong-hai-phong",
@@ -959,7 +1284,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.8549206,
+    "lng": 106.6759601
   },
   {
     "id": "benh-vien-a-khoa-hai-duong-hai-phong",
@@ -972,7 +1299,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.9369355,
+    "lng": 106.3053555
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-cu-chi-ho-chi-minh",
@@ -985,7 +1314,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.9747414,
+    "lng": 106.48018,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Đa khoa Khu vực Củ Chi (mới), Đường Số 370, Ấp Bàu Tre 2, Xã Tân An Hội, Thành phố Hồ Chí Minh, 75500, Việt Nam",
+      "query": "Bệnh viện Đa khoa Khu vực Củ Chi, Hồ Chí Minh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-hoan-my-sai-gon-ho-chi-minh",
@@ -998,7 +1336,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7973798,
+    "lng": 106.6918576
   },
   {
     "id": "benh-vien-a-khoa-xuyen-a-tp-hcm-ho-chi-minh",
@@ -1011,7 +1351,18 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.92835668601274,
+    "lng": 106.55853470548529,
+    "geocode": {
+      "provider": "nominatim",
+      "score": "0.53",
+      "matchedAddress": "Bệnh Viện Đa Khoa Xuyên Á, 42, Phan Văn Khải, Ấp Chợ A, Xã Củ Chi, Thành phố Hồ Chí Minh, 71608, Việt Nam",
+      "query": "Bệnh viện Đa khoa Xuyên Á TP.HCM, Hồ Chí Minh, Việt Nam",
+      "reviewed": true,
+      "reviewedAt": "2026-08-11T16:56:37+00:00",
+      "reviewMethod": "geocode_review.csv"
+    }
   },
   {
     "id": "benh-vien-ai-hoc-y-duoc-tp-hcm-ho-chi-minh",
@@ -1024,7 +1375,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7546,
+    "lng": 106.6577
   },
   {
     "id": "benh-vien-nhan-dan-115-ho-chi-minh",
@@ -1037,7 +1390,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7756,
+    "lng": 106.6683
   },
   {
     "id": "benh-vien-nhan-dan-gia-inh-ho-chi-minh",
@@ -1050,7 +1405,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.8031943,
+    "lng": 106.6945559
   },
   {
     "id": "benh-vien-nguyen-tri-phuong-ho-chi-minh",
@@ -1063,7 +1420,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7547219,
+    "lng": 106.6699317
   },
   {
     "id": "benh-vien-thong-nhat-ho-chi-minh",
@@ -1076,7 +1435,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7998,
+    "lng": 106.6598
   },
   {
     "id": "benh-vien-quan-y-175-ho-chi-minh",
@@ -1089,7 +1450,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.8236,
+    "lng": 106.6631
   },
   {
     "id": "benh-vien-le-van-thinh-ho-chi-minh",
@@ -1102,7 +1465,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7822663,
+    "lng": 106.7684977
   },
   {
     "id": "benh-vien-thu-uc-ho-chi-minh",
@@ -1115,7 +1480,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.8628068,
+    "lng": 106.7447711
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-thu-uc-ho-chi-minh",
@@ -1128,7 +1495,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.8621569,
+    "lng": 106.7808406,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.94,
+      "matchedAddress": "Bệnh viện Đa khoa khu vực Thủ Đức, Đường số 16, Khu phố 12, Phường Linh Xuân, Thành phố Thủ Đức, Thành phố Hồ Chí Minh, 00084, Việt Nam",
+      "query": "Bệnh viện Đa khoa khu vực Thủ Đức, Hồ Chí Minh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-gia-an-115-ho-chi-minh",
@@ -1141,7 +1517,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7406628,
+    "lng": 106.6080525,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Gia An 115, 5, Đường số 17A, Khu phố 16, Phường An Lạc, Thành phố Hồ Chí Minh, 73118, Việt Nam",
+      "query": "Bệnh viện Gia An 115, Hồ Chí Minh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-binh-tan-ho-chi-minh",
@@ -1154,7 +1539,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.764476,
+    "lng": 106.6032051
   },
   {
     "id": "benh-vien-nguyen-trai-ho-chi-minh",
@@ -1167,7 +1554,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7568827,
+    "lng": 106.6750459
   },
   {
     "id": "benh-vien-an-binh-ho-chi-minh",
@@ -1180,7 +1569,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7539583,
+    "lng": 106.6723053
   },
   {
     "id": "benh-vien-hoc-mon-ho-chi-minh",
@@ -1193,7 +1584,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.8825049,
+    "lng": 106.5929762,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Đa khoa khu vực Hóc Môn, Bà Triệu, Ấp 11, Xã Hóc Môn, Thành phố Hồ Chí Minh, 71717, Việt Nam",
+      "query": "Bệnh viện Hóc Môn, Hồ Chí Minh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-van-hanh-ho-chi-minh",
@@ -1206,7 +1606,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7733343,
+    "lng": 106.6687928
   },
   {
     "id": "benh-vien-a-khoa-lanh-binh-thang-ho-chi-minh",
@@ -1219,7 +1621,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.7606555,
+    "lng": 106.6479141
   },
   {
     "id": "benh-vien-a-khoa-binh-duong-ho-chi-minh",
@@ -1232,7 +1636,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 11.0050989,
+    "lng": 106.6663305
   },
   {
     "id": "benh-vien-vung-tau-ho-chi-minh",
@@ -1245,7 +1651,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.3924562,
+    "lng": 107.1288424,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.895,
+      "matchedAddress": "Bệnh viện Vũng Tàu, Đường 2 Tháng 9, Khu phố 1, Phường Phước Thắng, Thành phố Hồ Chí Minh, 78000, Việt Nam",
+      "query": "Bệnh viện Vũng Tàu, Hồ Chí Minh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-ba-ria-ho-chi-minh",
@@ -1258,7 +1673,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.5094251,
+    "lng": 107.1970021
   },
   {
     "id": "benh-vien-a-khoa-thai-binh-hung-yen",
@@ -1271,7 +1688,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.4409187,
+    "lng": 106.3376712
   },
   {
     "id": "benh-vien-a-khoa-pho-noi-hung-yen",
@@ -1284,7 +1703,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.9426729,
+    "lng": 106.0493934
   },
   {
     "id": "benh-vien-ot-quy-va-than-kinh-ha-noi-thai-binh-hung-yen",
@@ -1297,7 +1718,18 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.4393,
+    "lng": 106.34,
+    "geocode": {
+      "provider": "geoapify",
+      "score": "0.16",
+      "matchedAddress": "1 Nguyễn Tông Quai, P. Trần Lãm, Thái Bình (Đã sửa từ Quy Nhơn)",
+      "query": "Bệnh viện Đột quỵ và Thần kinh Hà Nội - Thái Bình, Việt Nam",
+      "reviewed": true,
+      "reviewedAt": "2026-08-11T16:56:37+00:00",
+      "reviewMethod": "geocode_review.csv"
+    }
   },
   {
     "id": "benh-vien-a-khoa-tinh-hung-yen-hung-yen",
@@ -1310,7 +1742,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.6647332,
+    "lng": 106.0614232
   },
   {
     "id": "benh-vien-a-khoa-ninh-thuan-khanh-hoa",
@@ -1323,7 +1757,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 11.5674,
+    "lng": 108.9899
   },
   {
     "id": "benh-vien-a-khoa-tinh-khanh-hoa-khanh-hoa",
@@ -1336,7 +1772,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 12.2451,
+    "lng": 109.1943
   },
   {
     "id": "benh-vien-a-khoa-tinh-lang-son-lang-son",
@@ -1349,7 +1787,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.8807298,
+    "lng": 106.7580997,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.9867,
+      "matchedAddress": "Bệnh viện Đa khoa tỉnh Lạng Sơn, Quốc lộ 1, 黃文樹坊, Phường Kỳ Lừa, Tỉnh Lạng Sơn, 25106, Việt Nam",
+      "query": "Bệnh viện đa khoa tỉnh Lạng Sơn, Lạng Sơn, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-so-2-tinh-lao-cai-lao-cai",
@@ -1362,7 +1809,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 22.4674577,
+    "lng": 103.9957458
   },
   {
     "id": "trung-tam-y-te-khu-vuc-van-yen-lao-cai",
@@ -1375,7 +1824,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.9015488,
+    "lng": 104.7126756
   },
   {
     "id": "benh-vien-a-khoa-so-1-tinh-lao-cai-lao-cai",
@@ -1388,7 +1839,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.6822157,
+    "lng": 104.906609,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.96,
+      "matchedAddress": "Bệnh viện Đa khoa số 1 tỉnh Lào Cai, Quốc lộ 32C cũ, Phường Âu Lâu, Tỉnh Lào Cai, Việt Nam",
+      "query": "Bệnh viện Đa Khoa số 1 tỉnh Lào Cai, Lào Cai, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "trung-tam-y-te-khu-vuc-yen-binh-lao-cai",
@@ -1401,7 +1861,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 22.6,
+    "lng": 104.5,
+    "geocode": {
+      "provider": "opencage",
+      "score": 0.7667,
+      "matchedAddress": "Yên Bình, Tỉnh Hà Giang, Việt Nam",
+      "query": "Trung tâm Y tế khu vực Yên Bình, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-an-phuoc-lam-ong",
@@ -1414,7 +1883,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 11.1420464,
+    "lng": 106.6070764,
+    "geocode": {
+      "provider": "geoapify",
+      "score": 0.72,
+      "matchedAddress": "Bệnh viện Đa khoa Mỹ Phước, Đường DB5, An Phước, Bến Cát, Thành phố Hồ Chí Minh, 75911, Việt Nam",
+      "query": "Bệnh viện Đa khoa An Phước, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-tinh-lam-ong-lam-ong",
@@ -1427,7 +1905,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 11.9467613,
+    "lng": 108.4320348
   },
   {
     "id": "benh-vien-ii-lam-ong-lam-ong",
@@ -1440,7 +1920,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 11.5307531,
+    "lng": 107.8086129
   },
   {
     "id": "benh-vien-hoan-my-a-lat-lam-ong",
@@ -1453,7 +1935,18 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 11.9272,
+    "lng": 108.452,
+    "geocode": {
+      "provider": "geoapify",
+      "score": "0.55",
+      "matchedAddress": "Đồi Long Thọ, Đà Lạt, Lâm Đồng (Đã sửa từ Cần Thơ)",
+      "query": "Bệnh viện Hoàn Mỹ Đà Lạt, Lâm Đồng, Việt Nam",
+      "reviewed": true,
+      "reviewedAt": "2026-08-11T16:56:37+00:00",
+      "reviewMethod": "geocode_review.csv"
+    }
   },
   {
     "id": "benh-vien-a-khoa-binh-thuan-lam-ong",
@@ -1466,7 +1959,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.9407548,
+    "lng": 108.0894263,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.96,
+      "matchedAddress": "Bệnh viện Đa khoa Bình Thuận, Phan Kế Bính, Phường Bình Thuận, Phan Thiết, Tỉnh Lâm Đồng, 77120, Việt Nam",
+      "query": "Bệnh viện Đa Khoa Bình Thuận, Lâm Đồng, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-tinh-ninh-binh-ninh-binh",
@@ -1479,7 +1981,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.2453726,
+    "lng": 105.9568933
   },
   {
     "id": "benh-vien-hai-hau-ninh-binh",
@@ -1492,7 +1996,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.1948772,
+    "lng": 106.2956668,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.94,
+      "matchedAddress": "Bệnh viện Đa khoa huyện Hải Hậu, Quốc lộ 21, Xã Hải Hậu, Tỉnh Ninh Bình, Việt Nam",
+      "query": "Bệnh viện Hải Hậu, Ninh Bình, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-ha-nam-ninh-binh",
@@ -1505,7 +2018,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.5407474,
+    "lng": 105.9164465,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.975,
+      "matchedAddress": "Bệnh viện Đa khoa Hà Nam, Phố Phạm Ngọc Thạch, Châu Cầu, Phường Phủ Lý, Tỉnh Ninh Bình, Việt Nam",
+      "query": "Bệnh viện đa khoa Hà Nam, Ninh Bình, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-nam-inh-ninh-binh",
@@ -1518,7 +2040,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.4264325,
+    "lng": 106.171737,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.8933,
+      "matchedAddress": "Bệnh viện Đa khoa Nam Định, Trần Đăng Ninh, Phường Nam Định, Tỉnh Ninh Bình, 42000, Việt Nam",
+      "query": "Bệnh viện Đa khoa Nam Định, Ninh Bình, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-huu-nghi-a-khoa-nghe-an-nghe-an",
@@ -1531,7 +2062,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 18.708223,
+    "lng": 105.678052,
+    "geocode": {
+      "provider": "geoapify",
+      "score": 0.86,
+      "matchedAddress": "Bệnh viện Hữu nghị Đa khoa tỉnh Nghệ An, Đại lộ Lê Nin, NA, Việt Nam",
+      "query": "Bệnh viện Hữu nghị đa khoa Nghệ An, Nghệ An, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-thanh-pho-vinh-co-so-1-nghe-an",
@@ -1544,7 +2084,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 18.665463,
+    "lng": 105.6815287
   },
   {
     "id": "benh-vien-a-khoa-thanh-pho-vinh-co-so-2-nghe-an",
@@ -1557,7 +2099,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 18.6932791,
+    "lng": 105.6654745
   },
   {
     "id": "benh-vien-a-khoa-hoa-binh-phu-tho",
@@ -1570,7 +2114,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.8281986,
+    "lng": 105.3448586
   },
   {
     "id": "benh-vien-a-khoa-vinh-phuc-phu-tho",
@@ -1583,7 +2129,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.3167208,
+    "lng": 105.6010619
   },
   {
     "id": "benh-vien-a-khoa-tinh-phu-tho-phu-tho",
@@ -1596,7 +2144,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.3361997,
+    "lng": 105.3800728
   },
   {
     "id": "trung-tam-y-te-khu-vuc-tam-nong-phu-tho",
@@ -1609,7 +2159,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.6774208,
+    "lng": 105.5629088,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.8,
+      "matchedAddress": "Trung tâm Y tế khu vực Tam Nông, Nguyễn Trãi, Tràm Chim, Xã Tràm Chim, Tỉnh Đồng Tháp, Việt Nam",
+      "query": "Trung tâm Y tế khu vực Tam Nông, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "trung-tam-y-te-khu-vuc-thanh-thuy-phu-tho",
@@ -1622,7 +2181,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.1781362,
+    "lng": 105.2847455,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Trung tâm Y tế khu vực Thanh Thuỷ, Đường tỉnh 316 - Đường tỉnh 317, Thanh Thủy, Xã Thanh Thủy, Tỉnh Phú Thọ, Việt Nam",
+      "query": "Trung tâm Y tế khu vực Thanh Thủy, Phú Thọ, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-phuc-yen-phu-tho",
@@ -1635,7 +2203,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.2330216,
+    "lng": 105.7083025,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.94,
+      "matchedAddress": "Bệnh viện Đa khoa Phúc Yên, Đường Xuân Thuỷ, Phường Phúc Yên, Phúc Yên, Tỉnh Phú Thọ, 84211, Việt Nam",
+      "query": "Bệnh viện Đa Khoa Phúc Yên, Phú Thọ, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "trung-tam-y-te-khu-vuc-tan-son-phu-tho",
@@ -1648,7 +2225,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.2142592,
+    "lng": 105.0141293,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Trung tâm Y tế khu vực Tân Sơn, Quốc lộ 32, Xã Tân Sơn, Tỉnh Phú Thọ, Việt Nam",
+      "query": "Trung tâm Y tế khu vực Tân Sơn, Phú Thọ, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "trung-tam-y-te-khu-vuc-cam-khe-phu-tho",
@@ -1661,7 +2247,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.4157559,
+    "lng": 105.1369925,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.9867,
+      "matchedAddress": "Trung tâm Y tế khu vực Cẩm Khê, Đường tỉnh 313, Cẩm Khê, Xã Cẩm Khê, Tỉnh Phú Thọ, Việt Nam",
+      "query": "Trung tâm Y tế khu vực Cẩm Khê, Phú Thọ, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "trung-tam-y-te-khu-vuc-lam-thao-phu-tho",
@@ -1674,7 +2269,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.3184646,
+    "lng": 105.2882851,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.96,
+      "matchedAddress": "Trung tâm Y tế khu vực Lâm Thao, Vòng Xoay Tr.Tâm Lâm Thao, Lâm Thao, Xã Lâm Thao, Tỉnh Phú Thọ, Việt Nam",
+      "query": "Trung tâm Y tế khu vực Lâm Thao, Phú Thọ, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-tinh-quang-ninh-quang-ninh",
@@ -1687,7 +2291,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.95376,
+    "lng": 107.0884298,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Đa khoa tỉnh Quảng Ninh, Phố Nguyễn Đức Cảnh, Lán Bè, Trần Hưng Đạo, Bạch Đằng, Phường Hồng Gai, Thành phố Quảng Ninh, 01100, Việt Nam",
+      "query": "Bệnh viện Đa khoa tỉnh Quảng Ninh, Quảng Ninh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-bai-chay-quang-ninh",
@@ -1700,7 +2313,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.9948838,
+    "lng": 106.9715282
   },
   {
     "id": "benh-vien-viet-nam-thuy-ien-uong-bi-quang-ninh",
@@ -1713,7 +2328,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.041783,
+    "lng": 106.7518618,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Việt Nam - Thụy Điển Uông Bí, Phố Hoàng Quốc Việt, Thanh Sơn, Phường Uông Bí, Thành phố Quảng Ninh, 02306, Việt Nam",
+      "query": "Bệnh viện Việt Nam – Thuỵ Điển Uông Bí, Quảng Ninh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-cam-pha-quang-ninh",
@@ -1726,7 +2350,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0125334,
+    "lng": 107.2716034
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-cam-pha-quang-ninh",
@@ -1739,7 +2365,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0061307,
+    "lng": 107.348472,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Đa khoa khu vực Cẩm Phả, Đường Trần Quốc Tảng, Cẩm Thịnh, Phường Cửa Ông, Thành phố Quảng Ninh, Việt Nam",
+      "query": "Bệnh viện đa khoa khu vực Cẩm Phả, Quảng Ninh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-cam-pha-cs2-quang-ninh",
@@ -1752,7 +2387,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.0125334,
+    "lng": 107.2716034
   },
   {
     "id": "trung-tam-y-te-hai-ha-quang-ninh",
@@ -1765,7 +2402,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.7352354,
+    "lng": 107.0428096,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.8933,
+      "matchedAddress": "Trung tâm Y tế Cát Hải, Phố Hà Sen, Đặc khu Cát Hải, Thành phố Hải Phòng, Việt Nam",
+      "query": "Trung tâm Y tế Hải Hà, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-quoc-te-vinmec-ha-long-quang-ninh",
@@ -1778,7 +2424,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.0757613,
+    "lng": 105.8287564,
+    "geocode": {
+      "provider": "geoapify",
+      "score": 0.68,
+      "matchedAddress": "10a, Đường Lê Thánh Tông, Xã Hà Long, Tỉnh Thanh Hóa, Việt Nam",
+      "query": "10A Lê Thánh Tông, Hạ Long, Quảng Ninh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "bv-a-khoa-tinh-quang-ngai-quang-ngai",
@@ -1791,7 +2446,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 15.11667,
+    "lng": 108.78333,
+    "geocode": {
+      "provider": "geoapify",
+      "score": 0.64,
+      "matchedAddress": "Phường Nghĩa Lộ, Quảng Ngãi, QG, Việt Nam",
+      "query": "BV Đa khoa Tỉnh Quảng Ngãi, Đường Lê Hữu Trác, phường Nghĩa Lộ, Quảng Ngãi, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-tinh-quang-ngai-2-quang-ngai",
@@ -1804,7 +2468,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 14.3557999,
+    "lng": 107.9986359
   },
   {
     "id": "benh-vien-huu-nghi-viet-nam-cu-ba-ong-hoi-quang-tri",
@@ -1817,7 +2483,18 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 17.474055,
+    "lng": 106.600671,
+    "geocode": {
+      "provider": "geoapify",
+      "score": "0.56",
+      "matchedAddress": "Bệnh viện Hữu nghị Việt Nam - Cuba Đồng Hới, Phường Đồng Hới, QB, Việt Nam",
+      "query": "Bệnh viện Hữu Nghị Việt Nam – Cu Ba Đồng Hới, Quảng Trị, Việt Nam",
+      "reviewed": true,
+      "reviewedAt": "2026-08-11T16:56:37+00:00",
+      "reviewMethod": "geocode_review.csv"
+    }
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-bac-quang-tri-quang-tri",
@@ -1830,7 +2507,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 17.7570541,
+    "lng": 106.4338615,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.9867,
+      "matchedAddress": "Bệnh viện Đa khoa khu vực Bắc Quảng Trị, Đường Hải Thượng Lãn Ông, Thọ Đơn, Phường Bắc Gianh, Tỉnh Quảng Trị, Việt Nam",
+      "query": "Bệnh viện Đa khoa Khu vực Bắc Quảng Trị, Quảng Trị, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-tinh-quang-tri-quang-tri",
@@ -1843,7 +2529,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 16.8100881,
+    "lng": 107.1029718
   },
   {
     "id": "benh-vien-a-khoa-tinh-son-la-son-la",
@@ -1856,7 +2544,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.2882995,
+    "lng": 103.9653513
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-van-ho-son-la",
@@ -1869,7 +2559,18 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.7816,
+    "lng": 104.6295,
+    "geocode": {
+      "provider": "geoapify",
+      "score": "0.4067",
+      "matchedAddress": "Thị trấn Nông trường Mộc Châu, Sơn La (Đã sửa từ Hòa Bình)",
+      "query": "Bệnh viện Đa Khoa Khu Vực Vân Hồ, Việt Nam",
+      "reviewed": true,
+      "reviewedAt": "2026-08-11T16:56:37+00:00",
+      "reviewMethod": "geocode_review.csv"
+    }
   },
   {
     "id": "benh-vien-a-khoa-long-an-tay-ninh",
@@ -1882,7 +2583,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.532623,
+    "lng": 106.4263744
   },
   {
     "id": "benh-vien-xuyen-a-tay-ninh-tay-ninh",
@@ -1895,7 +2598,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 11.0885,
+    "lng": 106.26346,
+    "geocode": {
+      "provider": "opencage",
+      "score": 0.62,
+      "matchedAddress": "Gò Dầu, Tỉnh Tây Ninh, Việt Nam",
+      "query": "Số 10 Xuyên Á, khu phố Trâm Vàng 3, phường Gò Dầu, tỉnh Tây Ninh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-hong-hung-tay-ninh",
@@ -1908,7 +2620,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 11.2908098,
+    "lng": 106.1195624,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện đa khoa Hồng Hưng, 187, Phạm Văn Đồng, Khu phố 13, Phường Thanh Điền, Tỉnh Tây Ninh, 84060, Việt Nam",
+      "query": "Bệnh viện Đa Khoa Hồng Hưng, Tây Ninh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-xuyen-a-long-an-tay-ninh",
@@ -1921,7 +2642,18 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.8840655,
+    "lng": 106.398124,
+    "geocode": {
+      "provider": "geoapify",
+      "score": "0.48",
+      "matchedAddress": "Trung tâm Giáo dục thường xuyên huyện Đức Hòa, Đường tỉnh 825, Xã Hậu Nghĩa, Tỉnh Tây Ninh 82706, Việt Nam",
+      "query": "Bệnh viện Xuyên Á Long An, QLN2, Hậu Nghĩa, Đức Hoà, Tây Ninh, Việt Nam",
+      "reviewed": true,
+      "reviewedAt": "2026-08-11T16:56:37+00:00",
+      "reviewMethod": "geocode_review.csv"
+    }
   },
   {
     "id": "benh-vien-a-khoa-tay-ninh-tay-ninh",
@@ -1934,7 +2666,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 11.3291078,
+    "lng": 106.1062033,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 1.0,
+      "matchedAddress": "Bệnh viện Đa khoa Tây Ninh, 626, Đường 30 Tháng 4, Khu phố 5, Thành phố Tây Ninh, Phường Tân Ninh, Tỉnh Tây Ninh, 84060, Việt Nam",
+      "query": "Bệnh viện Đa khoa Tây Ninh, Tây Ninh, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-tinh-tuyen-quang-tuyen-quang",
@@ -1947,7 +2688,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.8304067,
+    "lng": 105.1976369
   },
   {
     "id": "benh-vien-a-khoa-uc-minh-tuyen-quang",
@@ -1960,7 +2703,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 22.8143052,
+    "lng": 104.9844564
   },
   {
     "id": "benh-vien-a-khoa-ha-giang-tuyen-quang",
@@ -1973,7 +2718,16 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 22.8202889,
+    "lng": 104.984897,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.96,
+      "matchedAddress": "Bệnh viện Đa khoa Hà Giang, Đường Lý Nhân Tông, Phường Hà Giang 2, Tỉnh Tuyên Quang, 20152, Việt Nam",
+      "query": "Bệnh viện Đa Khoa Hà Giang, Tuyên Quang, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-ong-van-tuyen-quang",
@@ -1986,7 +2740,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 23.2782975,
+    "lng": 105.3615214,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.944,
+      "matchedAddress": "Xã Đồng Văn, Tỉnh Tuyên Quang, Việt Nam",
+      "query": "Xã Đồng Văn, Tuyên Quang, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-quang-binh-tuyen-quang",
@@ -1999,7 +2762,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 22.4106345,
+    "lng": 104.5809892,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.93,
+      "matchedAddress": "Xã Quang Bình, Tỉnh Tuyên Quang, Việt Nam",
+      "query": "xã Quang Bình, Tuyên Quang, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-vi-xuyen-tuyen-quang",
@@ -2012,7 +2784,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 22.6699867,
+    "lng": 104.9814888
   },
   {
     "id": "benh-vien-a-khoa-khu-vuc-hoang-su-phi-tuyen-quang",
@@ -2025,7 +2799,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 22.7425331,
+    "lng": 104.6791699
   },
   {
     "id": "benh-vien-trung-uong-thai-nguyen-thai-nguyen",
@@ -2038,7 +2814,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.5879976,
+    "lng": 105.8310717
   },
   {
     "id": "benh-vien-a-khoa-tinh-bac-kan-thai-nguyen",
@@ -2051,7 +2829,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 22.1695986,
+    "lng": 105.8481797
   },
   {
     "id": "benh-vien-gang-thep-thai-nguyen-thai-nguyen",
@@ -2064,7 +2844,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 21.5360202,
+    "lng": 105.8787648
   },
   {
     "id": "benh-vien-a-khoa-tinh-thanh-hoa-thanh-hoa",
@@ -2077,7 +2859,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 19.7769846,
+    "lng": 105.7713721
   },
   {
     "id": "benh-vien-a-khoa-hop-luc-thanh-hoa",
@@ -2090,7 +2874,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 19.8283931,
+    "lng": 105.7783134
   },
   {
     "id": "benh-vien-a-khoa-nghi-son-thanh-hoa",
@@ -2103,7 +2889,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 19.4629563,
+    "lng": 105.7899214,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.94,
+      "matchedAddress": "Bệnh viện Đa khoa Nghi Sơn, Đường Quang Trung, Hải Hòa, Nghi Sơn, Phường Tĩnh Gia, Tỉnh Thanh Hóa, Việt Nam",
+      "query": "Bệnh viện Đa Khoa Nghi Sơn, Thanh Hoá, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-a-khoa-ngoc-lac-thanh-hoa",
@@ -2116,7 +2911,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 20.0809784,
+    "lng": 105.3784177
   },
   {
     "id": "benh-vien-a-khoa-tho-xuan-thanh-hoa",
@@ -2129,7 +2926,16 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 19.9314713,
+    "lng": 105.5201075,
+    "geocode": {
+      "provider": "nominatim",
+      "score": 0.93,
+      "matchedAddress": "Xã Thọ Xuân, Tỉnh Thanh Hóa, Việt Nam",
+      "query": "Xã Thọ Xuân, Tỉnh Thanh Hoá, Việt Nam",
+      "reviewed": false
+    }
   },
   {
     "id": "benh-vien-trung-uong-hue-co-so-2-thua-thien-hue",
@@ -2142,7 +2948,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 16.4756,
+    "lng": 107.5482
   },
   {
     "id": "benh-vien-trung-uong-hue-thua-thien-hue",
@@ -2155,7 +2963,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 16.4637,
+    "lng": 107.5804
   },
   {
     "id": "benh-vien-nguyen-inh-chieu-vinh-long",
@@ -2168,7 +2978,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.2385118,
+    "lng": 106.3668386
   },
   {
     "id": "benh-vien-a-khoa-vinh-long-vinh-long",
@@ -2181,7 +2993,9 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.2318036,
+    "lng": 105.9887979
   },
   {
     "id": "benh-vien-a-khoa-xuyen-a-chi-nhanh-vinh-long-vinh-long",
@@ -2194,7 +3008,9 @@
     "intervention": "Có",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 10.2552117,
+    "lng": 105.9625182
   },
   {
     "id": "benh-vien-a-khoa-tra-vinh-vinh-long",
@@ -2207,6 +3023,8 @@
     "intervention": "Không",
     "status": "active",
     "updatedAt": "2025-09",
-    "source": "Hội Đột Quỵ Việt Nam (VNSA)"
+    "source": "Hội Đột Quỵ Việt Nam (VNSA)",
+    "lat": 9.9291218,
+    "lng": 106.329514
   }
 ]
