@@ -5,10 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Danh sách bệnh viện cấp cứu đột quỵ — Việt Nam</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css"/>
 <style>
   :root{
     --ink:#0B1F3A;
@@ -24,7 +22,7 @@
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
-    font-family:'Be Vietnam Pro', sans-serif;
+    font-family:'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background:var(--field);
     color:var(--ink);
     padding-bottom:96px;
@@ -35,7 +33,7 @@
     padding:20px 20px 22px;
   }
   .topbar .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size:11px;
     letter-spacing:.14em;
     text-transform:uppercase;
@@ -53,7 +51,7 @@
     display:flex;
     gap:14px;
     flex-wrap:wrap;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size:12px;
     color:#B7C4E0;
   }
@@ -76,7 +74,7 @@
     gap:8px;
   }
   .controls select, .controls input{
-    font-family:'Be Vietnam Pro', sans-serif;
+    font-family:'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-size:14px;
     border:1px solid var(--line);
     border-radius:10px;
@@ -125,7 +123,7 @@
   }
   .tag-prov{
     flex:none;
-    font-family:'Be Vietnam Pro', sans-serif;
+    font-family:'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-weight:600;
     font-size:11.5px;
     letter-spacing:.01em;
@@ -171,7 +169,7 @@
     display:inline-flex;
     align-items:center;
     gap:6px;
-    font-family:'IBM Plex Mono', monospace;
+    font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-weight:600;
     font-size:12.5px;
     color:var(--ink);
@@ -186,7 +184,7 @@
     display:inline-flex;
     align-items:center;
     gap:6px;
-    font-family:'Be Vietnam Pro', sans-serif;
+    font-family:'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-weight:600;
     font-size:12.5px;
     color:#fff;
@@ -237,7 +235,7 @@
     justify-content:center;
     gap:10px;
     padding:16px 20px calc(16px + env(safe-area-inset-bottom));
-    font-family:'Be Vietnam Pro', sans-serif;
+    font-family:'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-weight:800;
     font-size:16px;
     letter-spacing:.01em;
@@ -266,7 +264,7 @@
   .view-btn{
     flex:1;
     text-align:center;
-    font-family:'Be Vietnam Pro', sans-serif;
+    font-family:'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-weight:600;
     font-size:13.5px;
     padding:10px 12px;
@@ -285,6 +283,7 @@
   }
   #mapView{
     display:none;
+    height:calc(100vh - 320px);   /* fallback cho trình duyệt không hỗ trợ dvh (iOS Safari cũ, WebView cũ) */
     height:calc(100dvh - 320px);
     min-height:420px;
   }
@@ -293,7 +292,7 @@
     height:100%;
   }
   .map-popup{
-    font-family:'Be Vietnam Pro', sans-serif;
+    font-family:'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-size:13px;
     line-height:1.5;
     min-width:190px;
@@ -353,7 +352,7 @@
     align-items:center;
     justify-content:center;
     gap:8px;
-    font-family:'Be Vietnam Pro', sans-serif;
+    font-family:'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     font-weight:700;
     font-size:14px;
     color:#fff;
@@ -364,27 +363,6 @@
     cursor:pointer;
   }
   .btn-nearest:active{background:var(--ink);}
-  .btn-mic{
-    flex:none;
-    width:46px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:18px;
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:10px;
-    cursor:pointer;
-  }
-  .btn-mic.listening{
-    background:var(--red);
-    border-color:var(--red);
-    animation:micPulse 1.2s ease-in-out infinite;
-  }
-  @keyframes micPulse{
-    0%,100%{box-shadow:0 0 0 0 rgba(217,48,37,.4);}
-    50%{box-shadow:0 0 0 8px rgba(217,48,37,0);}
-  }
   .nearest-status{
     margin-top:8px;
     font-size:12px;
@@ -393,7 +371,7 @@
   }
   .nearest-status.err{color:var(--red);}
   .distance-badge{
-    font-family:'IBM Plex Mono', monospace;
+    font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size:11px;
     font-weight:600;
     color:#fff;
@@ -425,7 +403,6 @@
   <div class="nearest-bar">
     <div class="nearest-row">
       <button class="btn-nearest" id="btnNearest" type="button">📍 Tìm bệnh viện gần tôi nhất</button>
-      <button class="btn-mic" id="btnMic" type="button" title="Ra lệnh bằng giọng nói" aria-label="Tìm bằng giọng nói">🎙️</button>
     </div>
     <p class="nearest-status" id="nearestStatus"></p>
   </div>
@@ -455,9 +432,11 @@
     Gọi 115 ngay
   </a>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 <script>
+  // Leaflet (bản đồ) được nạp động (lazy-load) khi người dùng bấm tab "Bản đồ" lần đầu —
+  // xem hàm loadMapLibraries() bên dưới. Người chỉ dùng Danh sách sẽ không tải phần này,
+  // tiết kiệm ~150KB JS/CSS + tránh gọi mạng không cần thiết trên kết nối yếu.
+
   let ALL = [];
 
   function escapeHtml(str) {
@@ -535,58 +514,6 @@
     );
   }
 
-  // ====== RA LỆNH BẰNG GIỌNG NÓI ======
-  function setupVoiceSearch() {
-    const btnMic = document.getElementById('btnMic');
-    const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-    if (!SpeechRecognitionCtor) {
-      btnMic.disabled = true;
-      btnMic.title = 'Trình duyệt này không hỗ trợ tìm bằng giọng nói (hãy dùng Chrome/Edge)';
-      btnMic.style.opacity = '0.4';
-      return;
-    }
-
-    const recognition = new SpeechRecognitionCtor();
-    recognition.lang = 'vi-VN';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
-
-    btnMic.addEventListener('click', () => {
-      btnMic.classList.add('listening');
-      setNearestStatus('Đang nghe… hãy nói ví dụ: "tìm bệnh viện gần nhất"');
-      try { recognition.start(); } catch (e) { /* đã start rồi thì bỏ qua */ }
-    });
-
-    recognition.addEventListener('result', (e) => {
-      const transcript = e.results[0][0].transcript.trim();
-      setNearestStatus(`Đã nghe: "${transcript}"`);
-
-      const lower = transcript.toLowerCase();
-      const wantsNearest = /(gần nhất|gần tôi|gần đây|gần|nearest)/.test(lower) &&
-                            /(bệnh viện|y tế|cấp cứu|đột quỵ)/.test(lower);
-
-      if (wantsNearest) {
-        findNearest();
-      } else {
-        // Không khớp lệnh "gần nhất" -> dùng câu nói làm từ khoá tìm kiếm tên bệnh viện
-        document.getElementById('searchBox').value = transcript;
-        applyFilter();
-      }
-    });
-
-    recognition.addEventListener('error', (e) => {
-      const msgs = {
-        'not-allowed': 'Bạn đã từ chối quyền micro. Hãy cấp quyền rồi thử lại.',
-        'no-speech': 'Không nghe thấy giọng nói, vui lòng thử lại.',
-      };
-      setNearestStatus(msgs[e.error] || 'Không nhận dạng được giọng nói, vui lòng thử lại hoặc bấm nút.', true);
-    });
-
-    recognition.addEventListener('end', () => {
-      btnMic.classList.remove('listening');
-    });
-  }
 
   function renderList(items) {
     const list = document.getElementById('list');
@@ -647,6 +574,45 @@
     }).join('');
   }
 
+  // ====== TẢI THƯ VIỆN BẢN ĐỒ THEO NHU CẦU (LAZY LOAD) ======
+  // Chỉ tải Leaflet (~150KB CSS+JS) khi người dùng thực sự bấm tab "Bản đồ" lần đầu.
+  // Người chỉ dùng chế độ Danh sách (trường hợp khẩn cấp phổ biến nhất) không tốn
+  // băng thông/CPU cho phần này — quan trọng với mạng yếu hoặc máy cấu hình thấp.
+  let mapLibsPromise = null;
+
+  function loadMapLibraries() {
+    if (mapLibsPromise) return mapLibsPromise;
+
+    mapLibsPromise = new Promise((resolve, reject) => {
+      const cssUrls = [
+        'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css',
+      ];
+      cssUrls.forEach(href => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      });
+
+      const loadScript = (src) => new Promise((res, rej) => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = res;
+        s.onerror = () => rej(new Error(`Không tải được ${src}`));
+        document.body.appendChild(s);
+      });
+
+      loadScript('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js')
+        .then(() => loadScript('https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js'))
+        .then(resolve)
+        .catch(reject);
+    });
+
+    return mapLibsPromise;
+  }
+
   let map, markerCluster;
 
   function initMapIfNeeded() {
@@ -702,7 +668,19 @@
       mapEl.style.display = 'block';
       btnList.classList.remove('active');
       btnMap.classList.add('active');
-      renderMap(getCurrentFiltered());
+
+      if (!window.L) {
+        document.getElementById('mapEl').innerHTML =
+          '<div class="empty-state">Đang tải bản đồ…</div>';
+        loadMapLibraries()
+          .then(() => renderMap(getCurrentFiltered()))
+          .catch(() => {
+            document.getElementById('mapEl').innerHTML =
+              '<div class="empty-state">Không tải được bản đồ (kiểm tra kết nối mạng). Dùng chế độ Danh sách để tiếp tục.</div>';
+          });
+      } else {
+        renderMap(getCurrentFiltered());
+      }
     } else {
       listEl.style.display = 'flex';
       countRow.style.display = 'block';
@@ -714,12 +692,23 @@
 
   let currentView = 'list';
 
+  // Bỏ dấu tiếng Việt để so khớp tìm kiếm — người dùng trong tình huống gấp thường
+  // gõ không dấu (bàn phím tiếng Anh, gõ vội). "bach mai" vẫn phải khớp "Bạch Mai".
+  function stripDiacritics(str) {
+    return str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/đ/g, 'd')
+      .replace(/Đ/g, 'D')
+      .toLowerCase();
+  }
+
   function getCurrentFiltered() {
     const prov = document.getElementById('filterProv').value;
-    const q = document.getElementById('searchBox').value.trim().toLowerCase();
+    const q = stripDiacritics(document.getElementById('searchBox').value.trim());
     return ALL.filter(h => {
       const matchesProv = !prov || h.province === prov;
-      const matchesQ = !q || h.name.toLowerCase().includes(q);
+      const matchesQ = !q || stripDiacritics(h.name).includes(q);
       return matchesProv && matchesQ;
     });
   }
@@ -759,11 +748,17 @@
     });
 
   document.getElementById('filterProv').addEventListener('change', applyFilter);
-  document.getElementById('searchBox').addEventListener('input', applyFilter);
+
+  // Debounce ô tìm kiếm: gộp các lần gõ liên tiếp trong 150ms thành 1 lần render,
+  // giảm tải CPU khi gõ nhanh trên điện thoại cấu hình thấp.
+  let searchDebounceTimer = null;
+  document.getElementById('searchBox').addEventListener('input', () => {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(applyFilter, 150);
+  });
   document.getElementById('btnListView').addEventListener('click', () => { currentView = 'list'; switchView('list'); });
   document.getElementById('btnMapView').addEventListener('click', () => { currentView = 'map'; switchView('map'); });
   document.getElementById('btnNearest').addEventListener('click', findNearest);
-  setupVoiceSearch();
 </script>
 
 </body>
