@@ -1,0 +1,386 @@
+// Leaflet (bản đồ) được nạp động (lazy-load) khi người dùng bấm tab "Bản đồ" lần đầu —
+  // xem hàm loadMapLibraries() bên dưới. Người chỉ dùng Danh sách sẽ không tải phần này,
+  // tiết kiệm ~150KB JS/CSS + tránh gọi mạng không cần thiết trên kết nối yếu.
+
+  let ALL = [];
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function parsePhoneNumbers(hotline) {
+    // Tách chuỗi hotline gộp nhiều số (phân cách bằng "/", "hoặc") thành từng số riêng.
+    // Giữ lại phần ghi chú dạng "(Ext 123)" gắn liền với số đứng trước nó.
+    return hotline
+      .split(/\s*\/\s*|\s+hoặc\s+/i)
+      .map(s => s.trim())
+      .filter(Boolean);
+  }
+
+  function telHrefFromLabel(label) {
+    const digits = label.replace(/[^\d]/g, '');
+    return digits ? `tel:${digits}` : '#';
+  }
+
+  function mapsDirectionUrl(address, name) {
+    const query = encodeURIComponent(`${name}, ${address}`);
+    return `https://www.google.com/maps/dir/?api=1&destination=${query}&travelmode=driving`;
+  }
+
+  function badge(label, value) {
+    const isYes = value === 'Có';
+    return `<span class="badge ${isYes ? 'yes' : 'no'}">${escapeHtml(label)}: ${escapeHtml(value)}</span>`;
+  }
+
+  // ====== TÌM GẦN TÔI NHẤT (định vị + sắp xếp theo khoảng cách) ======
+  let userLocation = null; // { lat, lng }
+
+  function haversineKm(lat1, lng1, lat2, lng2) {
+    const R = 6371;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLng = (lng2 - lng1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) ** 2 +
+      Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) *
+      Math.sin(dLng/2) ** 2;
+    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  }
+
+  function setNearestStatus(msg, isError) {
+    const el = document.getElementById('nearestStatus');
+    el.textContent = msg;
+    el.classList.toggle('err', !!isError);
+  }
+
+  function findNearest() {
+    if (!('geolocation' in navigator)) {
+      setNearestStatus('Trình duyệt không hỗ trợ định vị. Vui lòng tìm thủ công theo tỉnh.', true);
+      return;
+    }
+    setNearestStatus('Đang xác định vị trí của bạn…');
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        setNearestStatus('Đã xác định vị trí — đang sắp xếp theo khoảng cách gần nhất.');
+        document.getElementById('filterProv').value = '';
+        document.getElementById('searchBox').value = '';
+        applyFilter();
+      },
+      err => {
+        const msgs = {
+          1: 'Bạn đã từ chối quyền truy cập vị trí. Hãy cấp quyền định vị trong trình duyệt rồi thử lại.',
+          2: 'Không xác định được vị trí hiện tại. Vui lòng thử lại hoặc tìm thủ công.',
+          3: 'Định vị quá thời gian chờ. Vui lòng thử lại.',
+        };
+        setNearestStatus(msgs[err.code] || 'Có lỗi khi định vị.', true);
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  }
+
+
+  function renderList(items) {
+    const list = document.getElementById('list');
+    document.getElementById('countNum').textContent = items.length;
+
+    if (items.length === 0) {
+      list.innerHTML = '<div class="empty-state">Không tìm thấy cơ sở phù hợp.</div>';
+      return;
+    }
+
+    // Nếu đã có vị trí người dùng: tính khoảng cách, sắp xếp gần -> xa
+    // Cơ sở chưa có toạ độ (chưa geocode) xếp cuối, giữ nguyên thứ tự.
+    let sorted = items;
+    if (userLocation) {
+      sorted = items.map(h => ({
+        ...h,
+        _distanceKm: (h.lat && h.lng)
+          ? haversineKm(userLocation.lat, userLocation.lng, h.lat, h.lng)
+          : null,
+      })).sort((a, b) => {
+        if (a._distanceKm === null && b._distanceKm === null) return 0;
+        if (a._distanceKm === null) return 1;
+        if (b._distanceKm === null) return -1;
+        return a._distanceKm - b._distanceKm;
+      });
+    }
+
+    list.innerHTML = sorted.map(h => {
+      const phones = parsePhoneNumbers(h.hotline);
+      const phoneButtons = phones.map(p =>
+        `<a class="call-link" href="${telHrefFromLabel(p)}">📞 ${escapeHtml(p)}</a>`
+      ).join('');
+      const distanceHtml = (h._distanceKm != null)
+        ? `<span class="distance-badge">${h._distanceKm < 1 ? Math.round(h._distanceKm*1000)+' m' : h._distanceKm.toFixed(1)+' km'}</span>`
+        : '';
+
+      return `
+      <div class="card">
+        <div class="card-top">
+          <h2>${escapeHtml(h.name)}</h2>
+          <div class="card-top-right">
+            <span class="tag-prov">${escapeHtml(h.province)}</span>
+            ${distanceHtml}
+          </div>
+        </div>
+        <p class="type-label">${escapeHtml(h.type || '')}</p>
+        <p class="addr">${escapeHtml(h.address)}</p>
+        <div class="badges">
+          ${badge('Tiêu sợi huyết', h.thrombolysis)}
+          ${badge('Can thiệp', h.intervention)}
+        </div>
+        <div class="card-actions-row">
+          <div class="phone-group">${phoneButtons}</div>
+          <a class="map-link" href="${mapsDirectionUrl(h.address, h.name)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
+        </div>
+      </div>
+    `;
+    }).join('');
+  }
+
+  // ====== TẢI THƯ VIỆN BẢN ĐỒ THEO NHU CẦU (LAZY LOAD) ======
+  // Chỉ tải Leaflet (~150KB CSS+JS) khi người dùng thực sự bấm tab "Bản đồ" lần đầu.
+  // Người chỉ dùng chế độ Danh sách (trường hợp khẩn cấp phổ biến nhất) không tốn
+  // băng thông/CPU cho phần này — quan trọng với mạng yếu hoặc máy cấu hình thấp.
+  //
+  // BẢO MẬT: mỗi resource kèm integrity (SRI) — hash tự tính từ đúng gói npm
+  // leaflet@1.9.4 / leaflet.markercluster@1.5.3 (đã đối chiếu khớp hash chính thức
+  // công bố tại leafletjs.com/download.html). Nếu cdnjs bị giả mạo/tấn công chuỗi
+  // cung ứng, trình duyệt sẽ TỰ CHẶN không chạy file bị thay đổi.
+  let mapLibsPromise = null;
+
+  function loadMapLibraries() {
+    if (mapLibsPromise) return mapLibsPromise;
+
+    mapLibsPromise = new Promise((resolve, reject) => {
+      const cssFiles = [
+        { href: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css',
+          integrity: 'sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H' },
+        { href: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.css',
+          integrity: 'sha384-pmjIAcz2bAn0xukfxADbZIb3t8oRT9Sv0rvO+BR5Csr6Dhqq+nZs59P0pPKQJkEV' },
+        { href: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css',
+          integrity: 'sha384-wgw+aLYNQ7dlhK47ZPK7FRACiq7ROZwgFNg0m04avm4CaXS+Z9Y7nMu8yNjBKYC+' },
+      ];
+      cssFiles.forEach(({ href, integrity }) => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.integrity = integrity;
+        link.crossOrigin = 'anonymous';
+        document.head.appendChild(link);
+      });
+
+      const loadScript = (src, integrity) => new Promise((res, rej) => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.integrity = integrity;
+        s.crossOrigin = 'anonymous';
+        s.onload = res;
+        s.onerror = () => rej(new Error(`Không tải được ${src} (có thể bị chặn do sai integrity hash — dấu hiệu file đã bị thay đổi)`));
+        document.body.appendChild(s);
+      });
+
+      loadScript(
+        'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js',
+        'sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH'
+      )
+        .then(() => loadScript(
+          'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js',
+          'sha384-eXVCORTRlv4FUUgS/xmOyr66XBVraen8ATNLMESp92FKXLAMiKkerixTiBvXriZr'
+        ))
+        .then(resolve)
+        .catch(reject);
+    });
+
+    return mapLibsPromise;
+  }
+
+  let map, markerCluster;
+
+  function initMapIfNeeded() {
+    if (map) return;
+    map = L.map('mapEl').setView([16.0, 106.0], 5.4); // trung tâm Việt Nam
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors',
+    }).addTo(map);
+    markerCluster = L.markerClusterGroup();
+    map.addLayer(markerCluster);
+  }
+
+  function telHrefFromLabel_(label) {
+    const digits = label.replace(/[^\d]/g, '');
+    return digits ? `tel:${digits}` : '#';
+  }
+
+  function renderMap(items) {
+    initMapIfNeeded();
+    markerCluster.clearLayers();
+
+    const withCoords = items.filter(h => h.lat && h.lng);
+    withCoords.forEach(h => {
+      const firstPhone = parsePhoneNumbers(h.hotline)[0] || '';
+      const marker = L.marker([h.lat, h.lng]);
+      const popupHtml = `
+        <div class="map-popup">
+          <h3>${escapeHtml(h.name)}</h3>
+          <p class="popup-addr">${escapeHtml(h.address)}</p>
+          <div class="popup-actions">
+            <a class="pop-call" href="${telHrefFromLabel_(firstPhone)}">📞 Gọi</a>
+            <a class="pop-dir" href="${mapsDirectionUrl(h.address, h.name)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
+          </div>
+        </div>`;
+      marker.bindPopup(popupHtml);
+      markerCluster.addLayer(marker);
+    });
+
+    setTimeout(() => map.invalidateSize(), 50);
+  }
+
+  function switchView(view) {
+    const listEl = document.getElementById('list');
+    const mapEl = document.getElementById('mapView');
+    const countRow = document.getElementById('listCountRow');
+    const btnList = document.getElementById('btnListView');
+    const btnMap = document.getElementById('btnMapView');
+
+    if (view === 'map') {
+      listEl.style.display = 'none';
+      countRow.style.display = 'none';
+      mapEl.style.display = 'block';
+      btnList.classList.remove('active');
+      btnMap.classList.add('active');
+
+      if (!window.L) {
+        document.getElementById('mapEl').innerHTML =
+          '<div class="empty-state">Đang tải bản đồ…</div>';
+        loadMapLibraries()
+          .then(() => renderMap(getCurrentFiltered()))
+          .catch(() => {
+            document.getElementById('mapEl').innerHTML =
+              '<div class="empty-state">Không tải được bản đồ (kiểm tra kết nối mạng). Dùng chế độ Danh sách để tiếp tục.</div>';
+          });
+      } else {
+        renderMap(getCurrentFiltered());
+      }
+    } else {
+      listEl.style.display = 'flex';
+      countRow.style.display = 'block';
+      mapEl.style.display = 'none';
+      btnList.classList.add('active');
+      btnMap.classList.remove('active');
+    }
+  }
+
+  let currentView = 'list';
+
+  // Bỏ dấu tiếng Việt để so khớp tìm kiếm — người dùng trong tình huống gấp thường
+  // gõ không dấu (bàn phím tiếng Anh, gõ vội). "bach mai" vẫn phải khớp "Bạch Mai".
+  function stripDiacritics(str) {
+    return str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/đ/g, 'd')
+      .replace(/Đ/g, 'D')
+      .toLowerCase();
+  }
+
+  // Từ viết tắt / từ đồng nghĩa thường gặp khi người dân tìm bệnh viện.
+  // Mỗi cặp: [dạng đầy đủ (đã bỏ dấu), các cách viết tắt/gọi khác].
+  // Nếu tên/loại hình/địa chỉ chứa dạng đầy đủ, chỉ mục tìm kiếm sẽ được
+  // cộng thêm các dạng viết tắt tương ứng để gõ tắt vẫn tìm ra.
+  const SEARCH_SYNONYMS = [
+    ['benh vien', ['bv']],
+    ['da khoa', ['dk', 'đk']],
+    ['trung tam', ['tt']],
+    ['don vi', ['dv']],
+    ['thanh pho', ['tp']],
+    ['ho chi minh', ['hcm', 'tphcm', 'tp hcm', 'sai gon', 'saigon']],
+    ['ha noi', ['hn']],
+    ['dot quy', ['dq', 'stroke']],
+    ['cap cuu', ['cc']],
+    ['tim mach', ['timmach']],
+  ];
+
+  // Xây "chỉ mục tìm kiếm" cho 1 bệnh viện: gộp tên + loại hình + tỉnh + địa chỉ
+  // (đã bỏ dấu) và cộng thêm các từ đồng nghĩa/viết tắt liên quan.
+  // Tính 1 lần khi tải dữ liệu — KHÔNG tính lại mỗi lần gõ phím (tối ưu hiệu năng).
+  function buildSearchIndex(h) {
+    let text = stripDiacritics([h.name, h.type, h.province, h.address].filter(Boolean).join(' '));
+    SEARCH_SYNONYMS.forEach(([full, aliases]) => {
+      if (text.includes(full)) {
+        text += ' ' + aliases.join(' ');
+      } else {
+        // chiều ngược lại: nếu văn bản chứa 1 alias, cũng cộng thêm dạng đầy đủ
+        aliases.forEach(alias => {
+          if (text.includes(alias)) text += ' ' + full;
+        });
+      }
+    });
+    return text;
+  }
+
+  // So khớp theo TỪNG TỪ (token-based AND): mọi từ trong câu tìm phải xuất hiện
+  // đâu đó trong chỉ mục — cho phép gõ đúng 1 phần tên, không cần đúng thứ tự.
+  // VD: gõ "tam tri" vẫn khớp "Bệnh viện Đa khoa Tâm Trí Đồng Tháp".
+  function getCurrentFiltered() {
+    const prov = document.getElementById('filterProv').value;
+    const rawQ = stripDiacritics(document.getElementById('searchBox').value.trim());
+    const tokens = rawQ.split(/\s+/).filter(Boolean);
+
+    return ALL.filter(h => {
+      const matchesProv = !prov || h.province === prov;
+      const matchesQ = tokens.length === 0 ||
+        tokens.every(tok => h._searchIndex.includes(tok));
+      return matchesProv && matchesQ;
+    });
+  }
+
+  function applyFilter() {
+    const filtered = getCurrentFiltered();
+    renderList(filtered);
+    if (currentView === 'map') renderMap(filtered);
+  }
+
+  function populateProvinces(items) {
+    const provinces = [...new Set(items.map(h => h.province))].sort((a, b) => a.localeCompare(b, 'vi'));
+    const sel = document.getElementById('filterProv');
+    provinces.forEach(p => {
+      const opt = document.createElement('option');
+      opt.value = p;
+      opt.textContent = p;
+      sel.appendChild(opt);
+    });
+  }
+
+  fetch('./data/hospitals.json')
+    .then(res => {
+      if (!res.ok) throw new Error('Không tải được dữ liệu');
+      return res.json();
+    })
+    .then(data => {
+      ALL = data.filter(h => h.status === 'active');
+      ALL.forEach(h => { h._searchIndex = buildSearchIndex(h); });
+      document.getElementById('metaCount').innerHTML = `<b>${ALL.length}</b> đơn vị`;
+      document.getElementById('metaProv').innerHTML = `<b>${new Set(ALL.map(h=>h.province)).size}</b> tỉnh/thành`;
+      populateProvinces(ALL);
+      renderList(ALL);
+    })
+    .catch(err => {
+      document.getElementById('list').innerHTML =
+        `<div class="empty-state">Lỗi tải dữ liệu: ${escapeHtml(err.message)}</div>`;
+    });
+
+  document.getElementById('filterProv').addEventListener('change', applyFilter);
+
+  // Debounce ô tìm kiếm: gộp các lần gõ liên tiếp trong 150ms thành 1 lần render,
+  // giảm tải CPU khi gõ nhanh trên điện thoại cấu hình thấp.
+  let searchDebounceTimer = null;
+  document.getElementById('searchBox').addEventListener('input', () => {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(applyFilter, 150);
+  });
+  document.getElementById('btnListView').addEventListener('click', () => { currentView = 'list'; switchView('list'); });
+  document.getElementById('btnMapView').addEventListener('click', () => { currentView = 'map'; switchView('map'); });
+  document.getElementById('btnNearest').addEventListener('click', findNearest);
