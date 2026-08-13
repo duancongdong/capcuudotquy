@@ -315,15 +315,27 @@
   function switchView(view) {
     const listEl = document.getElementById('list');
     const mapEl = document.getElementById('mapView');
+    const signsEl = document.getElementById('signsView');
     const countRow = document.getElementById('listCountRow');
+    const controlsEl = document.querySelector('.controls');
+    const nearestBarEl = document.querySelector('.nearest-bar');
     const btnList = document.getElementById('btnListView');
     const btnMap = document.getElementById('btnMapView');
+    const btnSigns = document.getElementById('btnSignsView');
+
+    // Ẩn hết, rồi bật đúng 1 khối theo view đang chọn
+    listEl.style.display = 'none';
+    mapEl.style.display = 'none';
+    signsEl.hidden = true;
+    countRow.style.display = 'none';
+    controlsEl.style.display = 'none';
+    nearestBarEl.style.display = 'none';
+    [btnList, btnMap, btnSigns].forEach(b => b.classList.remove('active'));
 
     if (view === 'map') {
-      listEl.style.display = 'none';
-      countRow.style.display = 'none';
       mapEl.style.display = 'block';
-      btnList.classList.remove('active');
+      controlsEl.style.display = 'flex';
+      nearestBarEl.style.display = 'block';
       btnMap.classList.add('active');
 
       if (!window.L) {
@@ -338,12 +350,15 @@
       } else {
         renderMap(getCurrentFiltered());
       }
+    } else if (view === 'signs') {
+      signsEl.hidden = false;
+      btnSigns.classList.add('active');
     } else {
       listEl.style.display = 'flex';
       countRow.style.display = 'block';
-      mapEl.style.display = 'none';
+      controlsEl.style.display = 'flex';
+      nearestBarEl.style.display = 'block';
       btnList.classList.add('active');
-      btnMap.classList.remove('active');
     }
   }
 
@@ -457,4 +472,10 @@
   });
   document.getElementById('btnListView').addEventListener('click', () => { currentView = 'list'; switchView('list'); });
   document.getElementById('btnMapView').addEventListener('click', () => { currentView = 'map'; switchView('map'); });
+  document.getElementById('btnSignsView').addEventListener('click', () => { currentView = 'signs'; switchView('signs'); });
+  document.getElementById('btnSignsFindHospital').addEventListener('click', () => {
+    currentView = 'list';
+    switchView('list');
+    findNearest();
+  });
   document.getElementById('btnNearest').addEventListener('click', findNearest);
