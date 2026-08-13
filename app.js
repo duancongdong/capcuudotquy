@@ -53,9 +53,68 @@
     el.classList.toggle('err', !!isError);
   }
 
+  // Nhận diện nền tảng để đưa đúng hướng dẫn khôi phục quyền định vị —
+  // iOS Safari và Android Chrome có đường dẫn cài đặt khác nhau hoàn toàn.
+  function detectPlatform() {
+    const ua = navigator.userAgent || '';
+    const isIOS = /iPad|iPhone|iPod/.test(ua) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1); // iPadOS giả làm Mac
+    if (isIOS) return 'ios';
+    if (/Android/.test(ua)) return 'android';
+    return 'other';
+  }
+
+  function renderPermissionHelp() {
+    const platform = detectPlatform();
+    const helpEl = document.getElementById('nearestHelp');
+
+    const stepsByPlatform = {
+      ios: [
+        'Mở app <b>Cài đặt</b> (Settings) trên iPhone',
+        'Chọn <b>Safari</b> (cuộn xuống mục các app trình duyệt)',
+        'Chọn <b>Vị trí</b> (Location) → chọn <b>Hỏi</b> (Ask) hoặc <b>Cho phép</b>',
+        'Quay lại trang này, bấm <b>Thử lại</b> bên dưới',
+      ],
+      android: [
+        'Chạm vào biểu tượng <b>ổ khóa 🔒</b> hoặc chữ <b>ⓘ</b> bên trái thanh địa chỉ trình duyệt',
+        'Chọn <b>Quyền của trang web</b> (Site settings) → <b>Vị trí</b>',
+        'Chọn <b>Cho phép</b> (Allow)',
+        'Quay lại trang này, bấm <b>Thử lại</b> bên dưới',
+      ],
+      other: [
+        'Mở phần cài đặt của trình duyệt cho trang web này',
+        'Tìm mục quyền <b>Vị trí / Location</b> và chọn Cho phép',
+        'Bấm <b>Thử lại</b> bên dưới',
+      ],
+    };
+    const steps = stepsByPlatform[platform];
+
+    helpEl.innerHTML = `
+      <p>Cách cấp lại quyền vị trí:</p>
+      <ol>${steps.map(s => `<li>${s}</li>`).join('')}</ol>
+      <div class="help-actions">
+        <button class="btn-retry" id="btnRetryLocation" type="button">🔄 Thử lại</button>
+        <button class="btn-manual" id="btnManualProvince" type="button">📍 Chọn tỉnh thủ công thay thế</button>
+      </div>
+    `;
+    helpEl.hidden = false;
+
+    document.getElementById('btnRetryLocation').addEventListener('click', findNearest);
+    document.getElementById('btnManualProvince').addEventListener('click', () => {
+      document.getElementById('filterProv').focus();
+      document.getElementById('filterProv').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
+  function hidePermissionHelp() {
+    document.getElementById('nearestHelp').hidden = true;
+  }
+
   function findNearest() {
+    hidePermissionHelp();
+
     if (!('geolocation' in navigator)) {
-      setNearestStatus('Trình duyệt không hỗ trợ định vị. Vui lòng tìm thủ công theo tỉnh.', true);
+      setNearestStatus('Trình duyệt không hỗ trợ định vị. Vui lòng chọn tỉnh thủ công bên dưới.', true);
       return;
     }
     setNearestStatus('Đang xác định vị trí của bạn…');
@@ -68,12 +127,16 @@
         applyFilter();
       },
       err => {
+        if (err.code === 1) {
+          setNearestStatus('Bạn đã từ chối quyền truy cập vị trí trước đó.', true);
+          renderPermissionHelp();
+          return;
+        }
         const msgs = {
-          1: 'Bạn đã từ chối quyền truy cập vị trí. Hãy cấp quyền định vị trong trình duyệt rồi thử lại.',
-          2: 'Không xác định được vị trí hiện tại. Vui lòng thử lại hoặc tìm thủ công.',
+          2: 'Không xác định được vị trí hiện tại (GPS yếu hoặc bị chặn). Vui lòng thử lại hoặc chọn tỉnh thủ công.',
           3: 'Định vị quá thời gian chờ. Vui lòng thử lại.',
         };
-        setNearestStatus(msgs[err.code] || 'Có lỗi khi định vị.', true);
+        setNearestStatus(msgs[err.code] || 'Có lỗi khi định vị. Vui lòng thử lại hoặc chọn tỉnh thủ công.', true);
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
