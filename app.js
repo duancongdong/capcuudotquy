@@ -70,10 +70,10 @@
 
     const stepsByPlatform = {
       ios: [
-        'Mở app <b>Cài đặt</b> (Settings) trên iPhone',
-        'Chọn <b>Safari</b> (cuộn xuống mục các app trình duyệt)',
-        'Chọn <b>Vị trí</b> (Location) → chọn <b>Hỏi</b> (Ask) hoặc <b>Cho phép</b>',
-        'Quay lại trang này, bấm <b>Thử lại</b> bên dưới',
+        'Trong Safari, chạm chữ <b>"AA"</b> ở đầu thanh địa chỉ (bên trái, cùng hàng với URL trang này)',
+        'Chọn <b>Cài đặt cho Trang Web</b> (Website Settings)',
+        'Tìm mục <b>Vị trí</b> (Location) → chọn <b>Cho phép</b> (Allow)',
+        'Quay lại trang, bấm <b>Thử lại</b> bên dưới',
       ],
       android: [
         'Chạm vào biểu tượng <b>ổ khóa 🔒</b> hoặc chữ <b>ⓘ</b> bên trái thanh địa chỉ trình duyệt',
@@ -89,9 +89,20 @@
     };
     const steps = stepsByPlatform[platform];
 
+    // iOS có thêm lớp cài đặt hệ thống độc lập với cài đặt riêng-từng-trang ở trên —
+    // nếu bước chính không có tác dụng, đây thường là nguyên nhân thật sự.
+    const iosExtra = platform === 'ios' ? `
+      <p class="help-subtitle">Nếu vẫn không được, kiểm tra thêm 2 nơi này:</p>
+      <ol start="1">
+        <li><b>Cài đặt</b> → <b>Quyền riêng tư &amp; Bảo mật</b> → <b>Dịch vụ định vị</b>: đảm bảo bật ở đầu trang, rồi cuộn xuống mục <b>Safari Websites</b> → chọn <b>Hỏi lần tới hoặc khi chia sẻ</b> (không để "Không bao giờ")</li>
+        <li>Kiểm tra Safari không đang mở ở chế độ <b>Duyệt web Riêng tư</b> (Private Browsing) — chế độ này luôn chặn định vị</li>
+      </ol>
+    ` : '';
+
     helpEl.innerHTML = `
       <p>Cách cấp lại quyền vị trí:</p>
       <ol>${steps.map(s => `<li>${s}</li>`).join('')}</ol>
+      ${iosExtra}
       <div class="help-actions">
         <button class="btn-retry" id="btnRetryLocation" type="button">🔄 Thử lại</button>
         <button class="btn-manual" id="btnManualProvince" type="button">📍 Chọn tỉnh thủ công thay thế</button>

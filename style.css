@@ -380,6 +380,9 @@
     color:var(--ink);
     font-weight:600;
   }
+  .nearest-help p.help-subtitle{
+    margin-top:14px;
+  }
   .nearest-help ol{
     margin:0 0 10px;
     padding-left:18px;
