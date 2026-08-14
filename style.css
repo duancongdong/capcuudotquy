@@ -331,6 +331,22 @@
     color:var(--slate);
     line-height:1.5;
   }
+  .map-status{
+    margin:10px 20px;
+    padding:12px 14px;
+    border:1px solid #D9E2F5;
+    border-radius:10px;
+    background:#EEF2FA;
+    color:var(--ink-2);
+    font-size:12.5px;
+    line-height:1.5;
+    text-align:center;
+  }
+  .map-status.err{
+    border-color:#F3C7C4;
+    background:#FFF5F4;
+    color:var(--red);
+  }
 
   .nearest-bar{
     margin:14px 20px 0;

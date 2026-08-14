@@ -164,7 +164,7 @@
     }
 
     // Nếu đã có vị trí người dùng: tính khoảng cách, sắp xếp gần -> xa
-    // Cơ sở chưa có toạ độ (chưa geocode) xếp cuối, giữ nguyên thứ tự.
+    // Cơ sở chưa có toạ độ xếp cuối, giữ nguyên thứ tự.
     let sorted = items;
     if (userLocation) {
       sorted = items.map(h => ({
@@ -271,6 +271,15 @@
   }
 
   let map, markerCluster;
+  const markerCache = new Map();
+  let renderedMapKey = '';
+
+  function setMapStatus(message, isError = false) {
+    const statusEl = document.getElementById('mapStatus');
+    statusEl.textContent = message;
+    statusEl.classList.toggle('err', isError);
+    statusEl.hidden = !message;
+  }
 
   function initMapIfNeeded() {
     if (map) return;
@@ -288,26 +297,49 @@
     return digits ? `tel:${digits}` : '#';
   }
 
+  function createMapMarker(h) {
+    const marker = L.marker([h.lat, h.lng]);
+    marker.on('click', () => {
+      if (!marker.getPopup()) {
+        const firstPhone = parsePhoneNumbers(h.hotline)[0] || '';
+        const popupHtml = `
+          <div class="map-popup">
+            <h3>${escapeHtml(h.name)}</h3>
+            <p class="popup-addr">${escapeHtml(h.address)}</p>
+            <div class="popup-actions">
+              <a class="pop-call" href="${telHrefFromLabel_(firstPhone)}">📞 Gọi</a>
+              <a class="pop-dir" href="${mapsDirectionUrl(h.address, h.name)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
+            </div>
+          </div>`;
+        marker.bindPopup(popupHtml);
+      }
+      marker.openPopup();
+    });
+    return marker;
+  }
+
   function renderMap(items) {
     initMapIfNeeded();
-    markerCluster.clearLayers();
-
     const withCoords = items.filter(h => h.lat && h.lng);
-    withCoords.forEach(h => {
-      const firstPhone = parsePhoneNumbers(h.hotline)[0] || '';
-      const marker = L.marker([h.lat, h.lng]);
-      const popupHtml = `
-        <div class="map-popup">
-          <h3>${escapeHtml(h.name)}</h3>
-          <p class="popup-addr">${escapeHtml(h.address)}</p>
-          <div class="popup-actions">
-            <a class="pop-call" href="${telHrefFromLabel_(firstPhone)}">📞 Gọi</a>
-            <a class="pop-dir" href="${mapsDirectionUrl(h.address, h.name)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
-          </div>
-        </div>`;
-      marker.bindPopup(popupHtml);
-      markerCluster.addLayer(marker);
-    });
+    const visibleIds = new Set(withCoords.map(h => h.id));
+    const mapKey = [...visibleIds].sort().join('|');
+
+    if (mapKey !== renderedMapKey) {
+      markerCache.forEach((marker, id) => {
+        if (!visibleIds.has(id)) markerCluster.removeLayer(marker);
+      });
+
+      withCoords.forEach(h => {
+        let marker = markerCache.get(h.id);
+        if (!marker) {
+          marker = createMapMarker(h);
+          markerCache.set(h.id, marker);
+        }
+        if (!markerCluster.hasLayer(marker)) markerCluster.addLayer(marker);
+      });
+
+      renderedMapKey = mapKey;
+    }
 
     setTimeout(() => map.invalidateSize(), 50);
   }
@@ -339,15 +371,17 @@
       btnMap.classList.add('active');
 
       if (!window.L) {
-        document.getElementById('mapEl').innerHTML =
-          '<div class="empty-state">Đang tải bản đồ…</div>';
+        setMapStatus('Đang tải thư viện bản đồ từ CDN…');
         loadMapLibraries()
-          .then(() => renderMap(getCurrentFiltered()))
+          .then(() => {
+            setMapStatus('');
+            renderMap(getCurrentFiltered());
+          })
           .catch(() => {
-            document.getElementById('mapEl').innerHTML =
-              '<div class="empty-state">Không tải được bản đồ (kiểm tra kết nối mạng). Dùng chế độ Danh sách để tiếp tục.</div>';
+            setMapStatus('Không tải được thư viện bản đồ. Vui lòng kiểm tra kết nối mạng hoặc dùng tab Danh sách.', true);
           });
       } else {
+        setMapStatus('');
         renderMap(getCurrentFiltered());
       }
     } else if (view === 'signs') {

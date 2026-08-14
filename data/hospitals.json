@@ -102,14 +102,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.2147812,
-    "lng": 103.9681324,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Trung tâm Y tế Phú Quốc, 128, Đường 30 Tháng 4, 2 Dương Đông, Đặc khu Phú Quốc, Tỉnh An Giang, 92516, Việt Nam",
-      "query": "Trung Tâm Y Tế Phú Quốc, An Giang, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 103.9681324
   },
   {
     "id": "benh-vien-quan-y-110-bac-ninh",
@@ -169,14 +162,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 21.1991822,
-    "lng": 105.9542842,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa Yên Phong, Đường Huỳnh Thúc Kháng, Ngân Cầu, Tiên Trà, Chờ, Phường Yên Phong, Thành phố Bắc Ninh, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Yên Phong, 198 Huỳnh Thúc Kháng, Xã Yên Phong, Tỉnh Bắc Ninh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.9542842
   },
   {
     "id": "trung-tam-y-te-tu-son-bac-ninh",
@@ -191,14 +177,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 21.1124576,
-    "lng": 105.9537167,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.912,
-      "matchedAddress": "Trung tâm Y tế phường Đình Bảng, Phố Vạn Hạnh, Thịnh Lang, Đình Bảng, Từ Sơn, Phường Từ Sơn, Thành phố Bắc Ninh, 16300, Việt Nam",
-      "query": "Trung Tâm Y Tế Từ Sơn, Bắc Ninh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.9537167
   },
   {
     "id": "benh-vien-da-khoa-bac-lieu-ca-mau",
@@ -258,14 +237,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 8.9460577,
-    "lng": 105.0129625,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.96,
-      "matchedAddress": "Bệnh viện Đa khoa Cái Nước, Phạm Ngọc Thạch, Cái Nước, Xã Cái Nước, Tỉnh Cà Mau, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Cái Nước, Cà Mau, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.0129625
   },
   {
     "id": "benh-vien-da-khoa-trung-uong-can-tho-can-tho",
@@ -310,14 +282,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 9.7705534,
-    "lng": 105.4508957,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.9867,
-      "matchedAddress": "Bệnh viện Đa khoa Hậu Giang, 647, Quốc lộ 61, Phường Vị Thanh, Thành phố Cần Thơ, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Hậu Giang, Cần Thơ, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.4508957
   },
   {
     "id": "benh-vien-hoan-my-cuu-long-can-tho",
@@ -347,14 +312,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.0291456,
-    "lng": 105.7827793,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.94,
-      "matchedAddress": "Bệnh viện Quân y 121, Hẻm 123 Châu Văn Liêm, Phường Ninh Kiều, Thành phố Cần Thơ, 94111, Việt Nam",
-      "query": "Bệnh Viện Quân Y 121, Cần Thơ, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.7827793
   },
   {
     "id": "benh-vien-da-khoa-tinh-soc-trang-can-tho",
@@ -369,14 +327,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 9.5793264,
-    "lng": 105.9761623,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.94,
-      "matchedAddress": "Bệnh viện Tâm thần - Da liễu - Mắt Sóc Trăng, Văn Ngọc Chính, Phường Phú Lợi, Thành phố Cần Thơ, 96113, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Tỉnh Sóc Trăng, Cần Thơ, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.9761623
   },
   {
     "id": "benh-vien-da-nang-da-nang",
@@ -391,14 +342,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 16.0730163,
-    "lng": 108.2154346,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đà Nẵng, 124, Đường Hải Phòng, Tổ dân phố 25 Thạch Thang, Phường Hải Châu, Thành phố Đà Nẵng, 50207, Việt Nam",
-      "query": "Bệnh Viện Đà Nẵng, 124 Đường Hải Phòng, Phường Hải Châu, Thành Phố Đà Nẵng, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 108.2154346
   },
   {
     "id": "benh-vien-da-khoa-quoc-te-vinmec-da-nang-da-nang",
@@ -443,14 +387,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 15.4469151,
-    "lng": 108.6252252,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.94,
-      "matchedAddress": "Bệnh viện Việt - Hàn Đà Nẵng, Quốc lộ 1, Xã Núi Thành, Thành phố Đà Nẵng, Việt Nam",
-      "query": "Bệnh Viện Việt - Hàn Đà Nẵng, Đà Nẵng, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 108.6252252
   },
   {
     "id": "benh-vien-da-khoa-khu-vuc-mien-nui-phia-bac-quang-nam-da-nang",
@@ -540,14 +477,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 15.9094982,
-    "lng": 108.2391229,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.944,
-      "matchedAddress": "Bệnh viện Đa khoa Vĩnh Đức, Đường Hùng Vương, Phường Điện Bàn Đông, Hội An, Thành phố Đà Nẵng, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Vĩnh Đức, Phường Điện Bàn Đông, Tp Đà Nẵng, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 108.2391229
   },
   {
     "id": "benh-vien-da-khoa-vung-tay-nguyen-dak-lak",
@@ -562,14 +492,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 12.6645201,
-    "lng": 108.055705,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa vùng Tây Nguyên, Trần Quý Cáp, Tổ dân phố 4, Phường Buôn Ma Thuột, Buôn Ma Thuột, Tỉnh Đắk Lắk, 63107, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Vùng Tây Nguyên, 184 Trần Quý Cáp, Phường Buôn Ma Thuột, Tỉnh Đăk Lăk, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 108.055705
   },
   {
     "id": "benh-vien-dai-hoc-y-duoc-buon-ma-thuot-dak-lak",
@@ -659,14 +582,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.9673317,
-    "lng": 106.9003943,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa Thống Nhất, Quốc lộ 1, Khu phố 16, Phường Long Bình, Đồng Nai, Thành phố Đồng Nai, 76109, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Thống Nhất - Đồng Nai, Đồng Nai, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.9003943
   },
   {
     "id": "benh-vien-da-khoa-dong-nai-dong-nai",
@@ -681,14 +597,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.9522085,
-    "lng": 106.8675942,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa Đồng Nai, 1, Đường Đồng Khởi, Khu phố 6, Phường Tam Hiệp, Đồng Nai, Thành phố Đồng Nai, 76109, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Đồng Nai, Đồng Nai, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.8675942
   },
   {
     "id": "benh-vien-da-khoa-khu-vuc-dinh-quan-dong-nai",
@@ -733,14 +642,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.9657578,
-    "lng": 106.8543709,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.944,
-      "matchedAddress": "Cửa hàng Sơn Dương, 2, Đường Đồng Khởi, Khu phố 8, Phường Tam Hiệp, Đồng Nai, Thành phố Đồng Nai, 76116, Việt Nam",
-      "query": "2 Đồng Khởi, Phường Tam Hiệp, TP. Đồng Nai, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.8543709
   },
   {
     "id": "benh-vien-da-khoa-tien-giang-dong-thap",
@@ -785,14 +687,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.3554744,
-    "lng": 106.3379996,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Quân y 120, Nguyễn Thị Thập, Mỹ Tho, Phường Thới Sơn, Tỉnh Đồng Tháp, 86000, Việt Nam",
-      "query": "Bệnh Viện Quân Y 120, Đồng Tháp, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.3379996
   },
   {
     "id": "benh-vien-da-khoa-tam-tri-dong-thap-dong-thap",
@@ -807,16 +702,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.47559094,
-    "lng": 105.6122539,
-    "geocode": {
-      "provider": "geoapify",
-      "score": "0.56",
-      "matchedAddress": "Tổng kho xăng dầu Trần Quốc Toản, Tỉnh Đồng Tháp, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Tâm Trí Đồng Tháp, Số 700 - Quốc Lộ 30 - P. Mỹ Ngãi - Tỉnh Đồng Tháp, Việt Nam",
-      "reviewed": true,
-      "reviewedAt": "2026-08-13T11:17:59+00:00",
-      "reviewMethod": "geocode_review.csv"
-    }
+    "lng": 105.6122539
   },
   {
     "id": "benh-vien-da-khoa-sa-dec-dong-thap",
@@ -861,14 +747,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.8088189,
-    "lng": 105.3488019,
-    "geocode": {
-      "provider": "geoapify",
-      "score": 0.725,
-      "matchedAddress": "12, Nguyễn Tất Thành, Phường Hồng Ngự, Hồng Ngự, Tỉnh Đồng Tháp, Việt Nam",
-      "query": "Bệnh Viện Quốc Tế Tâm Trí Hồng Ngự, 12 Nguyễn Tất Thành, Kđt Bờ Đông, Phường Hồng Ngự, Đồng Th, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.3488019
   },
   {
     "id": "benh-vien-da-khoa-gia-lai-gia-lai",
@@ -943,14 +822,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 14.4151044,
-    "lng": 109.0157637,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.9533,
-      "matchedAddress": "Đường Quang Trung, Phường Bồng Sơn, Bình Chương, Tỉnh Gia Lai, Việt Nam",
-      "query": "2699 Quang Trung, Phường Bồng Sơn, Tỉnh Gia Lai, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 109.0157637
   },
   {
     "id": "benh-vien-bach-mai-ha-noi",
@@ -1040,14 +912,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 21.0154973,
-    "lng": 105.8617295,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.84,
-      "matchedAddress": "Bệnh viện Hữu Nghị, 1, Đường Trần Khánh Dư, Lương Yên, Phường Hai Bà Trưng, Hà Nội, 11626, Việt Nam",
-      "query": "1 Trần Khánh Dư, Phường Hai Bà Trưng, Thành Phố Hà Nội, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.8617295
   },
   {
     "id": "benh-vien-thanh-nhan-ha-noi",
@@ -1227,14 +1092,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 20.9211553,
-    "lng": 105.8533397,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.94,
-      "matchedAddress": "Bệnh viện Đa khoa Nông nghiệp, Đường Phương Dung, Cơ khí và Xây lắp số 7, Xã Ngọc Hồi, Hà Nội, 11707, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Nông Nghiệp, Hà Nội, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.8533397
   },
   {
     "id": "benh-vien-da-khoa-dong-anh-ha-noi",
@@ -1249,14 +1107,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 21.1104815,
-    "lng": 105.8757685,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.944,
-      "matchedAddress": "Xã Đông Anh, Hà Nội, Việt Nam",
-      "query": "Tổ 1 Xã Đông Anh, Thành Phố Hà Nội, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.8757685
   },
   {
     "id": "benh-vien-da-khoa-gia-lam-ha-noi",
@@ -1271,14 +1122,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 21.0094101,
-    "lng": 105.9439822,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.96,
-      "matchedAddress": "Bệnh viện Đa khoa Gia Lâm, Phố Đoàn Quang Dung, Đào Nguyên, Xã Gia Lâm, Hà Nội, 17710, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Gia Lâm, Hà Nội, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.9439822
   },
   {
     "id": "benh-vien-da-khoa-tinh-ha-tinh-ha-tinh",
@@ -1368,14 +1212,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 20.9422969,
-    "lng": 106.3258543,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.912,
-      "matchedAddress": "Bệnh viện Quân y 7, Phố Lê Hồng Phong, Nguyễn Trãi, Phường Thành Đông, Thành phố Hải Phòng, 03118, Việt Nam",
-      "query": "Bệnh Viện Quân Y 7, Hải Phòng, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.3258543
   },
   {
     "id": "benh-vien-da-khoa-quoc-te-vinmec-hai-phong-hai-phong",
@@ -1390,14 +1227,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 20.8300834,
-    "lng": 106.6800525,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.64,
-      "matchedAddress": "Phường An Biên, Thành phố Hải Phòng, Việt Nam",
-      "query": "Tổ 31, P.An Biên, Tp Hải Phòng, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6800525
   },
   {
     "id": "benh-vien-da-khoa-quoc-te-hai-phong-hai-phong",
@@ -1442,14 +1272,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.9747414,
-    "lng": 106.48018,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa Khu vực Củ Chi (mới), Đường Số 370, Ấp Bàu Tre 2, Xã Tân An Hội, Thành phố Hồ Chí Minh, 75500, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Khu Vực Củ Chi, Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.48018
   },
   {
     "id": "benh-vien-da-khoa-hoan-my-sai-gon-ho-chi-minh",
@@ -1464,16 +1287,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.80032731,
-    "lng": 106.6854758,
-    "geocode": {
-      "provider": "geoapify",
-      "score": "0.43",
-      "matchedAddress": "Bệnh viện Đa khoa Hoàn Mỹ Minh Hải, 9, Lạc Long Quân, Cà Mau, CM 98100, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Hoàn Mỹ Sài Gòn, Việt Nam",
-      "reviewed": true,
-      "reviewedAt": "2026-08-13T11:17:59+00:00",
-      "reviewMethod": "geocode_review.csv"
-    }
+    "lng": 106.6854758
   },
   {
     "id": "benh-vien-da-khoa-xuyen-a-tp-hcm-ho-chi-minh",
@@ -1488,16 +1302,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.9280407,
-    "lng": 106.5585115,
-    "geocode": {
-      "provider": "nominatim",
-      "score": "0.53",
-      "matchedAddress": "Bệnh Viện Đa Khoa Xuyên Á, 42, Phan Văn Khải, Ấp Chợ A, Xã Củ Chi, Thành phố Hồ Chí Minh, 71608, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Xuyên Á TP. Hcm, Hồ Chí Minh, Việt Nam",
-      "reviewed": true,
-      "reviewedAt": "2026-08-13T11:17:59+00:00",
-      "reviewMethod": "geocode_review.csv"
-    }
+    "lng": 106.5585115
   },
   {
     "id": "benh-vien-dai-hoc-y-duoc-tp-hcm-ho-chi-minh",
@@ -1512,14 +1317,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.7556384,
-    "lng": 106.6646794,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.677,
-      "matchedAddress": "Bệnh viện Đại học Y Dược, Đường Hồng Bàng, Khu phố 2, Phường Chợ Lớn, Thành phố Hồ Chí Minh, 72415, Việt Nam",
-      "query": "Bệnh Viện Đại Học Y Dược TP. Hcm, Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6646794
   },
   {
     "id": "benh-vien-nhan-dan-115-ho-chi-minh",
@@ -1534,14 +1332,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.7744865,
-    "lng": 106.6665778,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Nhân dân 115, 527, Sư Vạn Hạnh, Khu phố 19, Phường Hòa Hưng, Thành phố Hồ Chí Minh, 72117, Việt Nam",
-      "query": "Bệnh Viện Nhân Dân 115, 527 Sư Vạn Hạnh, Phường Hoà Hưng, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6665778
   },
   {
     "id": "benh-vien-nhan-dan-gia-dinh-ho-chi-minh",
@@ -1571,14 +1362,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.75552,
-    "lng": 106.6701873,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Nguyễn Tri Phương, Đường Nguyễn Trãi, Khu phố 16, Phường An Đông, Thành phố Hồ Chí Minh, 72712, Việt Nam",
-      "query": "Bệnh Viện Nguyễn Tri Phương, 468 Nguyễn Trãi, P. An Đông, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6701873
   },
   {
     "id": "benh-vien-thong-nhat-ho-chi-minh",
@@ -1593,14 +1377,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.7883617,
-    "lng": 106.6531106,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.64,
-      "matchedAddress": "Lý Thường Kiệt, Khu phố 23, Phường Tân Sơn Nhất, Thành phố Hồ Chí Minh, 72117, Việt Nam",
-      "query": "1 Lý Thường Kiệt, Phường Tân Sơn Nhất, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6531106
   },
   {
     "id": "benh-vien-quan-y-175-ho-chi-minh",
@@ -1615,14 +1392,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.8187508,
-    "lng": 106.680586,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Quân y 175, 786, Nguyễn Kiệm, Khu phố 18, Phường Hạnh Thông, Thành phố Hồ Chí Minh, 70048, Việt Nam",
-      "query": "Bệnh Viện Quân Y 175, 786 Nguyễn Kiệm, P. Hạnh Thông, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.680586
   },
   {
     "id": "benh-vien-le-van-thinh-ho-chi-minh",
@@ -1637,14 +1407,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.7822663,
-    "lng": 106.7684977,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Lê Văn Thịnh, 130, Lê Văn Thịnh, Khu phố 30, Phường Bình Trưng, Thành phố Hồ Chí Minh, 71150, Việt Nam",
-      "query": "Bệnh Viện Lê Văn Thịnh, 130 Lê Văn Thịnh, P Bình Trưng Tây, Tp Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.7684977
   },
   {
     "id": "benh-vien-thu-duc-ho-chi-minh",
@@ -1659,14 +1422,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.8670756,
-    "lng": 106.7465434,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Trung tâm Điều dưỡng Người bệnh Tâm Thần Thủ Đức, 37, Phú Châu, Khu phố 30, Phường Tam Bình, Thành phố Hồ Chí Minh, 75350, Việt Nam",
-      "query": "Bệnh Viện Thủ Đức, 29 Phú Châu, Phường Tam Bình, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.7465434
   },
   {
     "id": "benh-vien-da-khoa-khu-vuc-thu-duc-ho-chi-minh",
@@ -1681,14 +1437,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.8621569,
-    "lng": 106.7808406,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.94,
-      "matchedAddress": "Bệnh viện Đa khoa khu vực Thủ Đức, Hẻm 127, Khu phố 12, Phường Linh Xuân, Thành phố Hồ Chí Minh, 00084, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Khu Vực Thủ Đức, Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.7808406
   },
   {
     "id": "benh-vien-gia-an-115-ho-chi-minh",
@@ -1703,14 +1452,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.7406628,
-    "lng": 106.6080525,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Gia An 115, 5, Đường số 17A, Khu phố 16, Phường An Lạc, Thành phố Hồ Chí Minh, 73118, Việt Nam",
-      "query": "Bệnh Viện Gia An 115, Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6080525
   },
   {
     "id": "benh-vien-binh-tan-ho-chi-minh",
@@ -1725,14 +1467,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.764476,
-    "lng": 106.6032051,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa Bình Tân, 809, Hương Lộ 2, Khu phố 19, Phường Bình Trị Đông, Thành phố Hồ Chí Minh, 71915, Việt Nam",
-      "query": "Bệnh Viện Bình Tân, 809 Hương Lộ 2, P. Bình Trị Đông, TP. Hcm, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6032051
   },
   {
     "id": "benh-vien-nguyen-trai-ho-chi-minh",
@@ -1747,14 +1482,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.7568827,
-    "lng": 106.6750459,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Nguyễn Trãi, 314, Đường Nguyễn Trãi, Khu phố 18, Phường An Đông, Thành phố Hồ Chí Minh, 72760, Việt Nam",
-      "query": "Bệnh Viện Nguyễn Trãi, 314 Nguyễn Trãi, P. An Đông, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6750459
   },
   {
     "id": "benh-vien-an-binh-ho-chi-minh",
@@ -1769,14 +1497,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.7539583,
-    "lng": 106.6723053,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện An Bình, 146, Đường An Bình, Khu phố 11, Phường An Đông, Thành phố Hồ Chí Minh, 72712, Việt Nam",
-      "query": "Bệnh Viện An Bình, 146 An Bình, P. An Đông, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6723053
   },
   {
     "id": "benh-vien-da-khoa-khu-vuc-hoc-mon-ho-chi-minh",
@@ -1791,14 +1512,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.8825049,
-    "lng": 106.5929762,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa khu vực Hóc Môn, Bà Triệu, Ấp 11, Xã Hóc Môn, Thành phố Hồ Chí Minh, 71717, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Khu Vực Hóc Môn, Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.5929762
   },
   {
     "id": "benh-vien-van-hanh-ho-chi-minh",
@@ -1813,14 +1527,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.7713532,
-    "lng": 106.670117,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa Khoa Vạn Hạnh, Hẻm 702 Sư Vạn Hạnh, Khu phố 24, Phường Hòa Hưng, Thành phố Hồ Chí Minh, 72712, Việt Nam",
-      "query": "Bệnh Viện Vạn Hạnh, 700 Sư Vạn Hạnh, P. Hoà Hưng, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.670117
   },
   {
     "id": "benh-vien-da-khoa-lanh-binh-thang-ho-chi-minh",
@@ -1835,14 +1542,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.7606555,
-    "lng": 106.6479141,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa Lãnh Binh Thăng, 72, Đường số 5, Khu phố 13, Phường Bình Thới, Thành phố Hồ Chí Minh, 72415, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Lãnh Binh Thăng, 72 Đường Số 5, Phường Bình Thới, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6479141
   },
   {
     "id": "benh-vien-da-khoa-tam-anh-tp-ho-chi-minh-ho-chi-minh",
@@ -1857,14 +1557,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.8072415,
-    "lng": 106.6684351,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.677,
-      "matchedAddress": "Phổ Quang, Phường Tân Sơn Hòa, Thành phố Hồ Chí Minh, 72215, Việt Nam",
-      "query": "2B Phổ Quang, Phường Tân Sơn Hoà, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6684351
   },
   {
     "id": "benh-vien-trung-vuong-ho-chi-minh",
@@ -1879,14 +1572,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.771122,
-    "lng": 106.6598834,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Trưng Vương, 266, Đường Lý Thường Kiệt, Khu phố 9, Phường Diên Hồng, Thành phố Hồ Chí Minh, 72415, Việt Nam",
-      "query": "Bệnh Viện Trưng Vương, 266 Lý Thường Kiệt, Phường Diên Hồng, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6598834
   },
   {
     "id": "phong-kham-tam-anh-quan-7-ho-chi-minh",
@@ -1901,14 +1587,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.786353,
-    "lng": 106.731328,
-    "geocode": {
-      "provider": "geoapify",
-      "score": 0.645,
-      "matchedAddress": "Phòng Khám Victoria, Thành phố Hồ Chí Minh, Quan 8, Việt Nam",
-      "query": "Phòng Khám Tâm Anh Quận 7, Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.731328
   },
   {
     "id": "benh-vien-nhan-dan-gia-dinh-co-so-2-ho-chi-minh",
@@ -1923,14 +1602,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.7721351,
-    "lng": 106.6995673,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Nhân dân Gia Định - cơ sở 2, 125, Lê Lợi, Khu phố 1, Phường Bến Thành, Thành phố Hồ Chí Minh, 71006, Việt Nam",
-      "query": "Bệnh Viện Nhân Dân Gia Định - Cơ Sở 2, 125 Lê Lợi, Phường Bến Thành, TP. Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6995673
   },
   {
     "id": "benh-vien-cho-ray-ho-chi-minh",
@@ -1945,14 +1617,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.7566964,
-    "lng": 106.6597263,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Chợ Rẫy, 201B, Đường Nguyễn Chí Thanh, Khu phố 11, Phường Chợ Lớn, Thành phố Hồ Chí Minh, 72415, Việt Nam",
-      "query": "Bệnh Viện Chợ Rẫy, 201B Nguyễn Chí Thanh, Phường Chợ Lớn, TP.Hcm, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6597263
   },
   {
     "id": "benh-vien-vinmec-central-park-ho-chi-minh",
@@ -1967,14 +1632,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.793884,
-    "lng": 106.724109,
-    "geocode": {
-      "provider": "geoapify",
-      "score": 0.655,
-      "matchedAddress": "Công viên Vinhomes Central Park, Phường Thạnh Mỹ Tây, Thành phố Hồ Chí Minh, HC, Việt Nam",
-      "query": "Bệnh Viện Vinmec Central Park, Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.724109
   },
   {
     "id": "benh-vien-da-khoa-binh-duong-ho-chi-minh",
@@ -1989,14 +1647,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.9976842,
-    "lng": 106.6551797,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa Bình Dương, 5, Phạm Ngọc Thạch, Khu phố Hiệp Thành, Phường Phú Lợi, Thành phố Hồ Chí Minh, 75111, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Bình Dương, Phạm Ngọc Thạch, Phường Phú Lợi, Tp Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.6551797
   },
   {
     "id": "benh-vien-da-khoa-vung-tau-ho-chi-minh",
@@ -2011,14 +1662,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.391952,
-    "lng": 107.130363,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa Vũng Tàu, Đường 2 Tháng 9, Khu phố 2, Phường Phước Thắng, Thành phố Hồ Chí Minh, 78000, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Vũng Tàu, Hồ Chí Minh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 107.130363
   },
   {
     "id": "benh-vien-ba-ria-ho-chi-minh",
@@ -2078,16 +1722,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 20.4368296,
-    "lng": 106.347689,
-    "geocode": {
-      "provider": "geoapify",
-      "score": "0.16",
-      "matchedAddress": "7, Bệnh viện Lao và Bệnh phổi Quy Nhơn, Phường Quy Nhơn Bắc, Quy Nhơn, BD 55200, Việt Nam",
-      "query": "Bệnh Viện Đột Quỵ Và Thần Kinh Hà Nội -Thái Bình, Việt Nam",
-      "reviewed": true,
-      "reviewedAt": "2026-08-13T11:17:59+00:00",
-      "reviewMethod": "geocode_review.csv"
-    }
+    "lng": 106.347689
   },
   {
     "id": "benh-vien-da-khoa-tinh-hung-yen-hung-yen",
@@ -2117,14 +1752,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 20.9293208,
-    "lng": 105.9326937,
-    "geocode": {
-      "provider": "geoapify",
-      "score": 0.832,
-      "matchedAddress": "Xã Văn Giang, Tỉnh Hưng Yên, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Văn Giang, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.9326937
   },
   {
     "id": "benh-vien-da-khoa-quoc-te-vinmec-ocean-park-2-hung-yen",
@@ -2139,14 +1767,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 20.9431201,
-    "lng": 105.9781462,
-    "geocode": {
-      "provider": "geoapify",
-      "score": 0.725,
-      "matchedAddress": "The Empire Vinhomes Ocean Park 2, Xã Nghĩa Trụ, Tỉnh Hưng Yên, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Quốc Tế Vinmec Ocean Park 2, Khu Đô Thị Vinhomes Ocean Park 2, Xã Nghĩa Trụ, Hưng Yên, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.9781462
   },
   {
     "id": "benh-vien-da-khoa-ninh-thuan-khanh-hoa",
@@ -2176,14 +1797,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 12.2494504,
-    "lng": 109.1866997,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.9533,
-      "matchedAddress": "Yersin, Phường Tây Nha Trang, Khánh Hòa, 57100, Việt Nam",
-      "query": "19 Yersin, Phường Nha Trang, Khánh Hoà, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 109.1866997
   },
   {
     "id": "benh-vien-da-khoa-tinh-lang-son-lang-son",
@@ -2198,14 +1812,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 21.8807298,
-    "lng": 106.7580997,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.9867,
-      "matchedAddress": "Bệnh viện Đa khoa tỉnh Lạng Sơn, Quốc lộ 1, 黃文樹坊, Phường Kỳ Lừa, Tỉnh Lạng Sơn, 25106, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Tỉnh Lạng Sơn, Lạng Sơn, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.7580997
   },
   {
     "id": "benh-vien-da-khoa-so-2-tinh-lao-cai-lao-cai",
@@ -2295,14 +1902,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 11.9467613,
-    "lng": 108.4320348,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Phạm Ngọc Thạch, Ấp Đa Cát, Phường Cam Ly - Đà Lạt, Đà Lạt, Tỉnh Lâm Đồng, 66113, Việt Nam",
-      "query": "01 Phạm Ngọc Thạch, Phường Cam Ly-Đà Lạt, Tỉnh Lâm Đồng., Việt Nam",
-      "reviewed": false
-    }
+    "lng": 108.4320348
   },
   {
     "id": "benh-vien-ii-lam-dong-lam-dong",
@@ -2317,14 +1917,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 11.5307531,
-    "lng": 107.8086129,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện II Lâm Đồng, 263, Trần Quốc Toản, B'Lao, Phường B'Lao, Tỉnh Lâm Đồng, 66464, Việt Nam",
-      "query": "Bệnh Viện Ii Lâm Đồng, 263 Trần Quốc Toản, Phường B'Lao, Tỉnh Lâm Đồng., Việt Nam",
-      "reviewed": false
-    }
+    "lng": 107.8086129
   },
   {
     "id": "benh-vien-hoan-my-da-lat-lam-dong",
@@ -2339,16 +1932,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 11.92349244,
-    "lng": 108.4591002,
-    "geocode": {
-      "provider": "geoapify",
-      "score": "0.55",
-      "matchedAddress": "Bệnh viện Đa khoa Hoàn Mỹ Cửu Long, Thành phố Cần Thơ, CN 94200, Việt Nam",
-      "query": "Bệnh Viện Hoàn Mỹ Đà Lạt, Lâm Đồng, Việt Nam",
-      "reviewed": true,
-      "reviewedAt": "2026-08-13T11:17:59+00:00",
-      "reviewMethod": "geocode_review.csv"
-    }
+    "lng": 108.4591002
   },
   {
     "id": "benh-vien-da-khoa-binh-thuan-lam-dong",
@@ -2453,14 +2037,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 18.6655966,
-    "lng": 105.6817303,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.5933,
-      "matchedAddress": "Đường Trần Phú, Phường Trường Vinh, Tỉnh Nghệ An, Việt Nam",
-      "query": "178 Trần Phú, Phường Trường Vinh, Nghệ An, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.6817303
   },
   {
     "id": "benh-vien-da-khoa-thanh-pho-vinh-co-so-2-nghe-an",
@@ -2655,14 +2232,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 21.041783,
-    "lng": 106.7518618,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Việt Nam - Thụy Điển Uông Bí, Phố Hoàng Quốc Việt, Thanh Sơn, Phường Uông Bí, Thành phố Quảng Ninh, 02306, Việt Nam",
-      "query": "Bệnh Viện Việt Nam - Thuỵ Điển Uông Bí, Quảng Ninh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.7518618
   },
   {
     "id": "benh-vien-da-khoa-cam-pha-quang-ninh",
@@ -2707,14 +2277,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 21.0086215,
-    "lng": 107.280371,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.9533,
-      "matchedAddress": "Ngõ 271 Trần Phú, Cẩm Thành, Phường Cẩm Phả, Thành phố Quảng Ninh, 01250, Việt Nam",
-      "query": "371 Trần Phú, Cẩm Phả, Quảng Ninh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 107.280371
   },
   {
     "id": "trung-tam-y-te-hai-ha-quang-ninh",
@@ -2759,14 +2322,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 21.5251889,
-    "lng": 107.9608031,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa khu vực Móng Cái, Đường Tuệ Tĩnh, Phường Móng Cái 2, Thành phố Quảng Ninh, 02033, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Khu Vực Móng Cái, Đường Tuệ Tĩnh, Phường Móng Cái 2, Quảng Ninh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 107.9608031
   },
   {
     "id": "bv-da-khoa-tinh-quang-ngai-quang-ngai",
@@ -2796,16 +2352,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 15.11157115,
-    "lng": 108.817268,
-    "geocode": {
-      "provider": "geoapify",
-      "score": "0.4",
-      "matchedAddress": "Bệnh viện đa khoa tư nhân Y Cao, Xuân Phong, Hà Nội, HI, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Tư Nhân Phúc Hưng, Quảng Ngãi, Việt Nam",
-      "reviewed": true,
-      "reviewedAt": "2026-08-13T11:17:59+00:00",
-      "reviewMethod": "geocode_review.csv"
-    }
+    "lng": 108.817268
   },
   {
     "id": "benh-vien-da-khoa-tinh-quang-ngai-2-quang-ngai",
@@ -2835,14 +2382,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 17.474055,
-    "lng": 106.600671,
-    "geocode": {
-      "provider": "geoapify",
-      "score": 0.6,
-      "matchedAddress": "10, Bệnh viện Hữu nghị Việt Nam - Cuba Đồng Hới, Phường Đồng Hới, QB, Việt Nam",
-      "query": "Bệnh Viện Hữu Nghị Việt Nam - Cu Ba Đồng Hới, TDP 10, Nam Lý, Đồng Hới, Quảng Trị, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.600671
   },
   {
     "id": "benh-vien-da-khoa-khu-vuc-bac-quang-tri-quang-tri",
@@ -2947,14 +2487,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 11.2908098,
-    "lng": 106.1195624,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện đa khoa Hồng Hưng, 187, Phạm Văn Đồng, Khu phố 1, Phường Thanh Điền, Tỉnh Tây Ninh, 84060, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Hồng Hưng, Tây Ninh, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.1195624
   },
   {
     "id": "benh-vien-xuyen-a-long-an-tay-ninh",
@@ -3089,14 +2622,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 22.7425331,
-    "lng": 104.6791699,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.9533,
-      "matchedAddress": "Xã Hoàng Su Phì, Tỉnh Tuyên Quang, Việt Nam",
-      "query": "Thôn 3, Xã Hoàng Su Phì, Tuyên Quang., Việt Nam",
-      "reviewed": false
-    }
+    "lng": 104.6791699
   },
   {
     "id": "benh-vien-trung-uong-thai-nguyen-thai-nguyen",
@@ -3156,14 +2682,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 21.4464142,
-    "lng": 105.8617059,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện C Thái Nguyên, Đường Trần Hưng Đạo, Khu công nghiệp Sông Công I, Phường Bách Quang, Phường Sông Công, Tỉnh Thái Nguyên, Việt Nam",
-      "query": "Bệnh Viện C Thái Nguyên, 595 Trần Hưng Đạo, Phường Sông Công, Tỉnh Thái Nguyên, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.8617059
   },
   {
     "id": "benh-vien-da-khoa-tinh-thanh-hoa-thanh-hoa",
@@ -3208,14 +2727,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 19.4628,
-    "lng": 105.789914,
-    "geocode": {
-      "provider": "geoapify",
-      "score": 0.62,
-      "matchedAddress": "Bệnh viện Đa khoa Nghi Sơn, Hải Hòa, Phường Tĩnh Gia, TH, Việt Nam",
-      "query": "Bệnh Việ Đa Khoa Nghi Sơn, TDP Xuân Hoà, Phường Tĩnh Gia, Tỉnh Thanh Hoá, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.789914
   },
   {
     "id": "benh-vien-da-khoa-ngoc-lac-thanh-hoa",
@@ -3245,14 +2757,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 20.0052464,
-    "lng": 105.8502676,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.9867,
-      "matchedAddress": "Bệnh viện Đa khoa Hà Trung, Đường Nguyễn Kim, Xã Hà Trung, Tỉnh Thanh Hóa, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Hà Trung, Thanh Hoá, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.8502676
   },
   {
     "id": "benh-vien-da-khoa-thieu-hoa-thanh-hoa",
@@ -3267,14 +2772,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 19.8672561,
-    "lng": 105.6768696,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Đa khoa Thiệu Hóa, Đường tỉnh 515, Thiệu Vận, Xã Thiệu Trung, Tỉnh Thanh Hóa, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Thiệu Hoá, Thiệu Trung, Thanh Hoá, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.6768696
   },
   {
     "id": "benh-vien-da-khoa-yen-dinh-thanh-hoa",
@@ -3289,14 +2787,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 19.9780594,
-    "lng": 105.6446448,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.968,
-      "matchedAddress": "Bệnh viện Đa khoa Yên Định, Phố Ngọ Tư Thành, Quán Lào, Xã Yên Định, Tỉnh Thanh Hóa, Việt Nam",
-      "query": "Bệnh Viện Đa Khoa Yên Định, Thanh Hoá, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.6446448
   },
   {
     "id": "benh-vien-da-khoa-ba-thuoc-thanh-hoa",
@@ -3311,14 +2802,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 20.3487234,
-    "lng": 105.2266055,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.92,
-      "matchedAddress": "Đường Lê Thái Tổ, Cành Nàng, Xã Bá Thước, Tỉnh Thanh Hóa, Việt Nam",
-      "query": "QL 217, Cành Nàng, Bá Thước, Thanh Hoá, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.2266055
   },
   {
     "id": "benh-vien-da-khoa-tho-xuan-thanh-hoa",
@@ -3333,14 +2817,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 19.9314713,
-    "lng": 105.5201075,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 0.93,
-      "matchedAddress": "Xã Thọ Xuân, Tỉnh Thanh Hóa, Việt Nam",
-      "query": "Xã Thọ Xuân, Tỉnh Thanh Hoá, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 105.5201075
   },
   {
     "id": "benh-vien-trung-uong-hue-co-so-2-thua-thien-hue",
@@ -3355,16 +2832,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 16.55025681,
-    "lng": 107.4398083,
-    "geocode": {
-      "provider": "opencage",
-      "score": "0.465",
-      "matchedAddress": "Tỉnh Thừa Thiên-Huế, Việt Nam",
-      "query": "Bệnh Viện Trung Ương Huế Cơ Sớ 2, Thừa Thiên Huế, Việt Nam",
-      "reviewed": true,
-      "reviewedAt": "2026-08-13T11:17:59+00:00",
-      "reviewMethod": "geocode_review.csv"
-    }
+    "lng": 107.4398083
   },
   {
     "id": "benh-vien-trung-uong-hue-thua-thien-hue",
@@ -3379,14 +2847,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 16.462249,
-    "lng": 107.587209,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh viện Trung ương Huế, 16, Lê Lợi, Vĩnh Ninh, Tổ dân phố 9, Phường Thuận Hoá, Thành phố Huế, 54000, Việt Nam",
-      "query": "Bệnh Viện Trung Ương Huế, 16 Lê Lợi Thuận Hoá, Thành Phố Huế, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 107.587209
   },
   {
     "id": "benh-vien-nguyen-dinh-chieu-vinh-long",
@@ -3446,14 +2907,7 @@
     "updatedAt": "2026-06",
     "source": "Hội Đột Quỵ Việt Nam (VNSA)",
     "lat": 10.2398715,
-    "lng": 106.3675519,
-    "geocode": {
-      "provider": "nominatim",
-      "score": 1.0,
-      "matchedAddress": "Bệnh Viện Minh Đức, 333D, Đoàn Hoàng Minh, Phường Sơn Đông, Tỉnh Vĩnh Long, 86116, Việt Nam",
-      "query": "333D, Đoàn Hoàng Minh, Phường Sơn Đông, Tỉnh Vĩnh Long, Việt Nam",
-      "reviewed": false
-    }
+    "lng": 106.3675519
   },
   {
     "id": "benh-vien-da-khoa-tra-vinh-vinh-long",
