@@ -463,11 +463,6 @@
     padding:16px;
     margin-bottom:10px;
   }
-  .sign-card-call{
-    background:var(--ink);
-    border-color:var(--ink);
-  }
-  .sign-card-call h3, .sign-card-call p{color:#fff;}
   .sign-letter{
     flex:none;
     width:44px;
@@ -480,10 +475,6 @@
     display:flex;
     align-items:center;
     justify-content:center;
-  }
-  .sign-card-call .sign-letter{
-    background:var(--red);
-    color:#fff;
   }
   .sign-body h3{
     font-size:15.5px;
