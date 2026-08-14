@@ -66,6 +66,39 @@ COORDINATE_PATTERN = re.compile(
     r"([-+]?(?:\d+(?:\.\d+)?|\.\d+))\s*$"
 )
 
+HOTLINE_EXTENSION_PATTERN = re.compile(
+    r"\(\s*(?:nhấn|nhánh|nhan|ext|extension)\s*[:.]?\s*\d+\s*\)",
+    re.IGNORECASE,
+)
+
+
+def validate_hotline(value: str, row_number: int) -> None:
+    """Validate the two supported hotline formats without changing display text."""
+    value = normalize_text(value)
+    if not value:
+        return
+    if re.search(r"\bhoặc\b", value, re.IGNORECASE):
+        raise ValueError(
+            f"Dòng {row_number} hotline phải dùng '/' để tách số, không dùng 'hoặc': {value!r}"
+        )
+
+    for part in value.split("/"):
+        part = part.strip()
+        base = HOTLINE_EXTENSION_PATTERN.sub("", part).strip()
+        if not re.fullmatch(r"[\d\s().+\-]+", base):
+            raise ValueError(
+                f"Dòng {row_number} hotline chỉ cho phép số, ký tự định dạng và nhánh trong ngoặc: {part!r}"
+            )
+        digits = re.sub(r"\D", "", base)
+        if len(digits) < 3:
+            raise ValueError(f"Dòng {row_number} hotline không có số hợp lệ: {part!r}")
+
+        # Ngoặc chứa số ở cuối phải ghi rõ là nhánh, ví dụ (nhấn 211) hoặc (ext 211).
+        if re.search(r"\(\s*\d+\s*\)\s*$", base):
+            raise ValueError(
+                f"Dòng {row_number} hotline có số nhánh nhưng thiếu 'nhấn' hoặc 'ext': {part!r}"
+            )
+
 
 def parse_coordinates(value: str) -> tuple[float, float] | None:
     """Parse Google Maps order: latitude first, longitude second."""
@@ -168,6 +201,7 @@ def convert(csv_path: Path, existing_path: Path) -> list[dict[str, Any]]:
             "intervention": normalize_boolean(cell(row, mapping["intervention"])),
             "province": cell(row, mapping["province"]),
         }
+        validate_hotline(record["hotline"], row_number)
         missing = [field for field in REQUIRED_FIELDS if not record[field]]
         if missing:
             raise ValueError(f"Dòng {row_number} thiếu: {', '.join(missing)}")

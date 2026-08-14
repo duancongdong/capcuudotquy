@@ -129,6 +129,41 @@ Sheet hiện dùng:
 - Cột `H`: `province`.
 - Cột `I`: tọa độ `lat,lng`.
 
+Quy tắc cột `hotline`:
+
+Chỉ sử dụng hai format sau:
+
+**Format 1 — nhiều số điện thoại độc lập**
+
+Các số được ngăn cách bằng dấu `/`. Mỗi số là một lựa chọn gọi riêng.
+
+```text
+02838412692 / 115
+```
+
+**Format 2 — số điện thoại có nhánh phụ**
+
+Ghi nhánh trong ngoặc ngay sau số chính, dùng từ `nhấn` hoặc `ext` và số nhánh.
+
+```text
+02838412692 (nhấn 211) / 115
+02839248158 (ext 440)
+```
+
+Khi người dùng bấm gọi, website chỉ gọi số chính (`02838412692` hoặc `02839248158`).
+Phần `(nhấn 211)` hoặc `(ext 440)` chỉ là hướng dẫn để người dùng nhấn tiếp trên điện thoại.
+
+### Các lỗi hotline thường gặp
+
+- Dùng chữ `hoặc` thay cho `/`: `02838412692 hoặc 115` — phải sửa thành `02838412692 / 115`.
+- Gộp số nhánh vào số điện thoại: `02838412692211` — phải ghi `02838412692 (nhấn 211)`.
+- Ghi số nhánh trong ngoặc nhưng thiếu từ chỉ dẫn: `02838412692 (211)` — phải ghi `(nhấn 211)` hoặc `(ext 211)`.
+- Ghi chú chữ không phải nhánh trong hotline: `02623841649 (Khoa cấp cứu)` — không thuộc format cho phép; đưa thông tin này vào trường phù hợp hoặc chỉ giữ số điện thoại.
+- Dữ liệu bị lỗi ký tự hoặc lẫn chữ: `ầ1n1 5T hhoặc 02933115` — xóa và nhập lại bằng số điện thoại chính xác.
+- Dùng dấu phẩy, dấu chấm phẩy hoặc xuống dòng để tách nhiều số — thay bằng dấu `/`.
+
+Script đồng bộ sẽ kiểm tra các lỗi trên. Nếu hotline không hợp lệ, dữ liệu sẽ không được phát hành lên website; Admin cần sửa lỗi rồi chuyển `E2` sang `Released` lại.
+
 ### Cập nhật và phát hành
 
 1. Đổi `E2` từ `Released` sang `Updating`.

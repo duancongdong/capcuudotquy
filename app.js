@@ -11,17 +11,28 @@
   }
 
   function parsePhoneNumbers(hotline) {
-    // Tách chuỗi hotline gộp nhiều số (phân cách bằng "/", "hoặc") thành từng số riêng.
-    // Giữ lại phần ghi chú dạng "(Ext 123)" gắn liền với số đứng trước nó.
-    return hotline
-      .split(/\s*\/\s*|\s+hoặc\s+/i)
-      .map(s => s.trim())
-      .filter(Boolean);
+    // Chỉ dùng "/" để tách các số độc lập. Phần nhánh trong ngoặc là
+    // hướng dẫn hiển thị, không được đưa vào liên kết tel:.
+    return String(hotline || '')
+      .split(/\s*\/\s*/)
+      .map(label => label.trim())
+      .filter(Boolean)
+      .map(label => {
+        const extension = label.match(/\(\s*(?:nhấn|nhánh|nhan|ext|extension)\s*[:.]?\s*(\d+)\s*\)/i);
+        const numberLabel = extension
+          ? label.replace(extension[0], '').trim()
+          : label;
+        return {
+          label,
+          number: numberLabel.replace(/[^\d]/g, ''),
+          extension: extension ? extension[1] : '',
+        };
+      })
+      .filter(phone => phone.number);
   }
 
-  function telHrefFromLabel(label) {
-    const digits = label.replace(/[^\d]/g, '');
-    return digits ? `tel:${digits}` : '#';
+  function telHrefFromPhone(phone) {
+    return phone && phone.number ? `tel:${phone.number}` : '#';
   }
 
   function mapsDirectionUrl(address, name) {
@@ -183,7 +194,7 @@
     list.innerHTML = sorted.map(h => {
       const phones = parsePhoneNumbers(h.hotline);
       const phoneButtons = phones.map(p =>
-        `<a class="call-link" href="${telHrefFromLabel(p)}">📞 ${escapeHtml(p)}</a>`
+        `<a class="call-link" href="${telHrefFromPhone(p)}">📞 ${escapeHtml(p.label)}</a>`
       ).join('');
       const distanceHtml = (h._distanceKm != null)
         ? `<span class="distance-badge">${h._distanceKm < 1 ? Math.round(h._distanceKm*1000)+' m' : h._distanceKm.toFixed(1)+' km'}</span>`
@@ -292,22 +303,17 @@
     map.addLayer(markerCluster);
   }
 
-  function telHrefFromLabel_(label) {
-    const digits = label.replace(/[^\d]/g, '');
-    return digits ? `tel:${digits}` : '#';
-  }
-
   function createMapMarker(h) {
     const marker = L.marker([h.lat, h.lng]);
     marker.on('click', () => {
       if (!marker.getPopup()) {
-        const firstPhone = parsePhoneNumbers(h.hotline)[0] || '';
+        const firstPhone = parsePhoneNumbers(h.hotline)[0];
         const popupHtml = `
           <div class="map-popup">
             <h3>${escapeHtml(h.name)}</h3>
             <p class="popup-addr">${escapeHtml(h.address)}</p>
             <div class="popup-actions">
-              <a class="pop-call" href="${telHrefFromLabel_(firstPhone)}">📞 Gọi</a>
+              <a class="pop-call" href="${telHrefFromPhone(firstPhone)}">📞 Gọi</a>
               <a class="pop-dir" href="${mapsDirectionUrl(h.address, h.name)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
             </div>
           </div>`;
