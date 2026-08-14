@@ -545,6 +545,11 @@
       ALL.forEach(h => { h._searchIndex = buildSearchIndex(h); });
       document.getElementById('metaCount').innerHTML = `<b>${ALL.length}</b> đơn vị`;
       document.getElementById('metaProv').innerHTML = `<b>${new Set(ALL.map(h=>h.province)).size}</b> tỉnh/thành`;
+      const withCoordinates = ALL.filter(h =>
+        Number.isFinite(Number(h.lat)) && Number.isFinite(Number(h.lng))
+      );
+      document.getElementById('mapCoordinateCount').textContent = withCoordinates.length;
+      document.getElementById('mapTotalCount').textContent = ALL.length;
       const updatedAt = ALL.map(h => h.updatedAt).filter(Boolean).sort().pop();
       document.getElementById('metaUpdated').textContent = formatUpdatedAt(updatedAt);
       updateStructuredData(updatedAt);
