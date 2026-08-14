@@ -311,7 +311,6 @@ def main() -> int:
             cached = items.get(key)
             if isinstance(cached, dict) and cached.get("found") is True:
                 h["lat"], h["lng"] = cached["lat"], cached["lng"]
-                h["geocode"] = cached.get("geocode", {})
                 cached_count += 1
                 print(f"[{i}/{len(hospitals)}] {name}: OK TỪ CACHE")
                 continue
@@ -320,12 +319,7 @@ def main() -> int:
             best, candidates = find_best(h, session, limiter)
             if best:
                 h["lat"], h["lng"] = best["lat"], best["lng"]
-                h["geocode"] = {
-                    "provider": best["provider"], "score": best["score"],
-                    "matchedAddress": best["label"], "query": best["query"],
-                    "reviewed": False,
-                }
-                items[key] = {"found": True, "lat": best["lat"], "lng": best["lng"], "geocode": h["geocode"]}
+                items[key] = {"found": True, "lat": best["lat"], "lng": best["lng"]}
                 success += 1
                 print(f"    OK {best['provider']} score={best['score']:.2f} ({best['lat']:.6f}, {best['lng']:.6f})")
             else:

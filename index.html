@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tra cứu bệnh viện và trung tâm có khả năng điều trị đột quỵ tại Việt Nam. Tìm theo tỉnh, gọi hotline, xem chỉ đường và nhận biết dấu hiệu đột quỵ theo quy tắc K-H-Ẩ-N.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0b6b5f">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="Tìm bệnh viện điều trị đột quỵ gần nhất">
+<meta property="og:description" content="Danh sách bệnh viện điều trị đột quỵ tại Việt Nam, có hotline, địa chỉ, tọa độ và chỉ đường.">
 <!-- Content-Security-Policy: lớp phòng thủ thứ 2 — ngay cả khi có lỗ hổng XSS nào
      lọt qua, trình duyệt vẫn chặn script/style lạ không nằm trong danh sách cho phép.
      script-src/style-src chỉ cho phép chính trang này + cdnjs (nơi tải Leaflet).
@@ -25,10 +32,30 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
+<link rel="preload" href="./data/hospitals.json" as="fetch" crossorigin="anonymous">
+<link rel="alternate" type="application/json" href="./data/hospitals.json" title="Dữ liệu bệnh viện dạng máy đọc">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "inLanguage": "vi-VN",
+  "name": "Danh sách bệnh viện cấp cứu đột quỵ — Việt Nam",
+  "description": "Tra cứu cơ sở y tế có khả năng điều trị đột quỵ tại Việt Nam.",
+  "isAccessibleForFree": true,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Hội Đột Quỵ Việt Nam (VNSA)"
+  },
+  "about": {
+    "@type": "MedicalCondition",
+    "name": "Đột quỵ"
+  }
+}
+</script>
 </head>
 <body>
 
-  <div class="topbar">
+  <header class="topbar">
     <p class="eyebrow">World Stroke Day · #ActFast</p>
     <h1>Danh sách bệnh viện &amp; trung tâm cấp cứu đột quỵ</h1>
     <div class="meta">
@@ -37,13 +64,24 @@
       <span>Cập nhật <b id="metaUpdated">—</b></span>
     </div>
     <p class="src">Nguồn: Hội Đột Quỵ Việt Nam (VNSA). Danh sách mang tính chất tham khảo — vui lòng gọi hotline xác nhận trước khi đến.</p>
-  </div>
+  </header>
 
-  <div class="view-toggle">
+  <main id="mainContent">
+  <section class="urgent-guide" aria-labelledby="urgentGuideTitle">
+    <p class="urgent-label">Nếu đang nghi ngờ đột quỵ</p>
+    <h2 id="urgentGuideTitle">Gọi 115 ngay và đưa người bệnh đến cơ sở có khả năng điều trị đột quỵ</h2>
+    <p>Không chờ triệu chứng tự hết, không tự lái xe nếu tình trạng nặng. Ghi lại thời điểm khởi phát và gọi trước cho bệnh viện để xác nhận khả năng tiếp nhận.</p>
+    <div class="urgent-actions">
+      <a class="urgent-call" href="tel:115">📞 Gọi cấp cứu 115</a>
+      <button class="urgent-link" id="btnUrgentSigns" type="button">Xem dấu hiệu K-H-Ẩ-N</button>
+    </div>
+  </section>
+
+  <nav class="view-toggle" aria-label="Nội dung tra cứu">
     <button class="view-btn active" id="btnListView" type="button">📋 Danh sách</button>
     <button class="view-btn" id="btnMapView" type="button">🗺️ Bản đồ</button>
     <button class="view-btn" id="btnSignsView" type="button">🧠 Dấu hiệu</button>
-  </div>
+  </nav>
 
   <div class="nearest-bar">
     <div class="nearest-row">
@@ -65,6 +103,9 @@
   <div class="list" id="list">
     <div class="empty-state" id="loadingState">Đang tải dữ liệu...</div>
   </div>
+  <noscript>
+    <p class="noscript-note">Để tra cứu danh sách bệnh viện, vui lòng bật JavaScript. Trong tình huống khẩn cấp, hãy gọi <a href="tel:115">115</a>.</p>
+  </noscript>
 
   <div id="mapView">
     <p class="map-status" id="mapStatus" role="status" aria-live="polite" hidden></p>
@@ -119,7 +160,9 @@
     <p class="signs-source">Nguồn: World Stroke Organization · Hội Đột Quỵ Việt Nam (VNSA). Nội dung mang tính tham khảo, không thay thế chẩn đoán y khoa.</p>
   </div>
 
-  <p class="note">* Bệnh nhân và người nhà cần liên hệ với bệnh viện qua số hotline trước khi đến. Dữ liệu được Hội Đột Quỵ Việt Nam cập nhật định kỳ.</p>
+  <p class="note">* Bệnh nhân và người nhà cần liên hệ với bệnh viện qua số hotline trước khi đến. Dữ liệu được Hội Đột Quỵ Việt Nam cập nhật định kỳ. <a href="./data/hospitals.json">Xem dữ liệu bệnh viện dạng máy đọc</a>.</p>
+
+  </main>
 
   <a class="sos" href="tel:115">
     <span class="ring"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>

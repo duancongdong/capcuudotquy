@@ -17,7 +17,7 @@ Chương trình:
 - kiểm tra lat/lng hợp lệ và nằm trong phạm vi gần Việt Nam;
 - không ghi đè tọa độ hiện có, trừ khi dùng --overwrite;
 - tạo bản sao lưu trước khi ghi;
-- ghi metadata xác minh vào trường geocode;
+- giữ metadata xác minh trong file review CSV, không ghi vào hospitals.json;
 - xuất báo cáo các bản ghi còn thiếu.
 """
 
@@ -197,15 +197,6 @@ def main() -> int:
 
             hospital["lat"] = lat
             hospital["lng"] = lng
-            hospital["geocode"] = {
-                "provider": (row.get("best_provider") or "manual-review").strip() or "manual-review",
-                "score": row.get("best_score", ""),
-                "matchedAddress": (row.get("candidate_label") or "").strip(),
-                "query": (row.get("candidate_query") or "").strip(),
-                "reviewed": True,
-                "reviewedAt": datetime.now().astimezone().isoformat(timespec="seconds"),
-                "reviewMethod": "geocode_review.csv",
-            }
             updated += 1
 
     if errors:

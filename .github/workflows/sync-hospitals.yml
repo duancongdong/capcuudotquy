@@ -1,0 +1,51 @@
+name: Sync hospitals from Google Sheet
+
+on:
+  workflow_dispatch:
+    inputs:
+      sheet_id:
+        description: Google Sheet ID
+        required: true
+        type: string
+      sheet_gid:
+        description: Google Sheet tab gid
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-hospitals
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download released sheet
+        env:
+          SHEET_ID: ${{ inputs.sheet_id }}
+          SHEET_GID: ${{ inputs.sheet_gid }}
+        run: |
+          curl --fail --location --retry 3 --silent --show-error \
+            "https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${SHEET_GID}" \
+            --output /tmp/hospitals.csv
+
+      - name: Convert and validate data
+        run: python scripts/sync_sheet.py --csv /tmp/hospitals.csv --output data/hospitals.json
+
+      - name: Commit and push changed JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/hospitals.json
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(data): sync hospitals from Google Sheet"
+          git push origin HEAD:${{ github.ref_name || 'main' }}

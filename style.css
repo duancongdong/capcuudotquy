@@ -52,6 +52,45 @@
     color:#9FB2D9;
     line-height:1.5;
   }
+  .urgent-guide{
+    margin:14px 16px 0;
+    padding:16px;
+    border:1px solid #F2C4C0;
+    border-left:5px solid var(--red);
+    border-radius:12px;
+    background:#FFF8F7;
+  }
+  .urgent-guide h2{
+    font-size:17px;
+    line-height:1.35;
+    margin:0 0 6px;
+    color:#7D1D17;
+  }
+  .urgent-guide p{margin:0 0 10px;line-height:1.5;font-size:13px;}
+  .urgent-guide .urgent-label{
+    color:var(--red);
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-bottom:5px;
+  }
+  .urgent-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .urgent-call,.urgent-link{
+    display:inline-flex;
+    align-items:center;
+    min-height:40px;
+    border-radius:9px;
+    padding:8px 12px;
+    font-size:13px;
+    font-weight:700;
+    text-decoration:none;
+  }
+  .urgent-call{background:var(--red);color:#fff;}
+  .urgent-link{color:#7D1D17;border:1px solid #E9A8A2;background:#fff;}
+  button.urgent-link{font:inherit;font-size:13px;cursor:pointer;}
+  .noscript-note{margin:16px;color:var(--red);font-weight:600;}
+  :focus-visible{outline:3px solid #F2A900;outline-offset:2px;}
 
   .controls{
     position:sticky;

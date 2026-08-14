@@ -35,7 +35,33 @@ không thêm `<script>`/`<style>` hay `style="..."` inline trực tiếp vào `i
   "source": "Hội Đột Quỵ Việt Nam (VNSA)"
 }
 ```
-Đây chính là schema mà bot Apps Script (đã triển khai ở bước trước) sẽ đọc/ghi khi xử lý đề xuất cập nhật qua email.
+Đây chính là schema mà bộ đồng bộ Google Sheet → GitHub Actions sẽ tạo.
+
+## Tự động đồng bộ từ Google Sheet
+
+Nguồn quản trị là [Google Sheet danh sách bệnh viện](https://docs.google.com/spreadsheets/d/1gkHumsymX037G_PjioUIoAIpnUnOvTqoI4TgSHd7H6c/edit?usp=sharing).
+Sheet hiện dùng `C2` cho tháng cập nhật, `E2` làm cổng phát hành, hàng 3 làm hàng tiêu đề và dữ liệu bắt đầu từ hàng 4.
+
+Luồng cập nhật:
+
+1. Admin chuyển `E2` sang `Updating` và chỉnh sửa/thêm dữ liệu.
+2. Admin chuyển `E2` sang `Released`.
+3. Apps Script gọi GitHub Actions workflow `sync-hospitals.yml`.
+4. Workflow tải bản CSV công khai của đúng tab, kiểm tra `E2`, kiểm tra các cột bắt buộc, sinh lại `data/hospitals.json`, rồi commit/push nếu dữ liệu thay đổi.
+5. GitHub Pages tự triển khai phiên bản mới từ commit trên `main`.
+
+### Cấu hình một lần
+
+1. Trong repository, bật **Settings → Actions → General → Workflow permissions → Read and write permissions**.
+2. Tạo fine-grained GitHub token chỉ cho repository `duancongdong/capcuudotquy`, cấp quyền **Actions: Read and write**. Không đưa token vào mã nguồn.
+3. Mở Google Sheet → **Extensions → Apps Script**, dán file `automation/google-apps-script/Code.gs`.
+4. Trong Apps Script, vào **Project Settings → Script properties**, tạo `GITHUB_ACTIONS_TOKEN` với giá trị token ở bước 2.
+5. Tạo installable trigger: hàm `onEditReleasedStatus`, event source **From spreadsheet**, event type **On edit**.
+6. Đảm bảo Sheet được chia sẻ **Anyone with the link → Viewer** để GitHub Actions có thể tải CSV; chỉ những người được cấp quyền chỉnh sửa mới thay đổi được `E2`.
+
+Workflow này commit trực tiếp lên `main` để GitHub Pages tự triển khai. Nếu branch protection đang bật **Require a pull request before merging**, cần cho phép bot/Actions bypass rule hoặc tắt rule này cho `main`; nếu không GitHub sẽ từ chối lệnh push tự động.
+
+Workflow từ chối đồng bộ nếu `E2` không phải `Released`, `C2` sai định dạng `MM/YYYY`, thiếu tên/loại hình/địa chỉ/tỉnh, hoặc không có bản ghi hợp lệ. Tọa độ hiện có chỉ được giữ lại khi tên, tỉnh và địa chỉ không đổi; nếu địa chỉ đổi mà Sheet không cung cấp tọa độ mới, bản ghi sẽ không có `lat`/`lng` để tránh hiển thị sai trên bản đồ.
 
 ## Triển khai lên GitHub — các bước thực hiện
 
@@ -108,4 +134,3 @@ Nếu cần sửa tay nhanh, mở `data/hospitals.json`, sửa trực tiếp tr�
 4. **Không hardcode API key/token nào trong các file này** — trang không cần và không nên
    dùng Google Maps API hay bất kỳ dịch vụ trả phí nào; giữ nguyên kiến trúc free-vĩnh-viễn
    (OpenStreetMap, Leaflet, geolocation trình duyệt).
-

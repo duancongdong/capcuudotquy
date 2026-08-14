@@ -190,25 +190,25 @@
         : '';
 
       return `
-      <div class="card">
+      <article class="card" itemscope itemtype="https://schema.org/Hospital">
         <div class="card-top">
-          <h2>${escapeHtml(h.name)}</h2>
+          <h2 itemprop="name">${escapeHtml(h.name)}</h2>
           <div class="card-top-right">
             <span class="tag-prov">${escapeHtml(h.province)}</span>
             ${distanceHtml}
           </div>
         </div>
         <p class="type-label">${escapeHtml(h.type || '')}</p>
-        <p class="addr">${escapeHtml(h.address)}</p>
+        <p class="addr" itemprop="address">${escapeHtml(h.address)}</p>
         <div class="badges">
           ${badge('Tiêu sợi huyết', h.thrombolysis)}
           ${badge('Can thiệp', h.intervention)}
         </div>
         <div class="card-actions-row">
-          <div class="phone-group">${phoneButtons}</div>
+        <div class="phone-group" itemprop="telephone">${phoneButtons}</div>
           <a class="map-link" href="${mapsDirectionUrl(h.address, h.name)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
         </div>
-      </div>
+      </article>
     `;
     }).join('');
   }
@@ -483,6 +483,57 @@
     return match ? `${match[2]}/${match[1]}` : String(updatedAt);
   }
 
+  // Cung cấp dữ liệu có cấu trúc sau khi JSON được tải. Nội dung này giúp
+  // Search Engine/AI hiểu trực tiếp tên, địa chỉ, hotline và tọa độ từng cơ sở.
+  // Dữ liệu được tạo từ cùng nguồn đang hiển thị để tránh lệch thông tin.
+  function updateStructuredData(updatedAt) {
+    const existing = document.getElementById('hospitalStructuredData');
+    if (existing) existing.remove();
+
+    const items = ALL.map((h, index) => {
+      const item = {
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Hospital',
+          name: h.name,
+          telephone: h.hotline || undefined,
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: h.address,
+            addressLocality: h.province,
+            addressCountry: 'VN',
+          },
+        },
+      };
+      if (Number.isFinite(Number(h.lat)) && Number.isFinite(Number(h.lng))) {
+        item.item.geo = {
+          '@type': 'GeoCoordinates',
+          latitude: Number(h.lat),
+          longitude: Number(h.lng),
+        };
+      }
+      return item;
+    });
+
+    const script = document.createElement('script');
+    script.id = 'hospitalStructuredData';
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'MedicalWebPage',
+      name: 'Danh sách bệnh viện điều trị đột quỵ tại Việt Nam',
+      inLanguage: 'vi-VN',
+      dateModified: updatedAt,
+      mainEntity: {
+        '@type': 'ItemList',
+        numberOfItems: items.length,
+        itemListElement: items,
+      },
+    });
+    document.head.appendChild(script);
+  }
+
   fetch('./data/hospitals.json')
     .then(res => {
       if (!res.ok) throw new Error('Không tải được dữ liệu');
@@ -490,11 +541,13 @@
     })
     .then(data => {
       ALL = data.filter(h => h.status === 'active');
+      document.getElementById('list').setAttribute('aria-busy', 'false');
       ALL.forEach(h => { h._searchIndex = buildSearchIndex(h); });
       document.getElementById('metaCount').innerHTML = `<b>${ALL.length}</b> đơn vị`;
       document.getElementById('metaProv').innerHTML = `<b>${new Set(ALL.map(h=>h.province)).size}</b> tỉnh/thành`;
       const updatedAt = ALL.map(h => h.updatedAt).filter(Boolean).sort().pop();
       document.getElementById('metaUpdated').textContent = formatUpdatedAt(updatedAt);
+      updateStructuredData(updatedAt);
       populateProvinces(ALL);
       renderList(ALL);
     })
@@ -515,6 +568,11 @@
   document.getElementById('btnListView').addEventListener('click', () => { currentView = 'list'; switchView('list'); });
   document.getElementById('btnMapView').addEventListener('click', () => { currentView = 'map'; switchView('map'); });
   document.getElementById('btnSignsView').addEventListener('click', () => { currentView = 'signs'; switchView('signs'); });
+  document.getElementById('btnUrgentSigns').addEventListener('click', () => {
+    currentView = 'signs';
+    switchView('signs');
+    document.getElementById('signsView').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
   document.getElementById('btnSignsFindHospital').addEventListener('click', () => {
     currentView = 'list';
     switchView('list');
