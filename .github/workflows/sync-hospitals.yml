@@ -17,7 +17,8 @@ permissions:
 
 concurrency:
   group: sync-hospitals
-  cancel-in-progress: false
+  # Safety net: retain only the newest request if a duplicate dispatch occurs.
+  cancel-in-progress: true
 
 jobs:
   sync:

@@ -217,16 +217,17 @@ Nếu token bị lộ, phải revoke ngay và tạo token mới.
 1. Mở Google Sheet → **Extensions → Apps Script**.
 2. Dán nội dung [automation/google-apps-script/Code.gs](automation/google-apps-script/Code.gs).
 3. Lưu project.
-4. Vào **Triggers** (biểu tượng đồng hồ) → **Add Trigger**.
-5. Chọn:
+4. Chọn hàm `setupReleaseTrigger` trên thanh công cụ và bấm **Run** đúng một lần.
+5. Cấp quyền Google cho Apps Script bằng tài khoản owner hoặc tài khoản tạo trigger.
+6. Mở **Triggers** (biểu tượng đồng hồ) để xác nhận chỉ còn đúng một trigger:
 
    - Function: `onEditReleasedStatus`
-   - Deployment: `Head`
    - Event source: `From spreadsheet`
    - Event type: `On edit`
-   - Failure notification: `Notify me immediately`
 
-6. Cấp quyền Google cho Apps Script bằng tài khoản owner hoặc tài khoản tạo trigger.
+`setupReleaseTrigger` tự xóa các trigger trùng của chính project rồi tạo lại một trigger duy nhất. Nếu trước đây nhiều tài khoản khác nhau từng tạo trigger, mỗi tài khoản cần tự xóa trigger do mình tạo; Google chỉ cho phép một người xóa trigger của chính họ.
+
+Trigger chỉ dispatch khi Admin sửa trực tiếp đúng một ô `E2` từ `Updating` sang `Released`. Dán/cập nhật cả Sheet, sửa các cột dữ liệu, định dạng ô, hoặc đổi `E2` từ trạng thái khác sẽ không chạy đồng bộ. Một khoảng chặn 60 giây cũng ngăn các trigger trùng dispatch lặp.
 
 Installable trigger chạy với quyền của tài khoản tạo trigger. Vì vậy nên tạo trigger bằng tài khoản owner có quyền chỉnh sửa Sheet và quyền cần thiết trên GitHub. Trigger không chạy do thay đổi từ API/script; Admin cần sửa trực tiếp ô `E2` trên Sheet.
 

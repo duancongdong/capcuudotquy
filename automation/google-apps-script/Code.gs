@@ -1,35 +1,60 @@
 /**
  * Bound Apps Script for the hospital Google Sheet.
- * Install an on-edit trigger for onEditReleasedStatus once.
+ * Run setupReleaseTrigger once after pasting this file.
  */
 const CONFIG = {
   sheetId: '1gkHumsymX037G_PjioUIoAIpnUnOvTqoI4TgSHd7H6c',
   statusCell: 'E2',
+  updatingValue: 'updating',
   releasedValue: 'released',
+  dispatchCooldownMs: 60 * 1000,
   workflowFile: 'sync-hospitals.yml',
   workflowRef: 'main',
   repository: 'duancongdong/capcuudotquy',
 };
 
+/**
+ * Run manually once. It removes this project's duplicate edit triggers, then
+ * creates exactly one installable trigger for the release action.
+ */
+function setupReleaseTrigger() {
+  ScriptApp.getProjectTriggers()
+    .filter(trigger => trigger.getHandlerFunction() === 'onEditReleasedStatus')
+    .forEach(trigger => ScriptApp.deleteTrigger(trigger));
+
+  ScriptApp.newTrigger('onEditReleasedStatus')
+    .forSpreadsheet(CONFIG.sheetId)
+    .onEdit()
+    .create();
+}
+
 function onEditReleasedStatus(event) {
   if (!event || !event.range) return;
   const editedRange = event.range;
-  const statusRange = editedRange.getSheet().getRange(CONFIG.statusCell);
-  const coversStatusCell = statusRange.getRow() >= editedRange.getRow()
-    && statusRange.getRow() <= editedRange.getLastRow()
-    && statusRange.getColumn() >= editedRange.getColumn()
-    && statusRange.getColumn() <= editedRange.getLastColumn();
-  if (!coversStatusCell) return;
-  if (String(statusRange.getDisplayValue()).trim().toLowerCase() !== CONFIG.releasedValue) return;
+  const sheet = editedRange.getSheet();
+
+  // Do not run for bulk paste, whole-sheet updates, formatting, or edits to
+  // other cells. Only a direct one-cell edit of E2 may publish data.
+  if (sheet.getParent().getId() !== CONFIG.sheetId
+    || editedRange.getNumRows() !== 1
+    || editedRange.getNumColumns() !== 1
+    || editedRange.getA1Notation() !== CONFIG.statusCell) return;
+
+  const newValue = String(event.value || '').trim().toLowerCase();
+  const oldValue = String(event.oldValue || '').trim().toLowerCase();
+  if (oldValue !== CONFIG.updatingValue || newValue !== CONFIG.releasedValue) return;
 
   const lock = LockService.getScriptLock();
   lock.waitLock(30000);
   try {
     const properties = PropertiesService.getScriptProperties();
+    const lastDispatchAt = Number(properties.getProperty('LAST_SYNC_DISPATCH_UNIX_MS') || 0);
+    if (Date.now() - lastDispatchAt < CONFIG.dispatchCooldownMs) return;
+
     const token = properties.getProperty('GITHUB_ACTIONS_TOKEN');
     if (!token) throw new Error('Thiếu Script Property GITHUB_ACTIONS_TOKEN');
 
-    const sheetGid = editedRange.getSheet().getSheetId();
+    const sheetGid = sheet.getSheetId();
     const endpoint = `https://api.github.com/repos/${CONFIG.repository}/actions/workflows/${CONFIG.workflowFile}/dispatches`;
     const response = UrlFetchApp.fetch(endpoint, {
       method: 'post',
@@ -50,6 +75,7 @@ function onEditReleasedStatus(event) {
       throw new Error(`GitHub workflow dispatch lỗi ${response.getResponseCode()}: ${response.getContentText()}`);
     }
     properties.setProperty('LAST_SYNC_DISPATCH_AT', new Date().toISOString());
+    properties.setProperty('LAST_SYNC_DISPATCH_UNIX_MS', String(Date.now()));
   } finally {
     lock.releaseLock();
   }
