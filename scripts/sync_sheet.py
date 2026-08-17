@@ -9,6 +9,7 @@ import json
 import re
 import sys
 import unicodedata
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -173,7 +174,7 @@ def load_existing(path: Path) -> dict[str, dict[str, Any]]:
     return {item["id"]: item for item in data if isinstance(item, dict) and item.get("id")}
 
 
-def convert(csv_path: Path, existing_path: Path) -> list[dict[str, Any]]:
+def convert(csv_path: Path, existing_path: Path, published_at: str | None = None) -> list[dict[str, Any]]:
     rows = read_rows(csv_path)
     if len(rows) < 3:
         raise ValueError("Google Sheet không có đủ phần metadata và bảng dữ liệu")
@@ -183,6 +184,7 @@ def convert(csv_path: Path, existing_path: Path) -> list[dict[str, Any]]:
     if release_status != "released":
         raise ValueError(f"E2 phải là Released, hiện tại là {cell(rows[1], 4)!r}")
     updated_at = parse_updated_at(cell(rows[1], 2))
+    published_at = published_at or datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     header_index, mapping = find_header(rows)
     existing = load_existing(existing_path)
     records: list[dict[str, Any]] = []
@@ -228,6 +230,7 @@ def convert(csv_path: Path, existing_path: Path) -> list[dict[str, Any]]:
             if old.get("lat") is not None and old.get("lng") is not None:
                 record["lat"], record["lng"] = old["lat"], old["lng"]
 
+        record["publishedAt"] = published_at
         records.append(record)
 
     if not records:
@@ -239,9 +242,13 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--csv", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument(
+        "--published-at",
+        help="UTC timestamp for the website version, supplied by the release workflow",
+    )
     args = parser.parse_args()
     try:
-        records = convert(args.csv, args.output)
+        records = convert(args.csv, args.output, args.published_at)
         args.output.write_text(json.dumps(records, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"Đã đồng bộ {len(records)} bệnh viện, updatedAt={records[0]['updatedAt']}")
         return 0

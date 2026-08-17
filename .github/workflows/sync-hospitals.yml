@@ -37,7 +37,12 @@ jobs:
             --output /tmp/hospitals.csv
 
       - name: Convert and validate data
-        run: python scripts/sync_sheet.py --csv /tmp/hospitals.csv --output data/hospitals.json
+        run: |
+          PUBLISHED_AT=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          python scripts/sync_sheet.py \
+            --csv /tmp/hospitals.csv \
+            --output data/hospitals.json \
+            --published-at "$PUBLISHED_AT"
 
       - name: Commit and push changed JSON
         run: |

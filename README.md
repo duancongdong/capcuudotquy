@@ -50,7 +50,8 @@ Các file `data/hospitals_ggs.json`, `data/hospitals_ggs_v2.json` và file backu
 ### Tab Danh sách
 
 - Hiển thị các bản ghi có `status: "active"`.
-- Số đơn vị, số tỉnh/thành và tháng cập nhật được tính động từ `hospitals.json`.
+- Số đơn vị, số tỉnh/thành và tháng dữ liệu được tính động từ `hospitals.json`.
+- Tab `Dấu hiệu` hiển thị thời điểm phiên bản website được phát hành dạng `hh:mm:ss dd/mm/yyyy` từ trường `publishedAt`.
 - Tìm kiếm không dấu; hỗ trợ một số từ viết tắt như `BV`, `TPHCM`, `HN`, `stroke`.
 - Lọc theo `province`.
 - Gọi từng số hotline bằng liên kết `tel:`.
@@ -92,6 +93,7 @@ Mỗi phần tử là một cơ sở y tế:
   "intervention": "Có",
   "status": "active",
   "updatedAt": "2026-06",
+  "publishedAt": "2026-08-17T08:05:05Z",
   "source": "Hội Đột Quỵ Việt Nam (VNSA)",
   "lat": 21.003117,
   "lng": 105.834165
@@ -172,9 +174,11 @@ Script đồng bộ sẽ kiểm tra các lỗi trên. Nếu hotline không hợp
 4. Đổi `E2` sang `Released`.
 5. Apps Script gọi GitHub Actions bằng `workflow_dispatch`.
 6. GitHub Actions tải đúng tab Sheet, kiểm tra và sinh lại `data/hospitals.json`.
-7. Nếu JSON thay đổi, workflow commit/push lên `main`; GitHub Pages triển khai phiên bản mới.
+7. Nếu JSON thay đổi, workflow ghi `publishedAt` theo thời điểm phát hành, commit/push lên `main`; GitHub Pages triển khai phiên bản mới.
 
 Khi `Released` chuyển về `Updating`, không có workflow nào được gọi. Trigger chỉ thực hiện dispatch khi giá trị cuối của `E2` là `Released`.
+
+`updatedAt` là tháng dữ liệu do Admin nhập tại ô `C2` theo danh sách cập nhật của Hội Đột Quỵ Việt Nam, ví dụ `06/2026`; trường này không phải ngày triển khai website. `publishedAt` là thời điểm phiên bản JSON được workflow phát hành và dùng cho ghi chú ở tab `Dấu hiệu`.
 
 Nếu địa chỉ thay đổi nhưng cột I để trống, parser không giữ tọa độ cũ. Tọa độ cũ chỉ được giữ khi `name`, `province` và `address` không đổi; quy tắc này tránh hiển thị sai vị trí trên bản đồ.
 

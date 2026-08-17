@@ -489,10 +489,30 @@
     return match ? `${match[2]}/${match[1]}` : String(updatedAt);
   }
 
+  function formatPublishedAt(publishedAt) {
+    if (!publishedAt) return '—';
+    const date = new Date(publishedAt);
+    if (Number.isNaN(date.getTime())) return '—';
+    const parts = new Intl.DateTimeFormat('vi-VN', {
+      timeZone: 'Asia/Ho_Chi_Minh',
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    }).formatToParts(date).reduce((result, part) => {
+      result[part.type] = part.value;
+      return result;
+    }, {});
+    return `${parts.hour}:${parts.minute}:${parts.second} ${parts.day}/${parts.month}/${parts.year}`;
+  }
+
   // Cung cấp dữ liệu có cấu trúc sau khi JSON được tải. Nội dung này giúp
   // Search Engine/AI hiểu trực tiếp tên, địa chỉ, hotline và tọa độ từng cơ sở.
   // Dữ liệu được tạo từ cùng nguồn đang hiển thị để tránh lệch thông tin.
-  function updateStructuredData(updatedAt) {
+  function updateStructuredData(dateModified) {
     const existing = document.getElementById('hospitalStructuredData');
     if (existing) existing.remove();
 
@@ -530,7 +550,7 @@
       '@type': 'MedicalWebPage',
       name: 'Danh sách bệnh viện điều trị đột quỵ tại Việt Nam',
       inLanguage: 'vi-VN',
-      dateModified: updatedAt,
+      dateModified,
       mainEntity: {
         '@type': 'ItemList',
         numberOfItems: items.length,
@@ -540,7 +560,9 @@
     document.head.appendChild(script);
   }
 
-  fetch('./data/hospitals.json')
+  // Revalidate the data file so the timestamp on the Dấu hiệu tab can confirm
+  // that a newly released Google Sheet version has reached the page.
+  fetch('./data/hospitals.json', { cache: 'no-cache' })
     .then(res => {
       if (!res.ok) throw new Error('Không tải được dữ liệu');
       return res.json();
@@ -557,8 +579,11 @@
       document.getElementById('mapCoordinateCount').textContent = withCoordinates.length;
       document.getElementById('mapTotalCount').textContent = ALL.length;
       const updatedAt = ALL.map(h => h.updatedAt).filter(Boolean).sort().pop();
+      const publishedAt = ALL.map(h => h.publishedAt).filter(Boolean).sort().pop();
       document.getElementById('metaUpdated').textContent = formatUpdatedAt(updatedAt);
-      updateStructuredData(updatedAt);
+      document.getElementById('signsUpdatedAt').textContent =
+        `* Website cập nhật lúc: ${formatPublishedAt(publishedAt)}`;
+      updateStructuredData(publishedAt || updatedAt);
       populateProvinces(ALL);
       renderList(ALL);
     })

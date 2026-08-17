@@ -564,3 +564,9 @@
     padding-top:12px;
     margin:8px 0 0;
   }
+  .signs-updated{
+    font-size:11px;
+    color:var(--slate);
+    line-height:1.5;
+    margin:7px 0 0;
+  }
