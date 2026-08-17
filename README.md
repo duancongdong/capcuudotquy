@@ -56,7 +56,7 @@ Các file `data/hospitals_ggs.json`, `data/hospitals_ggs_v2.json` và file backu
 - Lọc theo `province`.
 - Gọi từng số hotline bằng liên kết `tel:`.
 - Mở chỉ đường bằng Google Maps.
-- Nút “Tìm bệnh viện gần tôi nhất” dùng Geolocation API của trình duyệt và sắp xếp theo khoảng cách đường chim bay.
+- Nút “Tìm bệnh viện gần tôi nhất” dùng Geolocation API của trình duyệt và sắp xếp theo khoảng cách đường thẳng. Thẻ có ghi rõ loại khoảng cách; nút “Chỉ đường” mở Google Maps đến đúng tọa độ `lat,lng` của cơ sở để xem quãng đường di chuyển thực tế.
 
 ### Tab Bản đồ
 

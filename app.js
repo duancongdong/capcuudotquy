@@ -35,8 +35,12 @@
     return phone && phone.number ? `tel:${phone.number}` : '#';
   }
 
-  function mapsDirectionUrl(address, name) {
-    const query = encodeURIComponent(`${name}, ${address}`);
+  function mapsDirectionUrl(address, name, lat, lng) {
+    const hasCoordinates = Number.isFinite(Number(lat)) && Number.isFinite(Number(lng));
+    // Use the same coordinates used for the distance calculation. This avoids
+    // Google Maps geocoding a hospital name/address to a different location.
+    const destination = hasCoordinates ? `${Number(lat)},${Number(lng)}` : `${name}, ${address}`;
+    const query = encodeURIComponent(destination);
     return `https://www.google.com/maps/dir/?api=1&destination=${query}&travelmode=driving`;
   }
 
@@ -143,7 +147,7 @@
     navigator.geolocation.getCurrentPosition(
       pos => {
         userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-        setNearestStatus('Đã xác định vị trí — đang sắp xếp theo khoảng cách gần nhất.');
+        setNearestStatus('Đã xác định vị trí — đang sắp xếp theo khoảng cách đường thẳng gần nhất.');
         document.getElementById('filterProv').value = '';
         document.getElementById('searchBox').value = '';
         applyFilter();
@@ -168,6 +172,8 @@
   function renderList(items) {
     const list = document.getElementById('list');
     document.getElementById('countNum').textContent = items.length;
+    const distanceNote = document.getElementById('distanceNote');
+    if (distanceNote) distanceNote.hidden = !userLocation;
 
     if (items.length === 0) {
       list.innerHTML = '<div class="empty-state">Không tìm thấy cơ sở phù hợp.</div>';
@@ -197,7 +203,7 @@
         `<a class="call-link" href="${telHrefFromPhone(p)}">📞 ${escapeHtml(p.label)}</a>`
       ).join('');
       const distanceHtml = (h._distanceKm != null)
-        ? `<span class="distance-badge">${h._distanceKm < 1 ? Math.round(h._distanceKm*1000)+' m' : h._distanceKm.toFixed(1)+' km'}</span>`
+        ? `<span class="distance-badge" title="Khoảng cách đường thẳng từ vị trí của bạn" aria-label="Khoảng cách đường thẳng ${h._distanceKm < 1 ? Math.round(h._distanceKm*1000)+' mét' : h._distanceKm.toFixed(1)+' kilômét'}">${h._distanceKm < 1 ? Math.round(h._distanceKm*1000)+' m' : h._distanceKm.toFixed(1)+' km'} đường thẳng</span>`
         : '';
 
       return `
@@ -217,7 +223,7 @@
         </div>
         <div class="card-actions-row">
         <div class="phone-group" itemprop="telephone">${phoneButtons}</div>
-          <a class="map-link" href="${mapsDirectionUrl(h.address, h.name)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
+          <a class="map-link" href="${mapsDirectionUrl(h.address, h.name, h.lat, h.lng)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
         </div>
       </article>
     `;
@@ -314,7 +320,7 @@
             <p class="popup-addr">${escapeHtml(h.address)}</p>
             <div class="popup-actions">
               <a class="pop-call" href="${telHrefFromPhone(firstPhone)}">📞 Gọi</a>
-              <a class="pop-dir" href="${mapsDirectionUrl(h.address, h.name)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
+              <a class="pop-dir" href="${mapsDirectionUrl(h.address, h.name, h.lat, h.lng)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
             </div>
           </div>`;
         marker.bindPopup(popupHtml);

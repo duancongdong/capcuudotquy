@@ -480,6 +480,12 @@
     padding:2px 7px;
     white-space:nowrap;
   }
+  .distance-note{
+    margin:4px 20px 0;
+    font-size:11px;
+    color:var(--slate);
+    line-height:1.5;
+  }
 
   #signsView{
     padding:20px 20px 8px;
