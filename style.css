@@ -488,91 +488,147 @@
   }
 
   #signsView{
-    padding:20px 20px 8px;
+    padding:0;
+    overflow:hidden;
+    background:linear-gradient(145deg,#08265f 0%,#174a9b 48%,#0b2c70 100%);
+    color:#fff;
   }
-  .signs-intro{
-    margin-bottom:18px;
+  .signs-poster-grid{
+    display:grid;
+    grid-template-columns:minmax(150px,.72fr) minmax(0,1.65fr);
+    gap:18px;
+    padding:22px 20px 24px;
+    position:relative;
   }
+  .signs-poster-grid::before{
+    content:"";
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:31%;
+    width:2px;
+    background:rgba(255,255,255,.28);
+    transform:skew(-4deg);
+  }
+  .signs-message{
+    align-self:center;
+    padding:18px 0;
+    text-align:center;
+    position:relative;
+    z-index:1;
+  }
+  .signs-message .signs-eyebrow{
+    color:#d8edff;
+    font-size:10px;
+    margin-bottom:3px;
+  }
+  .signs-message-title{
+    color:#fff;
+    font-size:clamp(25px,4vw,42px);
+    font-weight:900;
+    line-height:1.02;
+    letter-spacing:-.06em;
+    margin:0;
+    text-transform:uppercase;
+  }
+  .signs-message-copy{
+    color:#cce0ff;
+    font-size:12px;
+    line-height:1.5;
+    margin:20px auto 0;
+    max-width:180px;
+  }
+  .signs-fast-mark{
+    color:#78d65b;
+    font-size:18px;
+    font-weight:900;
+    letter-spacing:.04em;
+    margin-top:25px;
+  }
+  .signs-content{position:relative;z-index:1;min-width:0;}
+  .signs-intro{margin:0 0 14px;padding:2px 2px 0;}
   .signs-eyebrow{
     font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size:11px;
+    font-size:10px;
     letter-spacing:.12em;
-    color:var(--green);
-    font-weight:600;
+    color:#b9dbff;
+    font-weight:800;
     margin:0 0 6px;
   }
   #signsView h2{
-    font-size:19px;
-    font-weight:800;
-    color:var(--ink);
-    line-height:1.35;
-    margin:0 0 10px;
+    font-size:clamp(22px,4vw,34px);
+    font-weight:900;
+    color:#fff;
+    line-height:1.08;
+    letter-spacing:-.035em;
+    margin:0 0 8px;
+    text-transform:uppercase;
   }
-  .signs-lead{
-    font-size:13.5px;
-    color:var(--slate);
-    line-height:1.6;
-    margin:0;
-  }
+  #signsView h2 b{color:#fff;white-space:nowrap;}
+  .signs-lead{font-size:13px;color:#d9e9ff;line-height:1.5;margin:0;}
   .sign-card{
     display:flex;
-    gap:14px;
-    align-items:flex-start;
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:16px;
-    margin-bottom:10px;
-  }
-  .sign-letter{
-    flex:none;
-    width:44px;
-    height:44px;
-    border-radius:50%;
-    background:var(--green-dim);
-    color:var(--green);
-    font-weight:800;
-    font-size:20px;
-    display:flex;
+    gap:13px;
     align-items:center;
-    justify-content:center;
-  }
-  .sign-body h3{
-    font-size:15.5px;
-    font-weight:700;
+    background:#fff;
     color:var(--ink);
-    margin:4px 0 4px;
+    border:0;
+    border-radius:999px;
+    padding:10px 15px 10px 10px;
+    min-height:84px;
+    margin-bottom:10px;
+    box-shadow:0 7px 16px rgba(3,18,59,.16);
   }
-  .sign-body p{
-    font-size:13px;
-    color:var(--slate);
-    line-height:1.55;
-    margin:0;
+  .sign-icon{
+    flex:none;
+    width:66px;
+    height:66px;
+    border:3px solid #174a9b;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    color:#174a9b;
   }
-  .signs-cta{
-    text-align:center;
-    margin:20px 0 12px;
+  .sign-icon svg{width:56px;height:56px;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.2;}
+  .sign-icon svg .icon-accent{stroke:#62bd35;stroke-width:3.2;}
+  .sign-icon svg .icon-phone{fill:#62bd35;stroke:#62bd35;}
+  .sign-body{min-width:0;}
+  .sign-body h3{font-size:18px;font-weight:850;color:#16438f;line-height:1.1;margin:0 0 4px;}
+  .sign-letter{font-size:30px;font-weight:950;line-height:.8;letter-spacing:-.08em;margin-right:1px;}
+  .sign-body p{font-size:11.5px;color:#334c78;line-height:1.3;margin:0;}
+  .sign-card-urgent{background:#fdfefe;}
+  .signs-cta{text-align:center;margin:20px 0 12px;}
+  .signs-cta p{font-size:13px;font-weight:700;color:#e3efff;margin:0 0 10px;}
+  .signs-cta .btn-nearest{width:100%;background:#77c94a;color:#08265f;border:0;font-weight:850;}
+  .signs-source{font-size:10.5px;color:#c8ddff;line-height:1.45;border-top:1px solid rgba(255,255,255,.28);padding-top:12px;margin:8px 0 0;}
+  .signs-updated{font-size:10.5px;color:#c8ddff;line-height:1.45;margin:7px 0 0;}
+  @media (max-width:640px){
+    .signs-poster-grid{grid-template-columns:1fr;gap:0;padding:18px 12px 20px;}
+    .signs-poster-grid::before{display:none;}
+    .signs-message{padding:4px 14px 18px;}
+    .signs-message-title{font-size:32px;}
+    .signs-message-copy{max-width:270px;margin-top:10px;}
+    .signs-fast-mark{margin-top:12px;font-size:16px;}
+    #signsView h2{font-size:25px;}
+    .sign-card{min-height:78px;padding-right:12px;}
+    .sign-icon{width:58px;height:58px;}
+    .sign-icon svg{width:49px;height:49px;}
+    .sign-body h3{font-size:17px;}
+    .sign-letter{font-size:28px;}
+    .sign-body p{font-size:11px;}
   }
-  .signs-cta p{
-    font-size:13.5px;
-    font-weight:600;
+
+  /* Poster mode: preserve the supplied poster composition pixel-for-pixel. */
+  #signsView{
+    padding:0 0 16px;
+    background:#fff;
     color:var(--ink);
-    margin:0 0 10px;
   }
-  .signs-cta .btn-nearest{
-    width:100%;
-  }
-  .signs-source{
-    font-size:11px;
-    color:var(--slate);
-    line-height:1.5;
-    border-top:1px dashed var(--line);
-    padding-top:12px;
-    margin:8px 0 0;
-  }
-  .signs-updated{
-    font-size:11px;
-    color:var(--slate);
-    line-height:1.5;
-    margin:7px 0 0;
-  }
+  .poster-frame{width:100%;max-width:798px;margin:0 auto;background:#fff;}
+  .signs-poster-image{display:block;width:100%;height:auto;}
+  #signsView .signs-cta{padding:16px 20px 0;margin:0 auto;max-width:798px;}
+  #signsView .signs-cta p{color:var(--ink);}
+  #signsView .signs-cta .btn-nearest{background:var(--green);color:#fff;}
+  #signsView .signs-source,
+  #signsView .signs-updated{max-width:758px;margin-left:auto;margin-right:auto;color:var(--slate);}
+  #signsView .signs-source{margin-top:16px;border-top:1px dashed var(--line);}
