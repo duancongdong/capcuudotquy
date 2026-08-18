@@ -620,4 +620,22 @@
     switchView('list');
     findNearest();
   });
+
+  // Nếu tài nguyên poster không thể tải, không để lại vùng trắng lớn kèm biểu tượng ảnh lỗi.
+  // Poster thực tế được đặt trong assets/ để GitHub Pages luôn triển khai cùng mã nguồn.
+  const signsPosterImage = document.querySelector('.signs-poster-image');
+  const posterLoadFallback = document.getElementById('posterLoadFallback');
+  if (signsPosterImage && posterLoadFallback) {
+    const showPosterFallback = () => {
+      signsPosterImage.hidden = true;
+      posterLoadFallback.hidden = false;
+    };
+    signsPosterImage.addEventListener('error', showPosterFallback);
+    signsPosterImage.addEventListener('load', () => {
+      posterLoadFallback.hidden = true;
+    });
+    if (signsPosterImage.complete && signsPosterImage.naturalWidth === 0) {
+      showPosterFallback();
+    }
+  }
   document.getElementById('btnNearest').addEventListener('click', findNearest);

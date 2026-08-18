@@ -626,6 +626,19 @@
   }
   .poster-frame{width:100%;max-width:798px;margin:0 auto;background:#fff;}
   .signs-poster-image{display:block;width:100%;height:auto;}
+  .poster-load-fallback{
+    min-height:220px;
+    padding:24px;
+    display:grid;
+    place-content:center;
+    gap:8px;
+    text-align:center;
+    color:var(--ink);
+    background:#f8fafc;
+  }
+  .poster-load-fallback p{margin:0;}
+  .poster-load-fallback p:first-child{font-weight:800;}
+  .poster-load-fallback[hidden]{display:none;}
   #signsView .signs-cta{padding:16px 20px 0;margin:0 auto;max-width:798px;}
   #signsView .signs-cta p{color:var(--ink);}
   #signsView .signs-cta .btn-nearest{background:var(--green);color:#fff;}
