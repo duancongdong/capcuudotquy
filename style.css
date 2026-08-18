@@ -17,6 +17,87 @@
     color:var(--ink);
     padding-bottom:96px;
   }
+  body.disclaimer-open{overflow:hidden;}
+  .disclaimer-gate{
+    min-height:100vh;
+    min-height:100dvh;
+    padding:clamp(18px,5vw,68px) 16px;
+    display:grid;
+    place-items:center;
+    background:#f2f2f2;
+  }
+  .disclaimer-card{
+    width:min(100%,670px);
+    overflow:hidden;
+    border-radius:11px;
+    background:#fff;
+    box-shadow:0 14px 38px rgba(11,31,58,.16);
+  }
+  .disclaimer-header{
+    padding:22px 24px 20px;
+    text-align:center;
+    color:#fff;
+    background:#cf0d32;
+  }
+  .disclaimer-header h1{
+    margin:0 0 14px;
+    font-size:clamp(18px,3vw,24px);
+    line-height:1.25;
+    font-weight:800;
+  }
+  .disclaimer-language{
+    display:inline-block;
+    padding:8px 16px;
+    border-radius:999px;
+    color:#cf0d32;
+    background:#fff;
+    font-size:13px;
+    font-weight:700;
+  }
+  .disclaimer-content{
+    padding:24px 26px 8px;
+    color:#536070;
+  }
+  .disclaimer-content section{margin:0 0 18px;}
+  .disclaimer-content h2{
+    margin:0 0 6px;
+    color:#d00d32;
+    font-size:16px;
+    line-height:1.4;
+  }
+  .disclaimer-content p{
+    margin:0;
+    font-size:15px;
+    line-height:1.6;
+  }
+  .disclaimer-actions{
+    padding:14px 20px 20px;
+    border-top:1px solid #edf0f3;
+  }
+  .disclaimer-actions button{
+    width:100%;
+    min-height:54px;
+    border:0;
+    border-radius:8px;
+    color:#fff;
+    background:#cf0d32;
+    font:inherit;
+    font-weight:800;
+    font-size:16px;
+    cursor:pointer;
+  }
+  .disclaimer-actions button:hover{background:#b9092b;}
+  .disclaimer-actions button:focus-visible{outline-color:#cf0d32;}
+  @media (max-width:520px){
+    .disclaimer-gate{padding:0;background:#fff;align-items:start;}
+    .disclaimer-card{min-height:100vh;min-height:100dvh;border-radius:0;box-shadow:none;}
+    .disclaimer-header{padding:24px 18px 20px;}
+    .disclaimer-content{padding:22px 20px 4px;}
+    .disclaimer-content h2{font-size:15px;}
+    .disclaimer-content p{font-size:14px;line-height:1.55;}
+    .disclaimer-actions{padding:14px 16px calc(16px + env(safe-area-inset-bottom));}
+  }
+  [hidden]{display:none !important;}
   .topbar{
     background:linear-gradient(160deg, var(--ink) 0%, var(--ink-2) 100%);
     color:#fff;

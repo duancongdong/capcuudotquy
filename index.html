@@ -55,7 +55,39 @@
 </head>
 <body>
 
-  <header class="topbar">
+  <section class="disclaimer-gate" id="disclaimerGate" aria-labelledby="disclaimerTitle">
+    <div class="disclaimer-card" role="dialog" aria-modal="true" aria-describedby="disclaimerContent">
+      <header class="disclaimer-header">
+        <h1 id="disclaimerTitle">TUYÊN BỐ MIỄN TRỪ TRÁCH NHIỆM &amp; QUYỀN RIÊNG TƯ</h1>
+        <span class="disclaimer-language">VN Tiếng Việt</span>
+      </header>
+
+      <div class="disclaimer-content" id="disclaimerContent">
+        <section>
+          <h2>1. Mục đích cung cấp thông tin, KHÔNG phải chẩn đoán y khoa</h2>
+          <p>Ứng dụng này được phát triển với mục đích duy nhất là HỖ TRỢ cộng đồng nhận diện sớm các dấu hiệu nghi ngờ đột quỵ và định vị cơ sở y tế gần nhất. Ứng dụng KHÔNG phải là thiết bị y tế và KHÔNG có chức năng chẩn đoán y khoa.</p>
+        </section>
+        <section>
+          <h2>2. Hành động khi nghi ngờ đột quỵ</h2>
+          <p>Khi nghi ngờ đột quỵ, hãy nhanh chóng đưa người bệnh đến cơ sở y tế có khả năng cấp cứu và điều trị đột quỵ gần nhất. Ưu tiên gọi 115 nếu có thể đáp ứng nhanh; nếu thời gian chờ cấp cứu dự kiến kéo dài, cân nhắc phương án vận chuyển phù hợp để người bệnh được tiếp cận cơ sở y tế sớm nhất. Không để người bệnh tự lái xe.</p>
+        </section>
+        <section>
+          <h2>3. Giới hạn trách nhiệm pháp lý</h2>
+          <p>Tác giả và đơn vị phát triển KHÔNG chịu bất kỳ trách nhiệm pháp lý nào đối với những rủi ro phát sinh từ việc sử dụng ứng dụng này.</p>
+        </section>
+        <section>
+          <h2>4. Chính sách bảo vệ dữ liệu cá nhân</h2>
+          <p>Ứng dụng KHÔNG thu thập thông tin cá nhân. Dữ liệu vị trí (GPS) của bạn chỉ được xử lý trên thiết bị và KHÔNG gửi lên máy chủ.</p>
+        </section>
+      </div>
+
+      <div class="disclaimer-actions">
+        <button id="acceptDisclaimer" type="button">Tôi đã hiểu và đồng ý</button>
+      </div>
+    </div>
+  </section>
+
+  <header class="topbar" id="appHeader" hidden>
     <p class="eyebrow">World Stroke Day · #ActFast</p>
     <h1>Danh sách bệnh viện &amp; trung tâm cấp cứu đột quỵ tại Việt Nam</h1>
     <div class="meta">
@@ -66,7 +98,7 @@
     <p class="src">Nguồn: Hội Đột Quỵ Việt Nam (VNSA). Danh sách mang tính chất tham khảo — vui lòng gọi hotline xác nhận trước khi đến.</p>
   </header>
 
-  <main id="mainContent">
+  <main id="mainContent" hidden>
   <section class="urgent-guide" aria-labelledby="urgentGuideTitle">
     <p class="urgent-label">Nếu đang nghi ngờ đột quỵ</p>
     <h2 id="urgentGuideTitle">Gọi 115 ngay hoặc đưa người bệnh đến cơ sở GẦN NHẤT có khả năng điều trị đột quỵ</h2>
@@ -138,7 +170,7 @@
 
   </main>
 
-  <a class="sos" href="tel:115">
+  <a class="sos" id="emergencySos" href="tel:115" hidden>
     <span class="ring"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
     Gọi 115 ngay
   </a>

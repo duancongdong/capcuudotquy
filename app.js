@@ -4,6 +4,29 @@
 
   let ALL = [];
 
+  // Cổng miễn trừ trách nhiệm: chỉ mở nội dung chính sau khi người dùng xác nhận.
+  const DISCLAIMER_STORAGE_KEY = 'strokeLocatorDisclaimerAccepted:v1';
+  const disclaimerGate = document.getElementById('disclaimerGate');
+  const acceptDisclaimer = document.getElementById('acceptDisclaimer');
+  const appHeader = document.getElementById('appHeader');
+  const mainContent = document.getElementById('mainContent');
+  const emergencySos = document.getElementById('emergencySos');
+
+  function openMainContent() {
+    disclaimerGate.hidden = true;
+    appHeader.hidden = false;
+    mainContent.hidden = false;
+    emergencySos.hidden = false;
+    document.body.classList.remove('disclaimer-open');
+    try { localStorage.setItem(DISCLAIMER_STORAGE_KEY, '1'); } catch (err) { /* private mode */ }
+  }
+
+  document.body.classList.add('disclaimer-open');
+  let disclaimerAccepted = false;
+  try { disclaimerAccepted = localStorage.getItem(DISCLAIMER_STORAGE_KEY) === '1'; } catch (err) { /* private mode */ }
+  if (disclaimerAccepted) openMainContent();
+  acceptDisclaimer.addEventListener('click', openMainContent);
+
   function escapeHtml(str) {
     const div = document.createElement('div');
     div.textContent = str;
