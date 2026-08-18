@@ -11,6 +11,27 @@
   const appHeader = document.getElementById('appHeader');
   const mainContent = document.getElementById('mainContent');
   const emergencySos = document.getElementById('emergencySos');
+  const disclaimerTitle = document.getElementById('disclaimerTitle');
+  const disclaimerContentVi = document.getElementById('disclaimerContentVi');
+  const disclaimerContentEn = document.getElementById('disclaimerContentEn');
+  const disclaimerLanguageButtons = [...document.querySelectorAll('[data-disclaimer-language]')];
+  const disclaimerLanguageKey = 'strokeLocatorDisclaimerLanguage:v1';
+
+  function setDisclaimerLanguage(language) {
+    const isEnglish = language === 'en';
+    disclaimerContentVi.hidden = isEnglish;
+    disclaimerContentEn.hidden = !isEnglish;
+    disclaimerTitle.textContent = isEnglish
+      ? 'DISCLAIMER & PRIVACY NOTICE'
+      : 'TUYÊN BỐ MIỄN TRỪ TRÁCH NHIỆM & QUYỀN RIÊNG TƯ';
+    acceptDisclaimer.textContent = isEnglish ? 'I have read and agree' : 'Tôi đã hiểu và đồng ý';
+    disclaimerLanguageButtons.forEach(button => {
+      const active = button.dataset.disclaimerLanguage === language;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    try { localStorage.setItem(disclaimerLanguageKey, language); } catch (err) { /* private mode */ }
+  }
 
   function openMainContent() {
     disclaimerGate.hidden = true;
@@ -26,6 +47,14 @@
   try { disclaimerAccepted = localStorage.getItem(DISCLAIMER_STORAGE_KEY) === '1'; } catch (err) { /* private mode */ }
   if (disclaimerAccepted) openMainContent();
   acceptDisclaimer.addEventListener('click', openMainContent);
+  disclaimerLanguageButtons.forEach(button => {
+    button.addEventListener('click', () => setDisclaimerLanguage(button.dataset.disclaimerLanguage));
+  });
+  let preferredDisclaimerLanguage = 'vi';
+  try {
+    preferredDisclaimerLanguage = localStorage.getItem(disclaimerLanguageKey) === 'en' ? 'en' : 'vi';
+  } catch (err) { /* private mode */ }
+  setDisclaimerLanguage(preferredDisclaimerLanguage);
 
   function escapeHtml(str) {
     const div = document.createElement('div');

@@ -59,26 +59,68 @@
     <div class="disclaimer-card" role="dialog" aria-modal="true" aria-describedby="disclaimerContent">
       <header class="disclaimer-header">
         <h1 id="disclaimerTitle">TUYÊN BỐ MIỄN TRỪ TRÁCH NHIỆM &amp; QUYỀN RIÊNG TƯ</h1>
-        <span class="disclaimer-language">VN Tiếng Việt</span>
+        <div class="disclaimer-language-switch" role="group" aria-label="Ngôn ngữ / Language">
+          <button class="disclaimer-language active" type="button" data-disclaimer-language="vi" aria-pressed="true">🇻🇳 Tiếng Việt</button>
+          <button class="disclaimer-language" type="button" data-disclaimer-language="en" aria-pressed="false">🇬🇧 English</button>
+        </div>
       </header>
 
       <div class="disclaimer-content" id="disclaimerContent">
+        <div class="disclaimer-copy" id="disclaimerContentVi" lang="vi">
         <section>
-          <h2>1. Mục đích cung cấp thông tin, KHÔNG phải chẩn đoán y khoa</h2>
-          <p>Ứng dụng này được phát triển với mục đích duy nhất là HỖ TRỢ cộng đồng nhận diện sớm các dấu hiệu nghi ngờ đột quỵ và định vị cơ sở y tế gần nhất. Ứng dụng KHÔNG phải là thiết bị y tế và KHÔNG có chức năng chẩn đoán y khoa.</p>
+          <h2>1. Stroke Map là công cụ hỗ trợ cộng đồng</h2>
+          <p>Stroke Map cung cấp thông tin nhằm hỗ trợ nhận biết dấu hiệu nghi ngờ đột quỵ và tìm kiếm cơ sở y tế phù hợp. Stroke Map không phải là thiết bị y tế, không chẩn đoán bệnh và không thay thế tư vấn, khám hoặc điều trị của nhân viên y tế.</p>
         </section>
         <section>
-          <h2>2. Hành động khi nghi ngờ đột quỵ</h2>
-          <p>Khi nghi ngờ đột quỵ, hãy nhanh chóng đưa người bệnh đến cơ sở y tế có khả năng cấp cứu và điều trị đột quỵ gần nhất. Ưu tiên gọi 115 nếu có thể đáp ứng nhanh; nếu thời gian chờ cấp cứu dự kiến kéo dài, cân nhắc phương án vận chuyển phù hợp để người bệnh được tiếp cận cơ sở y tế sớm nhất. Không để người bệnh tự lái xe.</p>
+          <h2>2. Khi nghi ngờ đột quỵ, hãy ưu tiên cấp cứu</h2>
+          <p>Không chờ Stroke Map hoặc phản hồi từ cơ sở y tế nếu việc chờ đợi có thể làm chậm cấp cứu. Hãy gọi 115 hoặc đưa người bệnh đến cơ sở y tế có khả năng cấp cứu đột quỵ gần nhất. Không để người bệnh tự lái xe.</p>
         </section>
         <section>
-          <h2>3. Giới hạn trách nhiệm pháp lý</h2>
-          <p>Tác giả và đơn vị phát triển KHÔNG chịu bất kỳ trách nhiệm pháp lý nào đối với những rủi ro phát sinh từ việc sử dụng ứng dụng này.</p>
+          <h2>3. Thông tin có thể thay đổi</h2>
+          <p>Thông tin về cơ sở y tế, số điện thoại, địa chỉ, vị trí, thời gian hoạt động và khả năng tiếp nhận người bệnh có thể thay đổi mà không được cập nhật ngay lập tức trên website. Chúng tôi không bảo đảm rằng mọi thông tin luôn chính xác, đầy đủ hoặc khả dụng tại thời điểm bạn sử dụng.</p>
         </section>
         <section>
-          <h2>4. Chính sách bảo vệ dữ liệu cá nhân</h2>
-          <p>Ứng dụng KHÔNG thu thập thông tin cá nhân. Dữ liệu vị trí (GPS) của bạn chỉ được xử lý trên thiết bị và KHÔNG gửi lên máy chủ.</p>
+          <h2>4. Thông tin không thay thế quyết định y tế</h2>
+          <p>Việc một cơ sở được hiển thị trên Stroke Map không đồng nghĩa với việc cơ sở đó đang tiếp nhận người bệnh hoặc phù hợp với mọi trường hợp. Người dùng cần xác nhận trực tiếp với cơ sở y tế khi có thể và tự đưa ra quyết định phù hợp với tình huống thực tế.</p>
         </section>
+        <section>
+          <h2>5. Giới hạn trách nhiệm</h2>
+          <p>Trong phạm vi pháp luật cho phép, người sáng lập và đơn vị vận hành Stroke Map không chịu trách nhiệm đối với thiệt hại phát sinh từ thông tin do bên thứ ba cung cấp hoặc thay đổi, việc không thể liên lạc với cơ sở y tế, lỗi định vị, gián đoạn kết nối, lỗi kỹ thuật hoặc việc người dùng sử dụng Stroke Map thay cho việc tìm kiếm hỗ trợ y tế khẩn cấp.</p>
+        </section>
+        <section>
+          <h2>6. Dữ liệu cá nhân</h2>
+          <p>Stroke Map chỉ thu thập và xử lý dữ liệu cá nhân trong phạm vi cần thiết cho hoạt động của website và theo chính sách bảo mật được công bố. Thông tin vị trí, nếu được sử dụng, sẽ được xử lý theo chính sách bảo mật của Stroke Map.</p>
+        </section>
+        <p class="disclaimer-confirmation">Bằng việc tiếp tục sử dụng Stroke Map, bạn xác nhận đã đọc và hiểu các thông tin trên.</p>
+        </div>
+
+        <div class="disclaimer-copy" id="disclaimerContentEn" lang="en" hidden>
+        <section>
+          <h2>1. Stroke Map is a community support tool</h2>
+          <p>Stroke Map provides information to help the community recognize suspected stroke symptoms and find suitable healthcare facilities. Stroke Map is not a medical device, does not diagnose medical conditions, and does not replace advice, examination, or treatment by healthcare professionals.</p>
+        </section>
+        <section>
+          <h2>2. If stroke is suspected, prioritize emergency care</h2>
+          <p>Do not wait for Stroke Map or a response from a healthcare facility if waiting could delay emergency care. Call 115 or take the patient to the nearest healthcare facility capable of providing emergency stroke care. Do not let the patient drive themselves.</p>
+        </section>
+        <section>
+          <h2>3. Information may change</h2>
+          <p>Information about healthcare facilities, telephone numbers, addresses, locations, operating hours, and patient acceptance capacity may change and may not be updated immediately on the website. We do not guarantee that all information is accurate, complete, or available when you use it.</p>
+        </section>
+        <section>
+          <h2>4. Information does not replace medical decisions</h2>
+          <p>The display of a facility on Stroke Map does not mean that the facility is currently accepting patients or is suitable for every situation. Users should contact the healthcare facility directly when possible and make an appropriate decision based on the actual circumstances.</p>
+        </section>
+        <section>
+          <h2>5. Limitation of liability</h2>
+          <p>To the extent permitted by law, the founder and operator of Stroke Map shall not be liable for damages arising from information provided or changed by third parties, inability to contact a healthcare facility, location errors, connection interruptions, technical errors, or the user's use of Stroke Map instead of seeking emergency medical assistance.</p>
+        </section>
+        <section>
+          <h2>6. Personal data</h2>
+          <p>Stroke Map collects and processes personal data only to the extent necessary for the operation of the website and in accordance with its published privacy policy. Location information, if used, will be processed in accordance with Stroke Map's privacy policy.</p>
+        </section>
+        <p class="disclaimer-confirmation">By continuing to use Stroke Map, you confirm that you have read and understood the information above.</p>
+        </div>
       </div>
 
       <div class="disclaimer-actions">
