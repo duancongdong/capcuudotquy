@@ -15,6 +15,7 @@
   const disclaimerContentVi = document.getElementById('disclaimerContentVi');
   const disclaimerContentEn = document.getElementById('disclaimerContentEn');
   const disclaimerLanguageButtons = [...document.querySelectorAll('[data-disclaimer-language]')];
+  const signsPosters = [...document.querySelectorAll('[data-poster-language]')];
   const disclaimerLanguageKey = 'strokeLocatorDisclaimerLanguage:v1';
 
   function setDisclaimerLanguage(language) {
@@ -25,6 +26,9 @@
       ? 'DISCLAIMER & PRIVACY NOTICE'
       : 'TUYÊN BỐ MIỄN TRỪ TRÁCH NHIỆM & QUYỀN RIÊNG TƯ';
     acceptDisclaimer.textContent = isEnglish ? 'I have read and agree' : 'Tôi đã hiểu và đồng ý';
+    signsPosters.forEach(poster => {
+      poster.hidden = poster.dataset.posterLanguage !== language;
+    });
     disclaimerLanguageButtons.forEach(button => {
       const active = button.dataset.disclaimerLanguage === language;
       button.classList.toggle('active', active);
@@ -675,19 +679,23 @@
 
   // Nếu tài nguyên poster không thể tải, không để lại vùng trắng lớn kèm biểu tượng ảnh lỗi.
   // Poster thực tế được đặt trong assets/ để GitHub Pages luôn triển khai cùng mã nguồn.
-  const signsPosterImage = document.querySelector('.signs-poster-image');
+  const signsPosterImages = [...document.querySelectorAll('.signs-poster-image')];
   const posterLoadFallback = document.getElementById('posterLoadFallback');
-  if (signsPosterImage && posterLoadFallback) {
-    const showPosterFallback = () => {
-      signsPosterImage.hidden = true;
-      posterLoadFallback.hidden = false;
-    };
-    signsPosterImage.addEventListener('error', showPosterFallback);
-    signsPosterImage.addEventListener('load', () => {
-      posterLoadFallback.hidden = true;
+  if (signsPosterImages.length && posterLoadFallback) {
+    signsPosterImages.forEach(signsPosterImage => {
+      const showPosterFallback = () => {
+        if (!signsPosterImage.hidden) {
+          signsPosterImage.hidden = true;
+          posterLoadFallback.hidden = false;
+        }
+      };
+      signsPosterImage.addEventListener('error', showPosterFallback);
+      signsPosterImage.addEventListener('load', () => {
+        if (!signsPosterImage.hidden) posterLoadFallback.hidden = true;
+      });
+      if (signsPosterImage.complete && signsPosterImage.naturalWidth === 0 && !signsPosterImage.hidden) {
+        showPosterFallback();
+      }
     });
-    if (signsPosterImage.complete && signsPosterImage.naturalWidth === 0) {
-      showPosterFallback();
-    }
   }
   document.getElementById('btnNearest').addEventListener('click', findNearest);
