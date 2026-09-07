@@ -468,6 +468,7 @@
     color:var(--slate);
     cursor:pointer;
     white-space:nowrap;
+    text-decoration:none;
   }
   .view-btn.active{
     background:var(--field);
@@ -805,3 +806,20 @@
   #signsView .signs-source,
   #signsView .signs-updated{max-width:758px;margin-left:auto;margin-right:auto;color:var(--slate);}
   #signsView .signs-source{margin-top:16px;border-top:1px dashed var(--line);}
+
+  /* Trang Dấu hiệu tĩnh: mỗi URL chỉ có một poster, không phụ thuộc JS. */
+  body.signs-static-body{background:#f7f9fc;padding-bottom:92px;}
+  .signs-static-page{max-width:840px;margin:0 auto;background:#fff;min-height:100vh;}
+  .signs-static-header{background:linear-gradient(160deg,var(--ink),var(--ink-2));color:#fff;padding:18px 20px 16px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .signs-static-header p{margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:#b9ceef;}
+  .signs-static-header h1{margin:5px 0 0;font-size:clamp(21px,4vw,31px);line-height:1.16;}
+  .signs-static-language{display:flex;gap:7px;flex-shrink:0;}
+  .signs-static-language a{display:inline-flex;align-items:center;justify-content:center;min-width:62px;min-height:36px;padding:6px 10px;border:1px solid rgba(255,255,255,.6);border-radius:999px;color:#fff;background:rgba(8,29,67,.45);font-size:12px;font-weight:800;text-decoration:none;}
+  .signs-static-language a.is-active{color:var(--ink);background:#fff;border-color:#fff;box-shadow:0 3px 9px rgba(0,0,0,.2);}
+  .signs-static-poster{display:block;width:100%;max-width:798px;height:auto;margin:0 auto;background:#fff;}
+  .signs-static-content{padding:18px 20px 0;text-align:center;}
+  .signs-static-content h2{margin:0 0 12px;color:var(--ink);font-size:20px;}
+  .signs-static-content p{margin:0 0 14px;color:var(--slate);font-size:13px;line-height:1.55;}
+  .signs-static-list{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:10px;background:var(--green);color:#fff;font-weight:800;text-decoration:none;}
+  .signs-static-sos{position:fixed;z-index:30;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;min-height:70px;background:var(--red);color:#fff;font-size:clamp(19px,4vw,28px);font-weight:900;text-decoration:none;padding:10px calc(16px + env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));}
+  @media (max-width:560px){.signs-static-header{align-items:flex-start;padding:14px 14px 13px;}.signs-static-header h1{font-size:20px;}.signs-static-language a{min-width:52px;padding:5px 7px;font-size:11px;}.signs-static-content{padding:16px 14px 0;}}

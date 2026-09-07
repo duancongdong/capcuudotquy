@@ -122,6 +122,7 @@
 
   function setMainLanguage(language) {
     currentLanguage = language === 'en' ? 'en' : 'vi';
+    const signsPageHref = currentLanguage === 'en' ? './signs-en.html' : './signs.html';
     document.documentElement.lang = currentLanguage;
     document.title = currentLanguage === 'en' ? 'Stroke treatment hospitals in Vietnam' : 'Danh sách bệnh viện cấp cứu đột quỵ — Việt Nam';
     document.getElementById('siteTitle').textContent = t('siteTitle');
@@ -132,9 +133,11 @@
     document.getElementById('urgentCopy').textContent = t('urgentCopy');
     document.getElementById('urgentCall').textContent = t('emergencyCall');
     document.getElementById('btnUrgentSigns').textContent = currentLanguage === 'en' ? 'See FAST signs' : 'Xem dấu hiệu K-H-Ẩ-N';
+    document.getElementById('btnUrgentSigns').href = signsPageHref;
     document.getElementById('btnListView').textContent = t('listTab');
     document.getElementById('btnMapView').textContent = t('mapTab');
     document.getElementById('btnSignsView').textContent = t('signsTab');
+    document.getElementById('btnSignsView').href = signsPageHref;
     document.getElementById('btnNearest').textContent = t('findNearest');
     document.getElementById('filterProv').options[0].textContent = t('allProvinces');
     document.getElementById('searchBox').placeholder = t('searchPlaceholder');
@@ -808,12 +811,6 @@
   });
   document.getElementById('btnListView').addEventListener('click', () => { currentView = 'list'; switchView('list'); });
   document.getElementById('btnMapView').addEventListener('click', () => { currentView = 'map'; switchView('map'); });
-  document.getElementById('btnSignsView').addEventListener('click', () => { currentView = 'signs'; switchView('signs'); });
-  document.getElementById('btnUrgentSigns').addEventListener('click', () => {
-    currentView = 'signs';
-    switchView('signs');
-    document.getElementById('signsView').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
   document.getElementById('btnSignsFindHospital').addEventListener('click', () => {
     currentView = 'list';
     switchView('list');
