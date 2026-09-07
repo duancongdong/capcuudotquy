@@ -147,10 +147,32 @@
   }
   [hidden]{display:none !important;}
   .topbar{
+    position:relative;
     background:linear-gradient(160deg, var(--ink) 0%, var(--ink-2) 100%);
     color:#fff;
     padding:20px 20px 22px;
   }
+  .main-language-switch{
+    position:absolute;
+    top:16px;
+    right:16px;
+    display:flex;
+    gap:5px;
+  }
+  .main-language{
+    min-width:48px;
+    padding:6px 9px;
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:999px;
+    color:#d9e9ff;
+    background:rgba(255,255,255,.1);
+    font:inherit;
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
+  }
+  .main-language.active,
+  .main-language:hover{color:var(--ink);background:#fff;}
   .topbar .eyebrow{
     font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size:11px;

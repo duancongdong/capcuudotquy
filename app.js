@@ -17,6 +17,117 @@
   const disclaimerLanguageButtons = [...document.querySelectorAll('[data-disclaimer-language]')];
   const signsPosters = [...document.querySelectorAll('[data-poster-language]')];
   const disclaimerLanguageKey = 'strokeLocatorDisclaimerLanguage:v1';
+  const mainLanguageButtons = [...document.querySelectorAll('[data-main-language]')];
+  let currentLanguage = 'vi';
+
+  const UI_TEXT = {
+    vi: {
+      siteTitle: 'Danh sách bệnh viện & trung tâm cấp cứu đột quỵ tại Việt Nam',
+      metaUnit: 'đơn vị', metaProvince: 'tỉnh/thành', updatedData: 'Dữ liệu cập nhật',
+      source: 'Nguồn: Hội Đột Quỵ Việt Nam (VNSA). Danh sách mang tính chất tham khảo — vui lòng gọi hotline xác nhận trước khi đến.',
+      urgentLabel: 'Nếu đang nghi ngờ đột quỵ',
+      urgentTitle: 'Gọi 115 ngay hoặc đưa người bệnh đến cơ sở GẦN NHẤT có khả năng điều trị đột quỵ',
+      urgentCopy: 'Không chờ triệu chứng tự hết, không tự lái xe nếu tình trạng nặng. Ghi lại thời điểm khởi phát và gọi trước cho bệnh viện để xác nhận khả năng tiếp nhận.',
+      emergencyCall: '📞 Gọi cấp cứu 115', signsTab: '🧠 Dấu hiệu', mapTab: '🗺️ Bản đồ', listTab: '📋 Danh sách',
+      findNearest: '📍 Tìm bệnh viện gần tôi nhất', allProvinces: 'Tất cả tỉnh', searchPlaceholder: 'Tìm theo tên bệnh viện...',
+      searchAria: 'Tìm kiếm bệnh viện', listCount: n => `Đang hiển thị <b>${n}</b> cơ sở`,
+      distanceNote: 'Khoảng cách trên thẻ là khoảng cách đường thẳng. Nhấn “Chỉ đường” để xem quãng đường di chuyển thực tế.',
+      mapNote: (x, y) => `Chỉ hiển thị <span id="mapCoordinateCount">${x}</span> cơ sở đã có toạ độ xác định. Xem đầy đủ <span id="mapTotalCount">${y}</span> cơ sở ở chế độ Danh sách.`,
+      signsCta: 'Đã nhận ra dấu hiệu? Đừng chần chừ.', signsFind: '📍 Tìm bệnh viện gần nhất ngay',
+      loading: 'Đang tải dữ liệu...', noscript: 'Để tra cứu danh sách bệnh viện, vui lòng bật JavaScript. Trong tình huống khẩn cấp, hãy gọi ',
+      signsSource: 'Nguồn: World Stroke Organization · Hội Đột Quỵ Việt Nam (VNSA). Nội dung mang tính tham khảo, không thay thế chẩn đoán y khoa.', signsUpdated: '* Website cập nhật lúc: ',
+      siteNote: '* Bệnh nhân và người nhà cần liên hệ với bệnh viện qua số hotline trước khi đến. Dữ liệu được Hội Đột Quỵ Việt Nam cập nhật định kỳ. ',
+      dataLink: 'Xem dữ liệu bệnh viện dạng máy đọc', sos: 'Gọi 115 ngay',
+      noResults: 'Không tìm thấy cơ sở phù hợp.', straight: 'đường thẳng', meters: 'mét', kilometers: 'kilômét', yes: 'Có', no: 'Không',
+      thrombolysis: 'Tiêu sợi huyết', intervention: 'Can thiệp', call: 'Gọi', directions: 'Chỉ đường',
+      mapLoading: 'Đang tải thư viện bản đồ từ CDN…', mapLoadError: 'Không tải được thư viện bản đồ. Vui lòng kiểm tra kết nối mạng hoặc dùng tab Danh sách.',
+      dataLoadError: 'Lỗi tải dữ liệu: ', locating: 'Đang xác định vị trí của bạn…',
+      located: 'Đã xác định vị trí — đang sắp xếp theo khoảng cách đường thẳng gần nhất.',
+      noGeolocation: 'Trình duyệt không hỗ trợ định vị. Vui lòng chọn tỉnh thủ công bên dưới.',
+      denied: 'Bạn đã từ chối quyền truy cập vị trí trước đó.', gpsError: 'Có lỗi khi định vị. Vui lòng thử lại hoặc chọn tỉnh thủ công.',
+      gpsWeak: 'Không xác định được vị trí hiện tại (GPS yếu hoặc bị chặn). Vui lòng thử lại hoặc chọn tỉnh thủ công.',
+      gpsTimeout: 'Định vị quá thời gian chờ. Vui lòng thử lại.',
+    },
+    en: {
+      siteTitle: 'Stroke treatment hospitals & centers in Vietnam',
+      metaUnit: 'facilities', metaProvince: 'provinces/cities', updatedData: 'Data updated',
+      source: 'Source: Vietnam Stroke Association (VNSA). This list is for reference only — please call ahead to confirm availability.',
+      urgentLabel: 'If stroke is suspected',
+      urgentTitle: 'Call 115 now or take the patient to the NEAREST facility capable of treating stroke',
+      urgentCopy: 'Do not wait for symptoms to go away. Do not drive yourself if the condition is serious. Note the time symptoms started and call the hospital ahead to confirm it can receive the patient.',
+      emergencyCall: '📞 Call emergency 115', signsTab: '🧠 Signs', mapTab: '🗺️ Map', listTab: '📋 List',
+      findNearest: '📍 Find the nearest hospital', allProvinces: 'All provinces', searchPlaceholder: 'Search by hospital name...',
+      searchAria: 'Search hospitals', listCount: n => `Showing <b>${n}</b> facilities`,
+      distanceNote: 'The distance on each card is a straight-line distance. Select “Directions” to see the actual driving route.',
+      mapNote: (x, y) => `Showing <span id="mapCoordinateCount">${x}</span> facilities with coordinates. See all <span id="mapTotalCount">${y}</span> facilities in the List view.`,
+      signsCta: 'Recognize the signs? Do not delay.', signsFind: '📍 Find the nearest hospital now',
+      loading: 'Loading data...', noscript: 'Please enable JavaScript to search the hospital list. In an emergency, call ',
+      signsSource: 'Source: World Stroke Organization · Vietnam Stroke Association (VNSA). For reference only; this does not replace medical advice.', signsUpdated: '* Website updated at: ',
+      siteNote: '* Patients and families should call the hospital hotline before arrival. Data is updated periodically by the Vietnam Stroke Association. ',
+      dataLink: 'View machine-readable hospital data', sos: 'Call 115 now',
+      noResults: 'No matching facility found.', straight: 'straight-line', meters: 'meters', kilometers: 'kilometers', yes: 'Yes', no: 'No',
+      thrombolysis: 'Thrombolysis', intervention: 'Intervention', call: 'Call', directions: 'Directions',
+      mapLoading: 'Loading map library from CDN…', mapLoadError: 'Could not load the map library. Check your connection or use the List tab.',
+      dataLoadError: 'Data loading error: ', locating: 'Finding your location…',
+      located: 'Location found — sorting facilities by nearest straight-line distance.',
+      noGeolocation: 'Your browser does not support location services. Please choose a province manually below.',
+      denied: 'You previously denied location access.', gpsError: 'Could not determine your location. Try again or choose a province manually.',
+      gpsWeak: 'Could not determine your current location (weak or blocked GPS). Try again or choose a province manually.',
+      gpsTimeout: 'Location request timed out. Please try again.',
+    },
+  };
+
+  function t(key, ...args) {
+    const value = UI_TEXT[currentLanguage][key];
+    return typeof value === 'function' ? value(...args) : value;
+  }
+
+  function setMainLanguage(language) {
+    currentLanguage = language === 'en' ? 'en' : 'vi';
+    document.documentElement.lang = currentLanguage;
+    document.title = currentLanguage === 'en' ? 'Stroke treatment hospitals in Vietnam' : 'Danh sách bệnh viện cấp cứu đột quỵ — Việt Nam';
+    document.getElementById('siteTitle').textContent = t('siteTitle');
+    document.getElementById('siteSource').textContent = t('source');
+    document.getElementById('metaUpdatedLabel').textContent = t('updatedData');
+    document.getElementById('urgentLabel').textContent = t('urgentLabel');
+    document.getElementById('urgentGuideTitle').textContent = t('urgentTitle');
+    document.getElementById('urgentCopy').textContent = t('urgentCopy');
+    document.getElementById('urgentCall').textContent = t('emergencyCall');
+    document.getElementById('btnUrgentSigns').textContent = currentLanguage === 'en' ? 'See FAST signs' : 'Xem dấu hiệu K-H-Ẩ-N';
+    document.getElementById('btnListView').textContent = t('listTab');
+    document.getElementById('btnMapView').textContent = t('mapTab');
+    document.getElementById('btnSignsView').textContent = t('signsTab');
+    document.getElementById('btnNearest').textContent = t('findNearest');
+    document.getElementById('filterProv').options[0].textContent = t('allProvinces');
+    document.getElementById('searchBox').placeholder = t('searchPlaceholder');
+    document.getElementById('searchBox').setAttribute('aria-label', t('searchAria'));
+    document.getElementById('distanceNote').textContent = t('distanceNote');
+    document.getElementById('mapNote').innerHTML = t('mapNote', document.getElementById('mapCoordinateCount').textContent, document.getElementById('mapTotalCount').textContent);
+    document.getElementById('signsCtaCopy').textContent = t('signsCta');
+    document.getElementById('btnSignsFindHospital').textContent = t('signsFind');
+    document.getElementById('signsSource').textContent = t('signsSource');
+    document.getElementById('signsUpdatedAt').textContent = `${t('signsUpdated')}${document.getElementById('signsUpdatedAt').textContent.split(': ').pop() || '—'}`;
+    document.getElementById('posterLoadFallback').firstElementChild.textContent = currentLanguage === 'en' ? 'Unable to load the stroke signs poster.' : 'Không thể tải poster dấu hiệu đột quỵ.';
+    document.getElementById('posterLoadFallback').lastElementChild.textContent = currentLanguage === 'en' ? 'If the patient has facial drooping, arm weakness, or speech difficulty, call 115 immediately.' : 'Nếu người bệnh méo miệng, yếu tay hoặc nói khó, hãy gọi 115 ngay.';
+    document.getElementById('siteNote').innerHTML = `${t('siteNote')}<a href="./data/hospitals.json">${t('dataLink')}</a>.`;
+    document.getElementById('sosLabel').textContent = t('sos');
+    document.getElementById('loadingState').textContent = t('loading');
+    document.getElementById('noscriptNote').innerHTML = `${t('noscript')}<a href="tel:115">115</a>.`;
+    signsPosters.forEach(poster => {
+      poster.hidden = poster.dataset.posterLanguage !== currentLanguage;
+    });
+  mainLanguageButtons.forEach(button => {
+      const active = button.dataset.mainLanguage === currentLanguage;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    if (ALL.length) {
+      document.getElementById('metaCount').innerHTML = `<b>${ALL.length}</b> ${t('metaUnit')}`;
+      document.getElementById('metaProv').innerHTML = `<b>${new Set(ALL.map(h => h.province)).size}</b> ${t('metaProvince')}`;
+      document.getElementById('listCountRow').innerHTML = t('listCount', getCurrentFiltered().length);
+      renderList(getCurrentFiltered());
+    }
+  }
 
   function setDisclaimerLanguage(language) {
     const isEnglish = language === 'en';
@@ -29,6 +140,7 @@
     signsPosters.forEach(poster => {
       poster.hidden = poster.dataset.posterLanguage !== language;
     });
+    setMainLanguage(language);
     disclaimerLanguageButtons.forEach(button => {
       const active = button.dataset.disclaimerLanguage === language;
       button.classList.toggle('active', active);
@@ -53,6 +165,9 @@
   acceptDisclaimer.addEventListener('click', openMainContent);
   disclaimerLanguageButtons.forEach(button => {
     button.addEventListener('click', () => setDisclaimerLanguage(button.dataset.disclaimerLanguage));
+  });
+  mainLanguageButtons.forEach(button => {
+    button.addEventListener('click', () => setMainLanguage(button.dataset.mainLanguage));
   });
   let preferredDisclaimerLanguage = 'vi';
   try {
@@ -102,7 +217,7 @@
 
   function badge(label, value) {
     const isYes = value === 'Có';
-    return `<span class="badge ${isYes ? 'yes' : 'no'}">${escapeHtml(label)}: ${escapeHtml(value)}</span>`;
+    return `<span class="badge ${isYes ? 'yes' : 'no'}">${escapeHtml(label)}: ${escapeHtml(isYes ? t('yes') : t('no'))}</span>`;
   }
 
   // ====== TÌM GẦN TÔI NHẤT (định vị + sắp xếp theo khoảng cách) ======
@@ -139,44 +254,40 @@
     const platform = detectPlatform();
     const helpEl = document.getElementById('nearestHelp');
 
-    const stepsByPlatform = {
-      ios: [
-        'Trong Safari, chạm chữ <b>"AA"</b> ở đầu thanh địa chỉ (bên trái, cùng hàng với URL trang này)',
-        'Chọn <b>Cài đặt cho Trang Web</b> (Website Settings)',
-        'Tìm mục <b>Vị trí</b> (Location) → chọn <b>Cho phép</b> (Allow)',
-        'Quay lại trang, bấm <b>Thử lại</b> bên dưới',
-      ],
-      android: [
-        'Chạm vào biểu tượng <b>ổ khóa 🔒</b> hoặc chữ <b>ⓘ</b> bên trái thanh địa chỉ trình duyệt',
-        'Chọn <b>Quyền của trang web</b> (Site settings) → <b>Vị trí</b>',
-        'Chọn <b>Cho phép</b> (Allow)',
-        'Quay lại trang này, bấm <b>Thử lại</b> bên dưới',
-      ],
-      other: [
-        'Mở phần cài đặt của trình duyệt cho trang web này',
-        'Tìm mục quyền <b>Vị trí / Location</b> và chọn Cho phép',
-        'Bấm <b>Thử lại</b> bên dưới',
-      ],
+    const stepsByLanguage = {
+      vi: {
+        ios: ['Trong Safari, chạm chữ <b>"AA"</b> ở đầu thanh địa chỉ', 'Chọn <b>Cài đặt cho Trang Web</b>', 'Tìm mục <b>Vị trí</b> → chọn <b>Cho phép</b>', 'Quay lại trang, bấm <b>Thử lại</b> bên dưới'],
+        android: ['Chạm biểu tượng <b>ổ khóa 🔒</b> hoặc <b>ⓘ</b> bên trái thanh địa chỉ', 'Chọn <b>Quyền của trang web</b> → <b>Vị trí</b>', 'Chọn <b>Cho phép</b>', 'Quay lại trang, bấm <b>Thử lại</b> bên dưới'],
+        other: ['Mở phần cài đặt của trình duyệt cho trang web này', 'Tìm mục quyền <b>Vị trí</b> và chọn <b>Cho phép</b>', 'Bấm <b>Thử lại</b> bên dưới'],
+      },
+      en: {
+        ios: ['In Safari, tap <b>"AA"</b> at the left of the address bar', 'Select <b>Website Settings</b>', 'Find <b>Location</b> and select <b>Allow</b>', 'Return to the page and tap <b>Try again</b> below'],
+        android: ['Tap the <b>lock 🔒</b> or <b>ⓘ</b> icon left of the address bar', 'Select <b>Site settings</b> → <b>Location</b>', 'Select <b>Allow</b>', 'Return to this page and tap <b>Try again</b> below'],
+        other: ['Open this website’s browser settings', 'Find the <b>Location</b> permission and select <b>Allow</b>', 'Tap <b>Try again</b> below'],
+      },
     };
-    const steps = stepsByPlatform[platform];
+    const steps = stepsByLanguage[currentLanguage][platform];
 
     // iOS có thêm lớp cài đặt hệ thống độc lập với cài đặt riêng-từng-trang ở trên —
     // nếu bước chính không có tác dụng, đây thường là nguyên nhân thật sự.
-    const iosExtra = platform === 'ios' ? `
-      <p class="help-subtitle">Nếu vẫn không được, kiểm tra thêm 2 nơi này:</p>
+    const iosExtra = platform === 'ios' ? (currentLanguage === 'en' ? `
+      <p class="help-subtitle">If it still does not work, also check:</p>
+      <ol><li><b>Settings</b> → <b>Privacy &amp; Security</b> → <b>Location Services</b>: make sure it is enabled for Safari</li><li>Make sure Safari is not in <b>Private Browsing</b> mode</li></ol>
+    ` : `
+      <p class="help-subtitle">Nếu vẫn không được, kiểm tra thêm:</p>
       <ol start="1">
-        <li><b>Cài đặt</b> → <b>Quyền riêng tư &amp; Bảo mật</b> → <b>Dịch vụ định vị</b>: đảm bảo bật ở đầu trang, rồi cuộn xuống mục <b>Safari Websites</b> → chọn <b>Hỏi lần tới hoặc khi chia sẻ</b> (không để "Không bao giờ")</li>
-        <li>Kiểm tra Safari không đang mở ở chế độ <b>Duyệt web Riêng tư</b> (Private Browsing) — chế độ này luôn chặn định vị</li>
+        <li><b>Cài đặt</b> → <b>Quyền riêng tư &amp; Bảo mật</b> → <b>Dịch vụ định vị</b>: đảm bảo đã bật cho Safari</li>
+        <li>Kiểm tra Safari không đang ở chế độ <b>Duyệt web Riêng tư</b></li>
       </ol>
-    ` : '';
+    `) : '';
 
     helpEl.innerHTML = `
-      <p>Cách cấp lại quyền vị trí:</p>
+      <p>${currentLanguage === 'en' ? 'How to restore location permission:' : 'Cách cấp lại quyền vị trí:'}</p>
       <ol>${steps.map(s => `<li>${s}</li>`).join('')}</ol>
       ${iosExtra}
       <div class="help-actions">
-        <button class="btn-retry" id="btnRetryLocation" type="button">🔄 Thử lại</button>
-        <button class="btn-manual" id="btnManualProvince" type="button">📍 Chọn tỉnh thủ công thay thế</button>
+        <button class="btn-retry" id="btnRetryLocation" type="button">🔄 ${currentLanguage === 'en' ? 'Try again' : 'Thử lại'}</button>
+        <button class="btn-manual" id="btnManualProvince" type="button">📍 ${currentLanguage === 'en' ? 'Choose a province manually' : 'Chọn tỉnh thủ công thay thế'}</button>
       </div>
     `;
     helpEl.hidden = false;
@@ -196,29 +307,29 @@
     hidePermissionHelp();
 
     if (!('geolocation' in navigator)) {
-      setNearestStatus('Trình duyệt không hỗ trợ định vị. Vui lòng chọn tỉnh thủ công bên dưới.', true);
+      setNearestStatus(t('noGeolocation'), true);
       return;
     }
-    setNearestStatus('Đang xác định vị trí của bạn…');
+    setNearestStatus(t('locating'));
     navigator.geolocation.getCurrentPosition(
       pos => {
         userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
-        setNearestStatus('Đã xác định vị trí — đang sắp xếp theo khoảng cách đường thẳng gần nhất.');
+        setNearestStatus(t('located'));
         document.getElementById('filterProv').value = '';
         document.getElementById('searchBox').value = '';
         applyFilter();
       },
       err => {
         if (err.code === 1) {
-          setNearestStatus('Bạn đã từ chối quyền truy cập vị trí trước đó.', true);
+          setNearestStatus(t('denied'), true);
           renderPermissionHelp();
           return;
         }
         const msgs = {
-          2: 'Không xác định được vị trí hiện tại (GPS yếu hoặc bị chặn). Vui lòng thử lại hoặc chọn tỉnh thủ công.',
-          3: 'Định vị quá thời gian chờ. Vui lòng thử lại.',
+          2: t('gpsWeak'),
+          3: t('gpsTimeout'),
         };
-        setNearestStatus(msgs[err.code] || 'Có lỗi khi định vị. Vui lòng thử lại hoặc chọn tỉnh thủ công.', true);
+        setNearestStatus(msgs[err.code] || t('gpsError'), true);
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
@@ -228,11 +339,12 @@
   function renderList(items) {
     const list = document.getElementById('list');
     document.getElementById('countNum').textContent = items.length;
+    document.getElementById('listCountRow').innerHTML = t('listCount', items.length);
     const distanceNote = document.getElementById('distanceNote');
     if (distanceNote) distanceNote.hidden = !userLocation;
 
     if (items.length === 0) {
-      list.innerHTML = '<div class="empty-state">Không tìm thấy cơ sở phù hợp.</div>';
+      list.innerHTML = `<div class="empty-state">${escapeHtml(t('noResults'))}</div>`;
       return;
     }
 
@@ -259,7 +371,7 @@
         `<a class="call-link" href="${telHrefFromPhone(p)}">📞 ${escapeHtml(p.label)}</a>`
       ).join('');
       const distanceHtml = (h._distanceKm != null)
-        ? `<span class="distance-badge" title="Khoảng cách đường thẳng từ vị trí của bạn" aria-label="Khoảng cách đường thẳng ${h._distanceKm < 1 ? Math.round(h._distanceKm*1000)+' mét' : h._distanceKm.toFixed(1)+' kilômét'}">${h._distanceKm < 1 ? Math.round(h._distanceKm*1000)+' m' : h._distanceKm.toFixed(1)+' km'} đường thẳng</span>`
+        ? `<span class="distance-badge" title="${t('distanceNote')}" aria-label="${t('straight')} ${h._distanceKm < 1 ? Math.round(h._distanceKm*1000)+' '+t('meters') : h._distanceKm.toFixed(1)+' '+t('kilometers')}">${h._distanceKm < 1 ? Math.round(h._distanceKm*1000)+' m' : h._distanceKm.toFixed(1)+' km'} ${t('straight')}</span>`
         : '';
 
       return `
@@ -274,12 +386,12 @@
         <p class="type-label">${escapeHtml(h.type || '')}</p>
         <p class="addr" itemprop="address">${escapeHtml(h.address)}</p>
         <div class="badges">
-          ${badge('Tiêu sợi huyết', h.thrombolysis)}
-          ${badge('Can thiệp', h.intervention)}
+          ${badge(t('thrombolysis'), h.thrombolysis)}
+          ${badge(t('intervention'), h.intervention)}
         </div>
         <div class="card-actions-row">
         <div class="phone-group" itemprop="telephone">${phoneButtons}</div>
-          <a class="map-link" href="${mapsDirectionUrl(h.address, h.name, h.lat, h.lng)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
+          <a class="map-link" href="${mapsDirectionUrl(h.address, h.name, h.lat, h.lng)}" target="_blank" rel="noopener noreferrer">🧭 ${t('directions')}</a>
         </div>
       </article>
     `;
@@ -375,8 +487,8 @@
             <h3>${escapeHtml(h.name)}</h3>
             <p class="popup-addr">${escapeHtml(h.address)}</p>
             <div class="popup-actions">
-              <a class="pop-call" href="${telHrefFromPhone(firstPhone)}">📞 Gọi</a>
-              <a class="pop-dir" href="${mapsDirectionUrl(h.address, h.name, h.lat, h.lng)}" target="_blank" rel="noopener noreferrer">🧭 Chỉ đường</a>
+              <a class="pop-call" href="${telHrefFromPhone(firstPhone)}">📞 ${t('call')}</a>
+              <a class="pop-dir" href="${mapsDirectionUrl(h.address, h.name, h.lat, h.lng)}" target="_blank" rel="noopener noreferrer">🧭 ${t('directions')}</a>
             </div>
           </div>`;
         marker.bindPopup(popupHtml);
@@ -439,14 +551,14 @@
       btnMap.classList.add('active');
 
       if (!window.L) {
-        setMapStatus('Đang tải thư viện bản đồ từ CDN…');
+        setMapStatus(t('mapLoading'));
         loadMapLibraries()
           .then(() => {
             setMapStatus('');
             renderMap(getCurrentFiltered());
           })
           .catch(() => {
-            setMapStatus('Không tải được thư viện bản đồ. Vui lòng kiểm tra kết nối mạng hoặc dùng tab Danh sách.', true);
+            setMapStatus(t('mapLoadError'), true);
           });
       } else {
         setMapStatus('');
@@ -633,8 +745,8 @@
       ALL = data.filter(h => h.status === 'active');
       document.getElementById('list').setAttribute('aria-busy', 'false');
       ALL.forEach(h => { h._searchIndex = buildSearchIndex(h); });
-      document.getElementById('metaCount').innerHTML = `<b>${ALL.length}</b> đơn vị`;
-      document.getElementById('metaProv').innerHTML = `<b>${new Set(ALL.map(h=>h.province)).size}</b> tỉnh/thành`;
+      document.getElementById('metaCount').innerHTML = `<b>${ALL.length}</b> ${t('metaUnit')}`;
+      document.getElementById('metaProv').innerHTML = `<b>${new Set(ALL.map(h=>h.province)).size}</b> ${t('metaProvince')}`;
       const withCoordinates = ALL.filter(h =>
         Number.isFinite(Number(h.lat)) && Number.isFinite(Number(h.lng))
       );
@@ -644,14 +756,14 @@
       const publishedAt = ALL.map(h => h.publishedAt).filter(Boolean).sort().pop();
       document.getElementById('metaUpdated').textContent = formatUpdatedAt(updatedAt);
       document.getElementById('signsUpdatedAt').textContent =
-        `* Website cập nhật lúc: ${formatPublishedAt(publishedAt)}`;
+        `${t('signsUpdated')}${formatPublishedAt(publishedAt)}`;
       updateStructuredData(publishedAt || updatedAt);
       populateProvinces(ALL);
       renderList(ALL);
     })
     .catch(err => {
       document.getElementById('list').innerHTML =
-        `<div class="empty-state">Lỗi tải dữ liệu: ${escapeHtml(err.message)}</div>`;
+        `<div class="empty-state">${escapeHtml(t('dataLoadError') + err.message)}</div>`;
     });
 
   document.getElementById('filterProv').addEventListener('change', applyFilter);
