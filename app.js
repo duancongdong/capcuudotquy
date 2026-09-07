@@ -15,7 +15,7 @@
   const disclaimerContentVi = document.getElementById('disclaimerContentVi');
   const disclaimerContentEn = document.getElementById('disclaimerContentEn');
   const disclaimerLanguageButtons = [...document.querySelectorAll('[data-disclaimer-language]')];
-  const signsPosters = [...document.querySelectorAll('[data-poster-language]')];
+  const signsPoster = document.getElementById('signsPoster');
   const mainLanguageButtons = [...document.querySelectorAll('[data-main-language]')];
   let currentLanguage = 'vi';
 
@@ -81,20 +81,41 @@
     return typeof value === 'function' ? value(...args) : value;
   }
 
-  // Chỉ hiển thị poster đúng ngôn ngữ hiện tại. Khi ảnh đã lỗi tải, kiểm tra
-  // lại naturalWidth để không mở ra một vùng trắng hoặc biểu tượng ảnh lỗi.
-  function syncSignsPoster(language) {
-    const activePoster = signsPosters.find(poster => poster.dataset.posterLanguage === language);
-    signsPosters.forEach(poster => {
-      poster.hidden = poster !== activePoster;
-    });
+  const POSTER_ASSETS = {
+    vi: {
+      src: './assets/stroke-poster-clean.png', width: 798, height: 1124,
+      alt: 'Poster Dấu hiệu nhận biết đột quỵ theo quy tắc K-H-Ẩ-N',
+    },
+    en: {
+      src: './assets/stroke-poster-english.png', width: 1488, height: 2105,
+      alt: 'English stroke awareness poster: Know the signs of stroke',
+    },
+  };
 
+  // Dùng một thẻ ảnh duy nhất và thay src theo ngôn ngữ. Nhờ vậy không có
+  // trường hợp hai poster cùng tồn tại hoặc CSS ghi đè ảnh đang bị ẩn.
+  function syncSignsPoster(language) {
     const fallback = document.getElementById('posterLoadFallback');
-    if (!activePoster || !fallback) return;
-    if (activePoster.complete && activePoster.naturalWidth === 0) {
-      activePoster.hidden = true;
+    const asset = POSTER_ASSETS[language] || POSTER_ASSETS.vi;
+    if (!signsPoster || !fallback) return;
+
+    const isNewPoster = signsPoster.dataset.posterLanguage !== language;
+    signsPoster.alt = asset.alt;
+    signsPoster.width = asset.width;
+    signsPoster.height = asset.height;
+
+    if (isNewPoster) {
+      signsPoster.dataset.posterLanguage = language;
+      signsPoster.hidden = true;
+      fallback.hidden = true;
+      signsPoster.src = asset.src;
+    }
+
+    if (signsPoster.complete && signsPoster.naturalWidth === 0) {
+      signsPoster.hidden = true;
       fallback.hidden = false;
-    } else {
+    } else if (signsPoster.complete && signsPoster.dataset.posterLanguage === language) {
+      signsPoster.hidden = false;
       fallback.hidden = true;
     }
   }
@@ -800,23 +821,23 @@
 
   // Nếu tài nguyên poster không thể tải, không để lại vùng trắng lớn kèm biểu tượng ảnh lỗi.
   // Poster thực tế được đặt trong assets/ để GitHub Pages luôn triển khai cùng mã nguồn.
-  const signsPosterImages = [...document.querySelectorAll('.signs-poster-image')];
   const posterLoadFallback = document.getElementById('posterLoadFallback');
-  if (signsPosterImages.length && posterLoadFallback) {
-    signsPosterImages.forEach(signsPosterImage => {
-      const showPosterFallback = () => {
-        if (!signsPosterImage.hidden) {
-          signsPosterImage.hidden = true;
-          posterLoadFallback.hidden = false;
-        }
-      };
-      signsPosterImage.addEventListener('error', showPosterFallback);
-      signsPosterImage.addEventListener('load', () => {
-        syncSignsPoster(currentLanguage);
-      });
-      if (signsPosterImage.complete && signsPosterImage.naturalWidth === 0 && !signsPosterImage.hidden) {
-        showPosterFallback();
+  if (signsPoster && posterLoadFallback) {
+    signsPoster.addEventListener('error', () => {
+      if (signsPoster.dataset.posterLanguage === currentLanguage) {
+        signsPoster.hidden = true;
+        posterLoadFallback.hidden = false;
       }
     });
+    signsPoster.addEventListener('load', () => {
+      if (signsPoster.dataset.posterLanguage === currentLanguage) {
+        signsPoster.hidden = false;
+        posterLoadFallback.hidden = true;
+      }
+    });
+    if (signsPoster.complete && signsPoster.naturalWidth === 0) {
+      signsPoster.hidden = true;
+      posterLoadFallback.hidden = false;
+    }
   }
   document.getElementById('btnNearest').addEventListener('click', findNearest);

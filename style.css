@@ -162,17 +162,24 @@
   .main-language{
     min-width:48px;
     padding:6px 9px;
-    border:1px solid rgba(255,255,255,.35);
+    border:1px solid rgba(255,255,255,.55);
     border-radius:999px;
-    color:#d9e9ff;
-    background:rgba(255,255,255,.1);
+    color:#fff;
+    background:rgba(8,29,67,.45);
     font:inherit;
     font-size:11px;
     font-weight:800;
     cursor:pointer;
   }
-  .main-language.active,
-  .main-language:hover{color:var(--ink);background:#fff;}
+  .main-language.active{
+    color:var(--ink);
+    background:#fff;
+    border-color:#fff;
+    box-shadow:0 3px 9px rgba(0,0,0,.2);
+    transform:translateY(-1px);
+  }
+  .main-language:not(.active):hover{background:rgba(255,255,255,.18);}
+  .main-language:focus-visible{outline:3px solid #77c94a;outline-offset:2px;}
   .topbar .eyebrow{
     font-family:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size:11px;
