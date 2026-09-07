@@ -150,7 +150,8 @@
     document.getElementById('siteNote').innerHTML = `${t('siteNote')}<a href="./data/hospitals.json">${t('dataLink')}</a>.`;
     document.getElementById('sosLabel').textContent = t('sos');
     document.getElementById('loadingState').textContent = t('loading');
-    document.getElementById('noscriptNote').innerHTML = `${t('noscript')}<a href="tel:115">115</a>.`;
+    // Nội dung trong <noscript> chỉ hiển thị khi JavaScript bị tắt, nên không
+    // cập nhật tại đây. Tránh dừng giữa chừng luồng đổi ngôn ngữ trên Safari.
     syncSignsPoster(currentLanguage);
     mainLanguageButtons.forEach(button => {
       const active = button.dataset.mainLanguage === currentLanguage;
