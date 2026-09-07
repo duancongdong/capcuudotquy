@@ -16,7 +16,7 @@
   const disclaimerContentEn = document.getElementById('disclaimerContentEn');
   const disclaimerLanguageButtons = [...document.querySelectorAll('[data-disclaimer-language]')];
   const signsPoster = document.getElementById('signsPoster');
-  const mainLanguageButtons = [...document.querySelectorAll('[data-main-language]')];
+  const mainLanguageSelect = document.getElementById('mainLanguageSelect');
   let currentLanguage = 'vi';
 
   const UI_TEXT = {
@@ -156,11 +156,7 @@
     // Nội dung trong <noscript> chỉ hiển thị khi JavaScript bị tắt, nên không
     // cập nhật tại đây. Tránh dừng giữa chừng luồng đổi ngôn ngữ trên Safari.
     syncSignsPoster(currentLanguage);
-    mainLanguageButtons.forEach(button => {
-      const active = button.dataset.mainLanguage === currentLanguage;
-      button.classList.toggle('active', active);
-      button.setAttribute('aria-pressed', String(active));
-    });
+    if (mainLanguageSelect) mainLanguageSelect.value = currentLanguage;
     if (ALL.length) {
       document.getElementById('metaCount').innerHTML = `<b>${ALL.length}</b> ${t('metaUnit')}`;
       document.getElementById('metaProv').innerHTML = `<b>${new Set(ALL.map(h => h.province)).size}</b> ${t('metaProvince')}`;
@@ -202,9 +198,9 @@
   disclaimerLanguageButtons.forEach(button => {
     button.addEventListener('click', () => setDisclaimerLanguage(button.dataset.disclaimerLanguage));
   });
-  mainLanguageButtons.forEach(button => {
-    button.addEventListener('click', () => setMainLanguage(button.dataset.mainLanguage));
-  });
+  if (mainLanguageSelect) {
+    mainLanguageSelect.addEventListener('change', () => setMainLanguage(mainLanguageSelect.value));
+  }
   // Mỗi lần mở trang, ngôn ngữ mặc định luôn là tiếng Việt. Lựa chọn EN/VN
   // chỉ áp dụng cho phiên đang sử dụng, tránh khởi động nhầm bằng tiếng Anh.
   setDisclaimerLanguage('vi');

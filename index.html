@@ -130,9 +130,12 @@
   </section>
 
   <header class="topbar" id="appHeader" hidden>
-    <div class="main-language-switch" role="group" aria-label="Language / Ngôn ngữ">
-      <button type="button" class="main-language active" data-main-language="vi" aria-pressed="true">🇻🇳 VN</button>
-      <button type="button" class="main-language" data-main-language="en" aria-pressed="false">🇬🇧 EN</button>
+    <div class="main-language-switch">
+      <label class="sr-only" for="mainLanguageSelect">Ngôn ngữ / Language</label>
+      <select class="main-language-select" id="mainLanguageSelect" aria-label="Ngôn ngữ / Language">
+        <option value="vi" selected>🇻🇳 Tiếng Việt</option>
+        <option value="en">🇬🇧 English</option>
+      </select>
     </div>
     <p class="eyebrow">World Stroke Day · #ActFast</p>
     <h1 id="siteTitle">Danh sách bệnh viện &amp; trung tâm cấp cứu đột quỵ tại Việt Nam</h1>
