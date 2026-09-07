@@ -777,6 +777,8 @@
   }
   .poster-frame{width:100%;max-width:798px;margin:0 auto;background:#fff;}
   .signs-poster-image{display:block;width:100%;height:auto;}
+  /* Không để display:block ghi đè thuộc tính hidden khi đổi VN/EN. */
+  .signs-poster-image[hidden]{display:none !important;}
   .poster-load-fallback{
     min-height:220px;
     padding:24px;
