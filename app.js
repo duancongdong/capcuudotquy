@@ -16,7 +16,6 @@
   const disclaimerContentEn = document.getElementById('disclaimerContentEn');
   const disclaimerLanguageButtons = [...document.querySelectorAll('[data-disclaimer-language]')];
   const signsPosters = [...document.querySelectorAll('[data-poster-language]')];
-  const disclaimerLanguageKey = 'strokeLocatorDisclaimerLanguage:v1';
   const mainLanguageButtons = [...document.querySelectorAll('[data-main-language]')];
   let currentLanguage = 'vi';
 
@@ -82,6 +81,24 @@
     return typeof value === 'function' ? value(...args) : value;
   }
 
+  // Chỉ hiển thị poster đúng ngôn ngữ hiện tại. Khi ảnh đã lỗi tải, kiểm tra
+  // lại naturalWidth để không mở ra một vùng trắng hoặc biểu tượng ảnh lỗi.
+  function syncSignsPoster(language) {
+    const activePoster = signsPosters.find(poster => poster.dataset.posterLanguage === language);
+    signsPosters.forEach(poster => {
+      poster.hidden = poster !== activePoster;
+    });
+
+    const fallback = document.getElementById('posterLoadFallback');
+    if (!activePoster || !fallback) return;
+    if (activePoster.complete && activePoster.naturalWidth === 0) {
+      activePoster.hidden = true;
+      fallback.hidden = false;
+    } else {
+      fallback.hidden = true;
+    }
+  }
+
   function setMainLanguage(language) {
     currentLanguage = language === 'en' ? 'en' : 'vi';
     document.documentElement.lang = currentLanguage;
@@ -113,10 +130,8 @@
     document.getElementById('sosLabel').textContent = t('sos');
     document.getElementById('loadingState').textContent = t('loading');
     document.getElementById('noscriptNote').innerHTML = `${t('noscript')}<a href="tel:115">115</a>.`;
-    signsPosters.forEach(poster => {
-      poster.hidden = poster.dataset.posterLanguage !== currentLanguage;
-    });
-  mainLanguageButtons.forEach(button => {
+    syncSignsPoster(currentLanguage);
+    mainLanguageButtons.forEach(button => {
       const active = button.dataset.mainLanguage === currentLanguage;
       button.classList.toggle('active', active);
       button.setAttribute('aria-pressed', String(active));
@@ -137,16 +152,12 @@
       ? 'DISCLAIMER & PRIVACY NOTICE'
       : 'TUYÊN BỐ MIỄN TRỪ TRÁCH NHIỆM & QUYỀN RIÊNG TƯ';
     acceptDisclaimer.textContent = isEnglish ? 'I have read and agree' : 'Tôi đã hiểu và đồng ý';
-    signsPosters.forEach(poster => {
-      poster.hidden = poster.dataset.posterLanguage !== language;
-    });
     setMainLanguage(language);
     disclaimerLanguageButtons.forEach(button => {
       const active = button.dataset.disclaimerLanguage === language;
       button.classList.toggle('active', active);
       button.setAttribute('aria-pressed', String(active));
     });
-    try { localStorage.setItem(disclaimerLanguageKey, language); } catch (err) { /* private mode */ }
   }
 
   function openMainContent() {
@@ -169,11 +180,9 @@
   mainLanguageButtons.forEach(button => {
     button.addEventListener('click', () => setMainLanguage(button.dataset.mainLanguage));
   });
-  let preferredDisclaimerLanguage = 'vi';
-  try {
-    preferredDisclaimerLanguage = localStorage.getItem(disclaimerLanguageKey) === 'en' ? 'en' : 'vi';
-  } catch (err) { /* private mode */ }
-  setDisclaimerLanguage(preferredDisclaimerLanguage);
+  // Mỗi lần mở trang, ngôn ngữ mặc định luôn là tiếng Việt. Lựa chọn EN/VN
+  // chỉ áp dụng cho phiên đang sử dụng, tránh khởi động nhầm bằng tiếng Anh.
+  setDisclaimerLanguage('vi');
 
   function escapeHtml(str) {
     const div = document.createElement('div');
@@ -803,7 +812,7 @@
       };
       signsPosterImage.addEventListener('error', showPosterFallback);
       signsPosterImage.addEventListener('load', () => {
-        if (!signsPosterImage.hidden) posterLoadFallback.hidden = true;
+        syncSignsPoster(currentLanguage);
       });
       if (signsPosterImage.complete && signsPosterImage.naturalWidth === 0 && !signsPosterImage.hidden) {
         showPosterFallback();
