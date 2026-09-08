@@ -1,0 +1,7 @@
+# Dữ liệu tạm và bản kiểm tra nội bộ — không đưa vào repository hoặc GitHub Pages.
+data/hospitals.backup_*.json
+data/hospitals_ggs*.json
+data/hospitals_coordinates_*.txt
+data/hospitals_deviation_*.csv
+output/
+tmp/

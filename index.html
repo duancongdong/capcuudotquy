@@ -6,6 +6,7 @@
 <meta name="description" content="Tra cứu bệnh viện và trung tâm có khả năng điều trị đột quỵ tại Việt Nam. Tìm theo tỉnh, gọi hotline, xem chỉ đường và nhận biết dấu hiệu đột quỵ theo quy tắc K-H-Ẩ-N.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#0b6b5f">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="vi_VN">
 <meta property="og:title" content="Tìm bệnh viện điều trị đột quỵ gần nhất">
@@ -23,6 +24,10 @@
   connect-src 'self';
   base-uri 'self';
   form-action 'none';
+  object-src 'none';
+  frame-src 'none';
+  worker-src 'none';
+  upgrade-insecure-requests;
 ">
 <!-- Lưu ý: GitHub Pages không cho cấu hình HTTP header tuỳ chỉnh, nên clickjacking
      (frame-ancestors) không chặn được ở tầng này. Nếu cần, dùng thêm JS chống
@@ -178,7 +183,7 @@
     <input id="searchBox" type="text" placeholder="Tìm theo tên bệnh viện..." aria-label="Tìm kiếm bệnh viện">
   </div>
 
-  <div class="count-row" id="listCountRow">Đang hiển thị <b id="countNum">0</b> cơ sở</div>
+  <div class="count-row" id="listCountRow">Đang hiển thị <b>0</b> cơ sở</div>
   <p class="distance-note" id="distanceNote" hidden>
     Khoảng cách trên thẻ là khoảng cách đường thẳng. Nhấn “Chỉ đường” để xem quãng đường di chuyển thực tế.
   </p>

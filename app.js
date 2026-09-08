@@ -368,7 +368,8 @@
 
   function renderList(items) {
     const list = document.getElementById('list');
-    document.getElementById('countNum').textContent = items.length;
+    // listCountRow có thể được dựng lại khi đổi ngôn ngữ, vì vậy không giữ
+    // tham chiếu tới #countNum (phần tử cũ có thể đã không còn trong DOM).
     document.getElementById('listCountRow').innerHTML = t('listCount', items.length);
     const distanceNote = document.getElementById('distanceNote');
     if (distanceNote) distanceNote.hidden = !userLocation;
@@ -772,7 +773,10 @@
       return res.json();
     })
     .then(data => {
-      ALL = data.filter(h => h.status === 'active');
+      if (!Array.isArray(data)) throw new Error('Định dạng dữ liệu không hợp lệ');
+      ALL = data.filter(h => h && typeof h === 'object' && h.status === 'active' &&
+        ['id', 'name', 'type', 'address', 'province'].every(field => typeof h[field] === 'string' && h[field].trim()));
+      if (!ALL.length) throw new Error('Không có cơ sở hợp lệ để hiển thị');
       document.getElementById('list').setAttribute('aria-busy', 'false');
       ALL.forEach(h => { h._searchIndex = buildSearchIndex(h); });
       document.getElementById('metaCount').innerHTML = `<b>${ALL.length}</b> ${t('metaUnit')}`;

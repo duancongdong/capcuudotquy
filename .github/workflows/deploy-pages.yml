@@ -1,0 +1,113 @@
+name: Deploy GitHub Pages and notify Admins
+
+on:
+  push:
+    branches:
+      - main
+  workflow_run:
+    workflows:
+      - Sync hospitals from Google Sheet
+    types:
+      - completed
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy website
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_branch || github.ref_name }}
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Validate release data and scripts
+        run: |
+          node --check app.js
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          records = json.loads(Path('data/hospitals.json').read_text(encoding='utf-8'))
+          required = {'id', 'name', 'type', 'address', 'province', 'status', 'updatedAt'}
+          if not isinstance(records, list) or not records:
+              raise SystemExit('hospitals.json must be a non-empty array')
+          active = [record for record in records if isinstance(record, dict) and record.get('status') == 'active']
+          if not active or any(not required.issubset(record) for record in active):
+              raise SystemExit('Active hospital records do not match the required schema')
+          if any('geocode' in record for record in records if isinstance(record, dict)):
+              raise SystemExit('Deprecated geocode data must not be published')
+          print(f'Validated {len(active)} active hospital records.')
+          PY
+
+      - name: Assemble minimal public website
+        run: |
+          mkdir -p _site/assets _site/data
+          cp index.html app.js style.css signs.html signs-en.html _site/
+          cp -R assets/. _site/assets/
+          cp data/hospitals.json _site/data/hospitals.json
+
+      - name: Upload website artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  notify-success:
+    name: Notify successful deployment
+    needs: deploy
+    if: needs.deploy.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Telegram success notification
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SITE_URL: ${{ needs.deploy.outputs.page_url }}
+        run: |
+          MESSAGE=$(printf '✅ TRIỂN KHAI THÀNH CÔNG\n\nWebsite đã được cập nhật và GitHub Pages đã hoàn tất triển khai.\n\n🌐 %s\n🕒 Thời gian: %s' "$SITE_URL" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')")
+          curl --fail --silent --show-error --request POST \
+            --data "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${MESSAGE}" \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
+
+  notify-deploy-failure:
+    name: Notify deployment failure
+    needs: deploy
+    if: needs.deploy.result == 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Telegram deployment failure notification
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          MESSAGE=$(printf '❌ TRIỂN KHAI THẤT BẠI\n\nJSON có thể đã cập nhật nhưng GitHub Pages chưa triển khai được website.\n\n🔎 Kiểm tra log: %s\n🕒 Thời gian: %s' "$RUN_URL" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')")
+          curl --fail --silent --show-error --request POST \
+            --data "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=${MESSAGE}" \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
