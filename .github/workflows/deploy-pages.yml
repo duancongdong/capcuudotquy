@@ -63,9 +63,11 @@ jobs:
       - name: Assemble minimal public website
         run: |
           mkdir -p _site/assets _site/data
-          cp index.html app.js style.css signs.html signs-en.html _site/
+          cp .nojekyll index.html app.js style.css signs.html signs-en.html _site/
           cp -R assets/. _site/assets/
           cp data/hospitals.json _site/data/hospitals.json
+          DATA_VERSION=$(sha256sum data/hospitals.json | awk '{print $1}')
+          printf '{"hospitalsVersion":"%s"}\n' "$DATA_VERSION" > _site/data/site-manifest.json
 
       - name: Upload website artifact
         uses: actions/upload-pages-artifact@v3

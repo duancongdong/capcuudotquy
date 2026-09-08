@@ -96,6 +96,7 @@
   // trường hợp hai poster cùng tồn tại hoặc CSS ghi đè ảnh đang bị ẩn.
   function syncSignsPoster(language) {
     const fallback = document.getElementById('posterLoadFallback');
+    const signsView = document.getElementById('signsView');
     const asset = POSTER_ASSETS[language] || POSTER_ASSETS.vi;
     if (!signsPoster || !fallback) return;
 
@@ -104,7 +105,15 @@
     signsPoster.width = asset.width;
     signsPoster.height = asset.height;
 
-    if (isNewPoster) {
+    // Tab Dấu hiệu đã dùng trang tĩnh riêng. Không tải poster nặng khi người
+    // dùng chỉ đang tra cứu Danh sách hoặc Bản đồ.
+    if (!signsView || signsView.hidden) {
+      signsPoster.dataset.posterLanguage = language;
+      signsPoster.removeAttribute('src');
+      return;
+    }
+
+    if (isNewPoster || signsPoster.getAttribute('src') !== asset.src) {
       signsPoster.dataset.posterLanguage = language;
       signsPoster.hidden = true;
       fallback.hidden = true;
@@ -206,9 +215,9 @@
   setDisclaimerLanguage('vi');
 
   function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
+    return String(str ?? '').replace(/[&<>"']/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    })[char]);
   }
 
   function parsePhoneNumbers(hotline) {
@@ -765,9 +774,24 @@
     document.head.appendChild(script);
   }
 
-  // Revalidate the data file so the timestamp on the Dấu hiệu tab can confirm
-  // that a newly released Google Sheet version has reached the page.
-  fetch('./data/hospitals.json', { cache: 'no-cache' })
+  // Chỉ kiểm tra lại manifest rất nhỏ ở mỗi lượt mở. hospitals.json được cache
+  // theo hash nội dung, vì thế dữ liệu không đổi sẽ không bị tải lại 100+ KB;
+  // khi phát hành bản mới hash thay đổi và trình duyệt tự lấy đúng JSON mới.
+  function loadHospitalData() {
+    return fetch('./data/site-manifest.json', { cache: 'no-cache' })
+      .then(res => res.ok ? res.json() : {})
+      .catch(() => ({}))
+      .then(manifest => {
+        const version = typeof manifest.hospitalsVersion === 'string'
+          ? manifest.hospitalsVersion : '';
+        const url = version
+          ? `./data/hospitals.json?v=${encodeURIComponent(version)}`
+          : './data/hospitals.json';
+        return fetch(url, { cache: version ? 'force-cache' : 'default' });
+      });
+  }
+
+  loadHospitalData()
     .then(res => {
       if (!res.ok) throw new Error('Không tải được dữ liệu');
       return res.json();
@@ -791,7 +815,13 @@
       document.getElementById('metaUpdated').textContent = formatUpdatedAt(updatedAt);
       document.getElementById('signsUpdatedAt').textContent =
         `${t('signsUpdated')}${formatPublishedAt(publishedAt)}`;
-      updateStructuredData(publishedAt || updatedAt);
+      // Không chặn thao tác tìm kiếm/lọc chỉ để thêm dữ liệu hỗ trợ máy đọc.
+      const updateSchema = () => updateStructuredData(publishedAt || updatedAt);
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(updateSchema, { timeout: 1500 });
+      } else {
+        setTimeout(updateSchema, 0);
+      }
       populateProvinces(ALL);
       renderList(ALL);
     })
@@ -802,12 +832,15 @@
 
   document.getElementById('filterProv').addEventListener('change', applyFilter);
 
-  // Debounce ô tìm kiếm: gộp các lần gõ liên tiếp trong 150ms thành 1 lần render,
-  // giảm tải CPU khi gõ nhanh trên điện thoại cấu hình thấp.
-  let searchDebounceTimer = null;
+  // Chỉ render một lần ở khung hình kế tiếp: phản hồi tức thì khi gõ nhưng vẫn
+  // tránh render lặp nếu thiết bị phát nhiều sự kiện input trong cùng một frame.
+  let searchFrame = 0;
   document.getElementById('searchBox').addEventListener('input', () => {
-    clearTimeout(searchDebounceTimer);
-    searchDebounceTimer = setTimeout(applyFilter, 150);
+    cancelAnimationFrame(searchFrame);
+    searchFrame = requestAnimationFrame(() => {
+      searchFrame = 0;
+      applyFilter();
+    });
   });
   document.getElementById('btnListView').addEventListener('click', () => { currentView = 'list'; switchView('list'); });
   document.getElementById('btnMapView').addEventListener('click', () => { currentView = 'map'; switchView('map'); });

@@ -7,6 +7,7 @@
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#0b6b5f">
 <meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="icon" href="data:,">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="vi_VN">
 <meta property="og:title" content="Tìm bệnh viện điều trị đột quỵ gần nhất">
@@ -18,8 +19,8 @@
 <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
   script-src 'self' https://cdnjs.cloudflare.com;
-  style-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
-  font-src 'self' https://fonts.gstatic.com;
+  style-src 'self' https://cdnjs.cloudflare.com;
+  font-src 'self';
   img-src 'self' data: https://*.tile.openstreetmap.org https://cdnjs.cloudflare.com;
   connect-src 'self';
   base-uri 'self';
@@ -33,11 +34,7 @@
      (frame-ancestors) không chặn được ở tầng này. Nếu cần, dùng thêm JS chống
      frame-busting hoặc chuyển sang hosting cho phép custom header (Cloudflare Pages). -->
 <title>Danh sách bệnh viện cấp cứu đột quỵ — Việt Nam</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
-<link rel="preload" href="./data/hospitals.json" as="fetch" crossorigin="anonymous">
 <link rel="alternate" type="application/json" href="./data/hospitals.json" title="Dữ liệu bệnh viện dạng máy đọc">
 <script type="application/ld+json">
 {
@@ -203,7 +200,7 @@
 
   <div id="signsView" hidden>
     <div class="poster-frame">
-      <img class="signs-poster-image" id="signsPoster" data-poster-language="vi" src="./assets/stroke-poster-clean.png" width="798" height="1124" alt="Poster Dấu hiệu nhận biết đột quỵ theo quy tắc K-H-Ẩ-N">
+      <img class="signs-poster-image" id="signsPoster" data-poster-language="vi" width="798" height="1124" alt="Poster Dấu hiệu nhận biết đột quỵ theo quy tắc K-H-Ẩ-N">
       <div class="poster-load-fallback" id="posterLoadFallback" hidden role="alert">
         <p>Không thể tải poster dấu hiệu đột quỵ.</p>
         <p>Nếu người bệnh méo miệng, yếu tay hoặc nói khó, hãy gọi 115 ngay.</p>
