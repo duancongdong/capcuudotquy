@@ -1,4 +1,4 @@
-name: Deploy GitHub Pages and notify Admins
+name: Deploy GitHub Pages
 
 on:
   push:
@@ -76,38 +76,35 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  notify-success:
-    name: Notify successful deployment
-    needs: deploy
-    if: needs.deploy.result == 'success'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send Telegram success notification
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          SITE_URL: ${{ needs.deploy.outputs.page_url }}
-        run: |
-          MESSAGE=$(printf '✅ TRIỂN KHAI THÀNH CÔNG\n\nWebsite đã được cập nhật và GitHub Pages đã hoàn tất triển khai.\n\n🌐 %s\n🕒 Thời gian: %s' "$SITE_URL" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')")
-          curl --fail --silent --show-error --request POST \
-            --data "chat_id=${TELEGRAM_CHAT_ID}" \
-            --data-urlencode "text=${MESSAGE}" \
-            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
-
-  notify-deploy-failure:
-    name: Notify deployment failure
-    needs: deploy
-    if: needs.deploy.result == 'failure'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send Telegram deployment failure notification
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-        run: |
-          MESSAGE=$(printf '❌ TRIỂN KHAI THẤT BẠI\n\nJSON có thể đã cập nhật nhưng GitHub Pages chưa triển khai được website.\n\n🔎 Kiểm tra log: %s\n🕒 Thời gian: %s' "$RUN_URL" "$(date -u '+%Y-%m-%d %H:%M:%S UTC')")
-          curl --fail --silent --show-error --request POST \
-            --data "chat_id=${TELEGRAM_CHAT_ID}" \
-            --data-urlencode "text=${MESSAGE}" \
-            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage"
+  # Telegram notifications are intentionally disabled.
+  # Keep the following implementation in Git history; re-enable it only after
+  # TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID have been verified.
+  #
+  # notify-success:
+  #   name: Notify successful deployment
+  #   needs: deploy
+  #   if: needs.deploy.result == 'success'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Send Telegram success notification
+  #       env:
+  #         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  #         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  #         SITE_URL: ${{ needs.deploy.outputs.page_url }}
+  #       run: |
+  #         MESSAGE=$(printf '✅ TRIỂN KHAI THÀNH CÔNG ...')
+  #         curl --fail --silent --show-error --request POST ...
+  #
+  # notify-deploy-failure:
+  #   name: Notify deployment failure
+  #   needs: deploy
+  #   if: needs.deploy.result == 'failure'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Send Telegram deployment failure notification
+  #       env:
+  #         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  #         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  #       run: |
+  #         MESSAGE=$(printf '❌ TRIỂN KHAI THẤT BẠI ...')
+  #         curl --fail --silent --show-error --request POST ...
