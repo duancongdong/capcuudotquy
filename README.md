@@ -26,7 +26,10 @@ GitHub Actions: tải CSV → kiểm tra → sinh hospitals.json
         │
         │ commit/push data/hospitals.json lên main
         ▼
-GitHub Pages tự triển khai website tĩnh
+GitHub Actions: kiểm tra gói phát hành → tạo site-manifest.json
+        │
+        ▼
+GitHub Pages triển khai artifact website tĩnh
 ```
 
 Website không có backend, database hoặc API server riêng. Trình duyệt tải HTML/CSS/JS và `data/hospitals.json` từ GitHub Pages.
@@ -38,9 +41,10 @@ Website không có backend, database hoặc API server riêng. Trình duyệt t�
 | `index.html` | HTML giao diện, metadata SEO, nội dung khẩn cấp và JSON-LD nền |
 | `style.css` | Giao diện responsive, accessibility và trạng thái tải |
 | `app.js` | Tải dữ liệu, tìm kiếm/lọc, định vị, bản đồ, JSON-LD động |
-| `data/hospitals.json` | Dữ liệu phát hành duy nhất mà website sử dụng |
+| `data/hospitals.json` | Dữ liệu cơ sở y tế được phát hành cho website |
 | `scripts/sync_sheet.py` | Parse và kiểm tra CSV từ Google Sheet rồi sinh JSON |
 | `.github/workflows/sync-hospitals.yml` | GitHub Actions đồng bộ dữ liệu và commit JSON |
+| `.github/workflows/deploy-pages.yml` | Kiểm tra, đóng gói tối thiểu và triển khai GitHub Pages |
 | `automation/google-apps-script/Code.gs` | Phát hiện E2 chuyển sang `Released` và gọi workflow |
 
 Các file `data/hospitals_ggs.json`, `data/hospitals_ggs_v2.json` và file backup là các bản đối chiếu/kiểm tra, không phải nguồn dữ liệu website khi chạy production.
@@ -202,19 +206,21 @@ Quyền này cho phép `GITHUB_TOKEN` commit `data/hospitals.json`. Nó không t
 
 ### 5.2. GitHub token cho Apps Script
 
-Apps Script cần token để gọi API `workflow_dispatch`; token này không được đặt trong source code.
+Apps Script cần token để gọi API `workflow_dispatch`; token này không được đặt trong source code. Token có tên `capcuudotquy-workflow` trong GitHub thường chính là token phục vụ mục đích này nếu giá trị của nó đang được lưu trong Script Property bên dưới. Khi token hết hạn, thao tác đổi `E2` sang `Released` sẽ không thể khởi chạy workflow đồng bộ.
 
 1. Tạo fine-grained PAT giới hạn vào repository `duancongdong/capcuudotquy`.
-2. Cấp quyền repository `Actions: Read and write` và quyền metadata đọc nếu GitHub yêu cầu.
-3. Không commit token vào Git.
-4. Lưu token trong Apps Script bằng **Project Settings → Script properties**:
+2. Chọn **Only select repositories** → chỉ chọn `duancongdong/capcuudotquy`.
+3. Cấp đúng một quyền repository: **Actions: Read and write**. Quyền Metadata đọc là bắt buộc mặc định của GitHub.
+4. Với tài khoản cá nhân không có chính sách giới hạn thời hạn, có thể chọn **Expiration: No expiration** cho token chuyên dụng này. Không dùng token này cho Git, máy cá nhân hoặc repository khác.
+5. Không commit token vào Git và không gửi token qua chat/email.
+6. Lưu token trong Apps Script bằng **Project Settings → Script properties**:
 
 ```text
 Key:   GITHUB_ACTIONS_TOKEN
 Value: <GitHub token>
 ```
 
-Nếu token bị lộ, phải revoke ngay và tạo token mới.
+Nếu token bị lộ, phải revoke ngay, tạo token mới và thay giá trị Script Property. GitHub App là lựa chọn an toàn hơn nếu sau này cần nhiều automation hoặc nhiều repository; với một Sheet và một repository, PAT giới hạn như trên là đủ đơn giản để vận hành.
 
 ### 5.3. Apps Script và installable trigger
 
@@ -273,11 +279,16 @@ Nếu repository là tài khoản cá nhân, bypass list của branch protection
 Trong repository:
 
 1. Vào **Settings → Pages**.
-2. Chọn **Deploy from a branch**.
-3. Chọn branch `main` và thư mục `/ (root)`.
-4. Lưu và chờ GitHub Pages cấp URL.
+2. Chọn **Source: GitHub Actions**.
+3. Không bấm **Configure** ở các workflow mẫu Jekyll/Static HTML; repository đã có workflow [deploy-pages.yml](.github/workflows/deploy-pages.yml).
+4. Khi cần chạy lại thủ công: vào **Actions → Deploy GitHub Pages → Run workflow → main → Run workflow**.
 
-Mỗi commit mới lên `main` sẽ kích hoạt triển khai Pages. Workflow đồng bộ dữ liệu không phải workflow deploy Pages; nó chỉ cập nhật JSON để Pages phục vụ phiên bản mới.
+Luồng triển khai hoạt động như sau:
+
+- Developer push lên `main`: workflow `Deploy GitHub Pages` triển khai bản mới.
+- Admin đổi `E2` từ `Updating` sang `Released`: Apps Script gọi `Sync hospitals from Google Sheet`; sau khi đồng bộ thành công, `Deploy GitHub Pages` triển khai JSON mới.
+
+Workflow triển khai chỉ công khai các tệp website cần thiết và sinh `data/site-manifest.json`. Manifest này giúp trình duyệt chỉ tải lại `hospitals.json` khi dữ liệu thay đổi. Không chuyển lại **Deploy from a branch**, vì khi đó manifest không được sinh và GitHub có thể phục vụ các tệp nội bộ ngoài ý muốn.
 
 ## 8. Chạy và kiểm tra local
 
